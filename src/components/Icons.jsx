@@ -20,3 +20,7 @@ export const TopBooksIcon = (props) => (
 export const SearchIcon = (props) => (
   <Ionicons name="search-outline" size={32} color="white" {...props} />
 )
+
+export const GoogleIcon = (props) => (
+  <Ionicons name="logo-google" size={32} color="white" {...props} />
+)
