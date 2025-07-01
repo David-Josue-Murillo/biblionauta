@@ -3,6 +3,7 @@ import {
 	Text,
 	TouchableOpacity,
 	Dimensions,
+	Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -19,7 +20,7 @@ export default function SignupScreen() {
 				{/* Encabezado */}
 				<View className="flex-1 justify-center items-center">
 					<View className="items-center mb-10">
-						<BiblionautaLogo />
+						<BiblionautaLogo size={40} />
 						<Text
 							className="text-base text-center mt-2 leading-6"
 							style={{ color: colors.textSecondary }}
@@ -29,19 +30,10 @@ export default function SignupScreen() {
 					</View>
 
 					{/* Ilustración de bienvenida */}
-					<View
-						className="justify-center items-center mb-10 rounded-2xl border"
-						style={{
-							width: width * 0.6,
-							height: width * 0.6,
-							backgroundColor: colors.card,
-							borderColor: colors.border,
-						}}
-					>
-						<MaterialIcons
-							name="library-books"
-							size={80}
-							color={colors.primary}
+					<View>
+						<Image 
+							source={require("../../assets/logoBiblionauta.png")}
+							className="w-80 h-80"
 						/>
 					</View>
 
