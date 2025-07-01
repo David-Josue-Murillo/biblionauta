@@ -778,6 +778,1067 @@
 			"searchInfo": {
 				"textSnippet": "*Nueva traducción* &quot; El hombre en busca de sentido&quot; es el estremecedor relato en el que Viktor Frankl nos narra su experiencia en los campos de concentración."
 			}
-		}
+		},
+		{
+			"kind": "books#volume",
+			"id": "ZBlRAAAAcAAJ",
+			"etag": "ctxxgNH5cPo",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/ZBlRAAAAcAAJ",
+			"volumeInfo": {
+				"title": "Meditaciones espirituales, 3",
+				"authors": [
+					"Luis de la Puente"
+				],
+				"publisher": "Librería Religiosa",
+				"publishedDate": "1856",
+				"industryIdentifiers": [
+					{
+						"type": "OTHER",
+						"identifier": "SEM:13030000026784"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 608,
+				"printType": "BOOK",
+				"categories": [
+					"Meditacions"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "1.5.6.0.full.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=ZBlRAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=ZBlRAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=ZBlRAAAAcAAJ&pg=PA597&dq=meditaciones&hl=&cd=1&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=ZBlRAAAAcAAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=ZBlRAAAAcAAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FREE",
+				"isEbook": true,
+				"buyLink": "https://play.google.com/store/books/details?id=ZBlRAAAAcAAJ&rdid=book-ZBlRAAAAcAAJ&rdot=1&source=gbs_api"
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "ALL_PAGES",
+				"embeddable": true,
+				"publicDomain": true,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_3.epub?id=ZBlRAAAAcAAJ&hl=&output=epub&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_3.pdf?id=ZBlRAAAAcAAJ&hl=&output=pdf&sig=ACfU3U2AaT7WmHPAmVdQ9s7d0WqJjsFk8A&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=ZBlRAAAAcAAJ&hl=&source=gbs_api",
+				"accessViewStatus": "FULL_PUBLIC_DOMAIN",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "... \u003cb\u003eMEDITACION\u003c/b\u003e L.- De la humildad y resignacion que disponen para coger copiosos frutos de la divina Providencia . 540 - \u003cb\u003eMeditaciones\u003c/b\u003e del último y soberano beneficio de la gloria . 546 \u003cb\u003eMeditacion\u003c/b\u003e LI.- De la gloria cuanto al estado , lugar y&nbsp;..."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "j-_We04KLKEC",
+			"etag": "/PnkrzRwPvQ",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/j-_We04KLKEC",
+			"volumeInfo": {
+				"title": "Meditaciones espirituales del V.P.---",
+				"authors": [
+					"Luis de la PUENTE"
+				],
+				"publishedDate": "1856",
+				"industryIdentifiers": [
+					{
+						"type": "OTHER",
+						"identifier": "BDM:13020100028612"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 608,
+				"printType": "BOOK",
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "0.5.6.0.full.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=j-_We04KLKEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=j-_We04KLKEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=j-_We04KLKEC&pg=PA594&dq=meditaciones&hl=&cd=2&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=j-_We04KLKEC&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=j-_We04KLKEC"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FREE",
+				"isEbook": true,
+				"buyLink": "https://play.google.com/store/books/details?id=j-_We04KLKEC&rdid=book-j-_We04KLKEC&rdot=1&source=gbs_api"
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "ALL_PAGES",
+				"embeddable": true,
+				"publicDomain": true,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_del_V_P.epub?id=j-_We04KLKEC&hl=&output=epub&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_del_V_P.pdf?id=j-_We04KLKEC&hl=&output=pdf&sig=ACfU3U0A2gngHbXqCYYs05g40OdWE7422Q&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=j-_We04KLKEC&hl=&source=gbs_api",
+				"accessViewStatus": "FULL_PUBLIC_DOMAIN",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "... \u003cb\u003eMEDITACION\u003c/b\u003e XVIII . De la ascension de Cristo nuestro Señor . \u003cb\u003eMEDITACION\u003c/b\u003e XIX.- De la entrada de Cristo nuestro Señor en el cielo empíreo , y de su asiento á la diestra del Padre . \u003cb\u003eMEDITACION\u003c/b\u003e XX . - Del recogimiento y oracion que&nbsp;..."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "VQFRAAAAcAAJ",
+			"etag": "DP+rV0P4Ax4",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/VQFRAAAAcAAJ",
+			"volumeInfo": {
+				"title": "Meditaciones espirituales, 3",
+				"authors": [
+					"Luis de la Puente"
+				],
+				"publisher": "Librería Religiosa",
+				"publishedDate": "1856",
+				"industryIdentifiers": [
+					{
+						"type": "OTHER",
+						"identifier": "SEM:13030000026782"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 606,
+				"printType": "BOOK",
+				"categories": [
+					"Meditacions"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "0.5.5.0.full.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=VQFRAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=VQFRAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=VQFRAAAAcAAJ&pg=PA597&dq=meditaciones&hl=&cd=3&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=VQFRAAAAcAAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=VQFRAAAAcAAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FREE",
+				"isEbook": true,
+				"buyLink": "https://play.google.com/store/books/details?id=VQFRAAAAcAAJ&rdid=book-VQFRAAAAcAAJ&rdot=1&source=gbs_api"
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "ALL_PAGES",
+				"embeddable": true,
+				"publicDomain": true,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_3.epub?id=VQFRAAAAcAAJ&hl=&output=epub&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_3.pdf?id=VQFRAAAAcAAJ&hl=&output=pdf&sig=ACfU3U3Ge1hTdCnz9P2aj7r-qAa6I6x76w&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=VQFRAAAAcAAJ&hl=&source=gbs_api",
+				"accessViewStatus": "FULL_PUBLIC_DOMAIN",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "... \u003cb\u003eMEDITACION\u003c/b\u003e L. - De la humildad y resignacion que disponen para co- ger copiosos frutos de la divina Providencia . 522 526 531 537 540 -\u003cb\u003eMeditaciones\u003c/b\u003e del último y soberano beneficio de la gloria . 546 \u003cb\u003eMEDITACION\u003c/b\u003e LI.— De la gloria cuanto&nbsp;..."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "HAFRAAAAcAAJ",
+			"etag": "tcaKpUtJLMo",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/HAFRAAAAcAAJ",
+			"volumeInfo": {
+				"title": "Meditaciones espirituales, 1",
+				"authors": [
+					"Luis de la Puente"
+				],
+				"publisher": "Librería Religiosa",
+				"publishedDate": "1856",
+				"industryIdentifiers": [
+					{
+						"type": "OTHER",
+						"identifier": "SEM:13030000008420"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 426,
+				"printType": "BOOK",
+				"categories": [
+					"Meditacions"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "0.5.5.0.full.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=HAFRAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=HAFRAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=HAFRAAAAcAAJ&pg=PA416&dq=meditaciones&hl=&cd=4&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=HAFRAAAAcAAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=HAFRAAAAcAAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FREE",
+				"isEbook": true,
+				"buyLink": "https://play.google.com/store/books/details?id=HAFRAAAAcAAJ&rdid=book-HAFRAAAAcAAJ&rdot=1&source=gbs_api"
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "ALL_PAGES",
+				"embeddable": true,
+				"publicDomain": true,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_1.epub?id=HAFRAAAAcAAJ&hl=&output=epub&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"downloadLink": "http://books.google.com.pa/books/download/Meditaciones_espirituales_1.pdf?id=HAFRAAAAcAAJ&hl=&output=pdf&sig=ACfU3U1wt5Xd1ZU8L3YYrYsxV9wVXAxXpA&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=HAFRAAAAcAAJ&hl=&source=gbs_api",
+				"accessViewStatus": "FULL_PUBLIC_DOMAIN",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "... \u003cb\u003eMEDITACION\u003c/b\u003e VI . - De la gravedad del pecado por comparacion á las pe- nas temporales y eternas con que es castigado . 70 220 73 16 76 81 -\u003cb\u003eMeditaciones\u003c/b\u003e de nuestras postrimerías para movernos al aborreci- miento de los pecados . \u003cb\u003eMEDITACION\u003c/b\u003e&nbsp;..."
+			}
+		},
+		{
+			"kind": "books#volume",
+      "id": "xhJdAAAAcAAJ",
+      "etag": "+8JkVWS2jQQ",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/xhJdAAAAcAAJ",
+      "volumeInfo": {
+        "title": "Marco Aurelio",
+        "authors": [
+          "Antonio de Guevara"
+        ],
+        "publishedDate": "1529",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "BSB:BSB10857945"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 588,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.7.6.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=xhJdAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=xhJdAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=xhJdAAAAcAAJ&pg=PP31&dq=marco+aurelio&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=xhJdAAAAcAAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=xhJdAAAAcAAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=xhJdAAAAcAAJ&rdid=book-xhJdAAAAcAAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.com.pa/books/download/Marco_Aurelio.epub?id=xhJdAAAAcAAJ&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=xhJdAAAAcAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003emarco aurelio\u003c/b\u003e vno delos principes del mundo de mas limpia vida / demás profunda doctrina / demasdi chola fortuna : excepto enla muger Faustina / yenel bijo Lomodo : yporque vea quie fue marcoverde fu infancialhe acordado deponer vna&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "2Ns9EQAAQBAJ",
+      "etag": "dqKOXTxMQxA",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/2Ns9EQAAQBAJ",
+      "volumeInfo": {
+        "title": "Marco Aurelio para la vida diaria",
+        "authors": [
+          "Estudio PE S.A.C."
+        ],
+        "publisher": "Paidos México",
+        "publishedDate": "2025-01-14",
+        "description": "En 15 lecciones conoce al autor del libro Meditaciones y estratega militar Marco Aurelio MARCO AURELIO, décimo sexto emperador de Roma (161 a 180) y el último de los llamados «cinco emperadores buenos», es el representante por antonomasia de la Edad de Oro del Imperio romano y autor de una de las mejores obras de todos los tiempos: Meditaciones, una colección de escritos acerca de sus reflexiones sobre la filosofía estoica y sus valores morales. Excelente estratega militar y funcionario público, Marco Aurelio se esforzó por aplicar las enseñanzas del estoicismo, enfocadas en la virtud, el autocontrol y la búsqueda del bien común a lo largo de su gobierno. Casi dos milenios después, su diario filosófico es ya uno de los clásicos de la literatura mundial que sigue inspirando a lectores de todos los rincones del mundo a enfrentar los desafíos de la vida y vivir de manera virtuosa, sin ser víctima de las respuestas emocionales ni de los eventos externos, y a concentrarse solo en lo que pueden controlar.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9786075698991"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "607569899X"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 180,
+        "printType": "BOOK",
+        "categories": [
+          "Biography & Autobiography"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.2.2.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=2Ns9EQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=2Ns9EQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=2Ns9EQAAQBAJ&printsec=frontcover&dq=marco+aurelio&hl=&cd=2&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=2Ns9EQAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=2Ns9EQAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 6.99,
+          "currencyCode": "USD"
+        },
+        "retailPrice": {
+          "amount": 6.99,
+          "currencyCode": "USD"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=2Ns9EQAAQBAJ&rdid=book-2Ns9EQAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 6990000,
+              "currencyCode": "USD"
+            },
+            "retailPrice": {
+              "amountInMicros": 6990000,
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Marco_Aurelio_para_la_vida_diaria-sample-epub.acsm?id=2Ns9EQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Marco_Aurelio_para_la_vida_diaria-sample-pdf.acsm?id=2Ns9EQAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=2Ns9EQAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "En 15 lecciones conoce al autor del libro Meditaciones y estratega militar Marco Aurelio MARCO AURELIO, décimo sexto emperador de Roma (161 a 180) y el último de los llamados «cinco emperadores buenos», es el representante por ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "xVIsAQAAMAAJ",
+      "etag": "vCEw/TTOhQs",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/xVIsAQAAMAAJ",
+      "volumeInfo": {
+        "title": "Libro aureo de Marco Aurelio",
+        "publishedDate": "1574",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "UCSD:31822038202131"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 452,
+        "printType": "BOOK",
+        "categories": [
+          "Education of princes"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "3.12.11.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=xVIsAQAAMAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=xVIsAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=xVIsAQAAMAAJ&pg=PA38-IA1&dq=marco+aurelio&hl=&cd=3&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=xVIsAQAAMAAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=xVIsAQAAMAAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=xVIsAQAAMAAJ&rdid=book-xVIsAQAAMAAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_de_Marco_Aurelio.epub?id=xVIsAQAAMAAJ&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_de_Marco_Aurelio.pdf?id=xVIsAQAAMAAJ&hl=&output=pdf&sig=ACfU3U3475_r59QdH3uPdj0yt0zn0YDAwQ&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=xVIsAQAAMAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eMarcoAurelio\u003c/b\u003e Em- perador sostuuo en su vida gran gloria por cua- dırse de las vilezas de los viles , no menos meref- ce immortal memoria por auer suffrido muchos denuestos en la execucion de sus virtudes , Infa- lible regla es entre los&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "VlN9dn4fh-AC",
+      "etag": "I6H78tMvgyw",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/VlN9dn4fh-AC",
+      "volumeInfo": {
+        "title": "Libro aureo del gran emperador Marco Aurelio, con el relox de principes. Compuesto por el muy reuerendo, y magnifico señor don Antonio de Gueuara, obispo de Guadix, predicador, y coronista del señor emperador Carlos 5. ..",
+        "authors": [
+          "Antonio : de Guevara"
+        ],
+        "publishedDate": "1658",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "IBNR:CR000621405"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 706,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.6.7.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=VlN9dn4fh-AC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=VlN9dn4fh-AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=VlN9dn4fh-AC&pg=PT13&dq=marco+aurelio&hl=&cd=4&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=VlN9dn4fh-AC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=VlN9dn4fh-AC"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=VlN9dn4fh-AC&rdid=book-VlN9dn4fh-AC&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_del_gran_emperador_Marco_Aur.epub?id=VlN9dn4fh-AC&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_del_gran_emperador_Marco_Aur.pdf?id=VlN9dn4fh-AC&hl=&output=pdf&sig=ACfU3U3VbkfJ57IoY7D2PI6xL1kXxOYmWA&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=VlN9dn4fh-AC&hl=&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eMarco Aurelio\u003c/b\u003e , y de lo que escriuio con letras de fangre en vna puerta .. 311 . Cap.lix . De lo que aconteciò a vn vezino de Roma , llamado Antigo no en tiempo deste buen Emperador . 312 . Cap.ix. Como \u003cb\u003eMarco Aurelio\u003c/b\u003e Emperador dezia&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "yaG1oQl_-OoC",
+      "etag": "ED84tqyQtjI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/yaG1oQl_-OoC",
+      "volumeInfo": {
+        "title": "Libro aureo del gran emperador Marco Aurelio",
+        "subtitle": "Con el relox de principes",
+        "authors": [
+          "Antonio de Guevara"
+        ],
+        "publishedDate": "1650",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "UCM:5319069336"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 724,
+        "printType": "BOOK",
+        "categories": [
+          "Education of princes"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.7.8.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=yaG1oQl_-OoC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=yaG1oQl_-OoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=yaG1oQl_-OoC&pg=PA188&dq=marco+aurelio&hl=&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=yaG1oQl_-OoC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=yaG1oQl_-OoC"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=yaG1oQl_-OoC&rdid=book-yaG1oQl_-OoC&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_del_gran_emperador_Marco_Aur.epub?id=yaG1oQl_-OoC&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "downloadLink": "http://books.google.com.pa/books/download/Libro_aureo_del_gran_emperador_Marco_Aur.pdf?id=yaG1oQl_-OoC&hl=&output=pdf&sig=ACfU3U2hqbrePa6K9xvdg3eBSAXIPXWDtw&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=yaG1oQl_-OoC&hl=&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... Marco AurelioEmperador , uno de los quales que era el sumas queri do se le murio , y de los ayos que bus còpara el otro bijo , que era el Prin cipe Comodo . \u003cb\u003eMArco Aurelio\u003c/b\u003e xvij.Emperador que fue de Roma en el tiempo que estuuo casado con&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "ympdAAAAcAAJ",
+      "etag": "fs+bKKenXTg",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/ympdAAAAcAAJ",
+      "volumeInfo": {
+        "title": "Marco Aurelio con el relox de principes",
+        "authors": [
+          "Antonio de I Guevara"
+        ],
+        "publishedDate": "1543",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "ONB:+Z176099000"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 508,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.10.7.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=ympdAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ympdAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=ympdAAAAcAAJ&pg=RA8-PP1&dq=marco+aurelio&hl=&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=ympdAAAAcAAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=ympdAAAAcAAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=ympdAAAAcAAJ&rdid=book-ympdAAAAcAAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.com.pa/books/download/Marco_Aurelio_con_el_relox_de_principes.epub?id=ympdAAAAcAAJ&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=ympdAAAAcAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "... pobres cuerdos até plados : fino fue élos juegos é que ademas fueron viciosos : parefceme mi pulion que respondo mas largo delo a demandaua tu demada / caun deloq queria misalud que евроскдетапегa que tu De \u003cb\u003eMarcoaurelio\u003c/b\u003e.ee Fo . liij ."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "Td3eEAAAQBAJ",
+      "etag": "juPP2fB23gM",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/Td3eEAAAQBAJ",
+      "volumeInfo": {
+        "title": "Meditaciones de Marco Aurelio",
+        "authors": [
+          "Marco Aurelio"
+        ],
+        "publisher": "Aroha",
+        "publishedDate": "2010-06",
+        "description": "\"Meditaciones\" de Marco Aurelio es una obra filosófica y espiritual que ofrece una visión íntima de la mente de uno de los emperadores más sabios de la antigua Roma. Escritas como reflexiones personales, estas meditaciones son un testimonio inspirador del estoicismo y la búsqueda de la sabiduría en medio de las responsabilidades del liderazgo. Marco Aurelio, conocido por su papel como emperador filósofo, comparte pensamientos profundos sobre la naturaleza de la vida, el deber, la virtud y la impermanencia. A través de su prosa reflexiva, invita a los lectores a examinar sus propias vidas, afrontar desafíos con serenidad y cultivar la virtud en medio de las adversidades. Este clásico atemporal proporciona lecciones prácticas sobre cómo encontrar paz interior en un mundo lleno de incertidumbre. Las meditaciones de Marco Aurelio trascienden las épocas, ofreciendo sabiduría que resuena en la vida cotidiana. Sumérgete en este viaje filosófico y descubre las lecciones eternas de uno de los grandes pensadores de la historia que continúan siendo relevantes en el mundo moderno.",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 167,
+        "printType": "BOOK",
+        "categories": [
+          "Self-Help"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.2.2.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=Td3eEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=Td3eEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=Td3eEAAAQBAJ&printsec=frontcover&dq=marco+aurelio&hl=&cd=7&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=Td3eEAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Td3eEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 16.89,
+          "currencyCode": "USD"
+        },
+        "retailPrice": {
+          "amount": 16.89,
+          "currencyCode": "USD"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=Td3eEAAAQBAJ&rdid=book-Td3eEAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 16890000,
+              "currencyCode": "USD"
+            },
+            "retailPrice": {
+              "amountInMicros": 16890000,
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Meditaciones_de_Marco_Aurelio-sample-epub.acsm?id=Td3eEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Meditaciones_de_Marco_Aurelio-sample-pdf.acsm?id=Td3eEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=Td3eEAAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "&quot;Meditaciones&quot; de Marco Aurelio es una obra filosófica y espiritual que ofrece una visión íntima de la mente de uno de los emperadores más sabios de la antigua Roma."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "ffsGEQAAQBAJ",
+      "etag": "MlWRqFfaQDw",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/ffsGEQAAQBAJ",
+      "volumeInfo": {
+        "title": "Marco Aurelio y los límites del imperio",
+        "authors": [
+          "Pablo Montoya"
+        ],
+        "publisher": "RANDOM HOUSE",
+        "publishedDate": "2024-05-01",
+        "description": "\"En esta extraordinaria novela, Pablo Montoya nos ofrece una evocación que conjuga -de manera vivaz y dramática- lo novelesco con los datos del pasado y una admiración luminosa hacia este inolvidable personaje histórico\". Carlos García Gual Cuarteles de invierno cerca de Sirmio, en la actual Serbia, siglo II. La peste, que llegó a Roma, continúa menguando a la población y al ejército, las invasiones bárbaras no han dado tregua, el ascenso del cristianismo agita las bases del imperio, y las sublevaciones y los rumores de las infidelidades de su esposa llegan a Marco Aurelio con inquina. El emperador, que lidió con grandeza tanto la guerra como los desafíos cotidianos de la familia y el amor, asumiendo el liderazgo bajo el modelo del romano ideal y a la vez como casi ningún hombre de su tiempo, reflexiona sobre su vida, la muerte y los límites del poder en esta magistral novela. Con la avezada pluma que lo caracteriza, Pablo Montoya hace gala de un agudo rigor histórico que presenta a los lectores un impactante fresco de la Roma imperial y una mirada única a un hombre que marcó la historia con su lucidez, coraje y humanidad.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9786287638501"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "6287638508"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 192,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.4.4.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=ffsGEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ffsGEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=ffsGEQAAQBAJ&printsec=frontcover&dq=marco+aurelio&hl=&cd=8&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=ffsGEQAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=ffsGEQAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 9.99,
+          "currencyCode": "USD"
+        },
+        "retailPrice": {
+          "amount": 9.99,
+          "currencyCode": "USD"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=ffsGEQAAQBAJ&rdid=book-ffsGEQAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 9990000,
+              "currencyCode": "USD"
+            },
+            "retailPrice": {
+              "amountInMicros": 9990000,
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Marco_Aurelio_y_los_l%C3%ADmites_del_imperio-sample-epub.acsm?id=ffsGEQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Marco_Aurelio_y_los_l%C3%ADmites_del_imperio-sample-pdf.acsm?id=ffsGEQAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=ffsGEQAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "&quot;En esta extraordinaria novela, Pablo Montoya nos ofrece una evocación que conjuga -de manera vivaz y dramática- lo novelesco con los datos del pasado y una admiración luminosa hacia este inolvidable personaje histórico&quot;."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "QEiOzgEACAAJ",
+      "etag": "PgqaOe7tLLI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/QEiOzgEACAAJ",
+      "volumeInfo": {
+        "title": "Las Meditaciones de Marco Aurelio",
+        "subtitle": "Filosofía Romana",
+        "authors": [
+          "Enzo Capone",
+          "Marco Aurelio"
+        ],
+        "publishedDate": "2021-07-17",
+        "description": "Descendiente de una familia de origen hispánico, Marco Aurelio nació en Roma el año 121 de nuestra era y, tras ser adoptado por Antonio Pío, lo sucedió como emperador, ocupando el cargo desde el año 161 hasta su muerte en 180. Su reinado estuvo marcado por las numerosas y dilatadas guerras que mantuvo contra los pueblos que habitaban en los límites del Imperio. Sin embargo, su devoción por las letras fue notoria y Marco Aurelio dedicó muchas horas al estudio de la filosofía. Durante los descansos que le daban su intensa actividad bélica y sus obligaciones políticas compuso las Meditaciones, una de las principales obras del estoicismo romano, pese a estar redactadas en griego. Los doce libros en que se organiza esta obra constituyen una compilación de ideas y sentencias breves en la que Marco Aurelio reflexiona sobre temas como los límites de la naturaleza humana, la fugacidad del tiempo, los valores morales o la manera correcta de conducirse en la vida.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9798539136482"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 172,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=QEiOzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=QEiOzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=QEiOzgEACAAJ&dq=marco+aurelio&hl=&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.com.pa/books?id=QEiOzgEACAAJ&dq=marco+aurelio&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Las_Meditaciones_de_Marco_Aurelio.html?hl=&id=QEiOzgEACAAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=QEiOzgEACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Descendiente de una familia de origen hispánico, Marco Aurelio nació en Roma el año 121 de nuestra era y, tras ser adoptado por Antonio Pío, lo sucedió como emperador, ocupando el cargo desde el año 161 hasta su muerte en 180."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "XIvODwAAQBAJ",
+      "etag": "go9hP+NPJT8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/XIvODwAAQBAJ",
+      "volumeInfo": {
+        "title": "Marco Aurelio",
+        "authors": [
+          "Anthony Birley"
+        ],
+        "publisher": "RBA Libros",
+        "publishedDate": "2025-02-19",
+        "description": "LA BIOGRAFÍA DEFINITIVA DEL EMPERADOR FILÓSOFO Se considera a Marco Aurelio (121-180 d. C.) uno de los mejores y más populares emperadores que tuvo Roma. La fascinación por su figura, una de las más documentadas de la Antigüedad, va mucho más allá de su sabiduría como gobernante, gracias a la correspondencia que mantuvo con su tutor Frontón y, sobre todo, a sus Meditaciones, obra maestra de la filosofía estoica. Con esta biografía, Anthony Birley traza el más completo retrato que se ha hecho del hombre que llevó al imperio a vivir su último gran periodo de esplendor y equilibrio. No solo profundiza de una forma accesible en la acción política y militar de Marco Aurelio, sino que también hace emerger el carácter más humano de un emperador que intentó vivir de acuerdo con sus preceptos morales.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9788424938598"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "8424938593"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 911,
+        "printType": "BOOK",
+        "categories": [
+          "Biography & Autobiography"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.10.11.0.preview.2",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=XIvODwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=XIvODwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "es",
+        "previewLink": "http://books.google.com.pa/books?id=XIvODwAAQBAJ&printsec=frontcover&dq=marco+aurelio&hl=&cd=10&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=XIvODwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=XIvODwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "PA",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 9.99,
+          "currencyCode": "USD"
+        },
+        "retailPrice": {
+          "amount": 9.99,
+          "currencyCode": "USD"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=XIvODwAAQBAJ&rdid=book-XIvODwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 9990000,
+              "currencyCode": "USD"
+            },
+            "retailPrice": {
+              "amountInMicros": 9990000,
+              "currencyCode": "USD"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "PA",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.com.pa/books/download/Marco_Aurelio-sample-epub.acsm?id=XIvODwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=XIvODwAAQBAJ&hl=&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "LA BIOGRAFÍA DEFINITIVA DEL EMPERADOR FILÓSOFO Se considera a Marco Aurelio (121-180 d."
+      }
+    }
 	]
 }
