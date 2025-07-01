@@ -1,38 +1,44 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function BooksItems({ books }) {
 	return (
-		<View className="w-full space-y-4 mt-4">
-			{books.map(({ id, title, authors, description, categories, imageLinks, publishedDate }) => (
-				<View
+		<View className="flex-row flex-wrap justify-between w-full">
+			{books.map(({ id, title, imageLinks }) => (
+				<Pressable
 					key={id}
-					className="flex-row bg-zinc-700 rounded-lg p-4 shadow-md items-center space-x-4"
+					className="w-[32%] mb-6 items-center"
 					accessible
-					accessibilityLabel={`Libro: ${title}, Autor: ${authors?.join(', ') ?? 'Desconocido'}`}
+					accessibilityLabel={`Libro: ${title}`}
+					android_ripple={{ color: '#FFD700', borderless: false }}
+					style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.97 : 1 }] }]}
 				>
-					{imageLinks?.thumbnail && (
-						<Image
-							source={{ uri: imageLinks.thumbnail }}
-							className="w-20 h-28 rounded-md bg-zinc-600"
-							accessibilityLabel={`Portada de ${title}`}
+					<View className="rounded-xl overflow-hidden shadow-lg border border-zinc-700">
+						<LinearGradient
+							colors={["#232526", "#414345"]}
+							className="w-28 h-44 justify-end"
+							style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1, opacity: 0.25 }}
+							pointerEvents="none"
 						/>
-					)}
-					<View className="flex-1">
-						<Text className="text-lg font-bold text-white mb-1" accessibilityRole="header">{title}</Text>
-						{authors && (
-							<Text className="text-sm text-zinc-300 mb-1">{authors.join(', ')}</Text>
-						)}
-						{publishedDate && (
-							<Text className="text-xs text-zinc-400 mb-1">Publicado: {publishedDate}</Text>
-						)}
-						{categories && (
-							<Text className="text-xs text-amber-400 mb-1">{categories.join(', ')}</Text>
-						)}
-						{description && (
-							<Text className="text-xs text-zinc-200" numberOfLines={3} ellipsizeMode="tail">{description}</Text>
+						{imageLinks?.thumbnail && (
+							<Image
+								source={{ uri: imageLinks.thumbnail }}
+								className="w-28 h-44 rounded-xl"
+								accessibilityLabel={`Portada de ${title}`}
+								resizeMode="cover"
+								style={{ zIndex: 2 }}
+							/>
 						)}
 					</View>
-				</View>
+					<Text
+						className="text-xs font-bold text-amber-300 text-center mt-2"
+						numberOfLines={2}
+						accessibilityRole="header"
+						style={{ textShadowColor: '#000', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3 }}
+					>
+						{title}
+					</Text>
+				</Pressable>
 			))}
 		</View>
 	)
