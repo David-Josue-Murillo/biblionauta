@@ -1,0 +1,783 @@
+{
+	"kind": "books#volumes",
+	"totalItems": 9,
+	"items": [
+		{
+			"kind": "books#volume",
+			"id": "jlamxQEACAAJ",
+			"etag": "Xj1VILE5NIg",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/jlamxQEACAAJ",
+			"volumeInfo": {
+				"title": "El Hombre en Busca de Sentido",
+				"authors": [
+					"Viktor E. Frankl"
+				],
+				"publishedDate": "2019-05-20",
+				"description": "Este libro se centra en varios hallazgos cruciales del Doctor Viktor E. Frankl que ponen de manifiesto nuestro deseo inconsciente de descubrir un sentido definitivo a la vida, tanto si deriva de una fuente espiritual como si proviene de otro tipo de inspiracion o influencia. Se trata de un tema de especial relevancia, sobre todo teniendo en cuenta que la sensación de que nuestra vida carece de un significado auténtico ha penetrado considerablemente en los cimientos de la sociedad contemporánea. Como demuestran tanto el caso del adolescente que sufre ante la inseguridad y la duda como el del anciano que padece aislamiento y rechazo, lo cierto es que la cultura actual parece definitivamente sumida en la vulnerabilidad y la desesperación. A partir de ahí, el doctor Frankl demuestra de una forma brillante que el ser humano aún puede encontrar un cierto sentido a su vida cotidiana. Habla del «deseo de significado» como fuerza central motivadora y presenta evidencias específicas de que la vida puede hablarnos de su propio sentido en cualquier momento o situación. Incluso aquellas personas que deben soportar sobre sus hombros la carga de la culpabilidad, o tienen que hacer frente a un sufrimiento inevitable, disponen, en principio, de oportunidades para convertir sus súplicas en logros o, dicho de otro modo, su tragedia personal en un triunfo de la humanidad. El hombre en busca del sentido último afirma también, no obstante, que esta búsqueda de significado puede conducir igualmente a resultados indeseados, como los celos enfermizos, la fobia racista o la obsesión por la ética y la moral. Y, en este sentido, el doctor Frankl cree que sólo la tolerancia y la persistencia podrán allanarnos el camino para la consecución de una vida plena.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_10",
+						"identifier": "1684117380"
+					},
+					{
+						"type": "ISBN_13",
+						"identifier": "9781684117383"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": false
+				},
+				"pageCount": 132,
+				"printType": "BOOK",
+				"categories": [
+					"Self-Help"
+				],
+				"averageRating": 5,
+				"ratingsCount": 1,
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "preview-1.0.0",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=jlamxQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=jlamxQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=jlamxQEACAAJ&dq=hombre-en-busca-del-sentido&hl=&cd=1&source=gbs_api",
+				"infoLink": "http://books.google.com.pa/books?id=jlamxQEACAAJ&dq=hombre-en-busca-del-sentido&hl=&source=gbs_api",
+				"canonicalVolumeLink": "https://books.google.com/books/about/El_Hombre_en_Busca_de_Sentido.html?hl=&id=jlamxQEACAAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "NOT_FOR_SALE",
+				"isEbook": false
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "NO_PAGES",
+				"embeddable": false,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false
+				},
+				"pdf": {
+					"isAvailable": false
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=jlamxQEACAAJ&hl=&source=gbs_api",
+				"accessViewStatus": "NONE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "Este libro se centra en varios hallazgos cruciales del Doctor Viktor E. Frankl que ponen de manifiesto nuestro deseo inconsciente de descubrir un sentido definitivo a la vida, tanto si deriva de una fuente espiritual como si proviene de ..."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "MccbPQAACAAJ",
+			"etag": "lwrVjVk5Aho",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/MccbPQAACAAJ",
+			"volumeInfo": {
+				"title": "El hombre en busca de sentido",
+				"authors": [
+					"Viktor Emil Frankl"
+				],
+				"publishedDate": "2004",
+				"description": "El doctor Frankl, psiquiatra y escritor, suele preguntar a sus pacientes aquejados de múltiples padecimientos: «¿Por qué no se suicida usted?» Y muchas veces, de las respuestas extrae una orientación para la psicoterapia a aplicar: a éste, lo que le ata a la vida son los hijos; al otro, un talento, una habilidad sin explotar; a un tercero, quizás, sólo unos cuantos recuerdos que merece la pena rescatar del olvido. Tejer estas tenues hebras de vidas rotas en una urdimbre firme, coherente, significativa y responsable es el objeto con que se enfrenta la logoterapia. En esta obra, Viktor E. Frankl explica la experiencia que le llevó al descubrimiento de la logoterapia. Prisionero, durante mucho tiempo, en los desalmados campos de concentración, él mismo sintió en su propio ser lo que significaba una existencia desnuda. ¿Cómo pudo él que todo lo había perdido, que había visto destruir todo lo que valía la pena, que padeció hambre, frío, brutalidades sin fin, que tantas veces estuvo a punto del exterminio, cómo pudo aceptar que la vida fuera digna de vivirla? El psiquiatra que personalmente ha tenido que enfrentarse a tales rigores merece que se le escuche, pues nadie como él para juzgar nuestra condición humana sabia y compasivamente. Las palabras del doctor Frankl alcanzan un temple sorprendentemente esperanzador sobre la capacidad humana de trascender sus dificultades y descubrir la verdad conveniente y orientadora.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_10",
+						"identifier": "8425423872"
+					},
+					{
+						"type": "ISBN_13",
+						"identifier": "9788425423871"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": false
+				},
+				"pageCount": 160,
+				"printType": "BOOK",
+				"categories": [
+					"Psychology"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "preview-1.0.0",
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=MccbPQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=MccbPQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=MccbPQAACAAJ&dq=hombre-en-busca-del-sentido&hl=&cd=2&source=gbs_api",
+				"infoLink": "http://books.google.com.pa/books?id=MccbPQAACAAJ&dq=hombre-en-busca-del-sentido&hl=&source=gbs_api",
+				"canonicalVolumeLink": "https://books.google.com/books/about/El_hombre_en_busca_de_sentido.html?hl=&id=MccbPQAACAAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "NOT_FOR_SALE",
+				"isEbook": false
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "NO_PAGES",
+				"embeddable": false,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false
+				},
+				"pdf": {
+					"isAvailable": false
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=MccbPQAACAAJ&hl=&source=gbs_api",
+				"accessViewStatus": "NONE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "En esta obra, Viktor E. Frankl explica la experiencia que le llevó al descubrimiento de la logoterapia."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "Ob1yZJGUfmoC",
+			"etag": "axvehDg2Ozo",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/Ob1yZJGUfmoC",
+			"volumeInfo": {
+				"title": "El hombre en busca del sentido último",
+				"subtitle": "El análisis existencial y la conciencia espiritual del ser humano",
+				"authors": [
+					"Viktor E. Frankl"
+				],
+				"publisher": "Grupo Planeta Spain",
+				"publishedDate": "2011-07-05",
+				"description": "Este libro se centra en varios hallazgos cruciales del doctor Frankl que ponen de manifiesto nuestro deseo inconsciente de descubrir un sentido definitivo a la vida, tanto si deriva de una fuente espiritual como si proviene de otro tipo de inspiración o influencia.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_13",
+						"identifier": "9788449325984"
+					},
+					{
+						"type": "ISBN_10",
+						"identifier": "8449325986"
+					}
+				],
+				"readingModes": {
+					"text": true,
+					"image": true
+				},
+				"pageCount": 258,
+				"printType": "BOOK",
+				"categories": [
+					"Social Science"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": true,
+				"contentVersion": "1.20.18.0.preview.3",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=Ob1yZJGUfmoC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=Ob1yZJGUfmoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=Ob1yZJGUfmoC&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=3&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=Ob1yZJGUfmoC&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=Ob1yZJGUfmoC"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FOR_SALE",
+				"isEbook": true,
+				"listPrice": {
+					"amount": 6.99,
+					"currencyCode": "USD"
+				},
+				"retailPrice": {
+					"amount": 6.99,
+					"currencyCode": "USD"
+				},
+				"buyLink": "https://play.google.com/store/books/details?id=Ob1yZJGUfmoC&rdid=book-Ob1yZJGUfmoC&rdot=1&source=gbs_api",
+				"offers": [
+					{
+						"finskyOfferType": 1,
+						"listPrice": {
+							"amountInMicros": 6990000,
+							"currencyCode": "USD"
+						},
+						"retailPrice": {
+							"amountInMicros": 6990000,
+							"currencyCode": "USD"
+						}
+					}
+				]
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/El_hombre_en_busca_del_sentido_%C3%BAltimo-sample-epub.acsm?id=Ob1yZJGUfmoC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/El_hombre_en_busca_del_sentido_%C3%BAltimo-sample-pdf.acsm?id=Ob1yZJGUfmoC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=Ob1yZJGUfmoC&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "Este libro se centra en varios hallazgos cruciales del doctor Frankl que ponen de manifiesto nuestro deseo inconsciente de descubrir un sentido definitivo a la vida, tanto si deriva de una fuente espiritual como si proviene de otro tipo de ..."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "y31ZvcPpQo0C",
+			"etag": "Ljx+Y1wZ9go",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/y31ZvcPpQo0C",
+			"volumeInfo": {
+				"title": "En busca del sentido",
+				"subtitle": "Los principios de Viktor Frankl aplicados al mundo del trabajo",
+				"authors": [
+					"Alex Pattakos"
+				],
+				"publisher": "Grupo Planeta (GBS)",
+				"publishedDate": "2009-04",
+				"description": "La obra En busca del sentido último, escrita por el prestigioso psquiatra Viktor Frankl (e igualmente publicada en castellano por Ediciones Paidós), es uno de los libros más importantes de nuestro tiempo. La historia personal de su autor, decicido a encontrar una razón para vivir aún en las circunstancias más terribles -los campos de concentración nazis- ha servido de guía a millones de personas. Ahora, el presente libro aplica la filosofía de Frankl al lugar de trabajo y expone varios principios que contribuyen a incrementar nuestra capacidad de enfrentarnos a los retos del mundo laboral y encontrar sentido al quehacer cotidiano, desarrollando así todo nuestro potencial",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_10",
+						"identifier": "8449322146"
+					},
+					{
+						"type": "ISBN_13",
+						"identifier": "9788449322143"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 200,
+				"printType": "BOOK",
+				"categories": [
+					"Psychology"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "2.4.8.0.preview.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=y31ZvcPpQo0C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=y31ZvcPpQo0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=y31ZvcPpQo0C&pg=PP1&dq=hombre-en-busca-del-sentido&hl=&cd=4&source=gbs_api",
+				"infoLink": "http://books.google.com.pa/books?id=y31ZvcPpQo0C&dq=hombre-en-busca-del-sentido&hl=&source=gbs_api",
+				"canonicalVolumeLink": "https://books.google.com/books/about/En_busca_del_sentido.html?hl=&id=y31ZvcPpQo0C"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "NOT_FOR_SALE",
+				"isEbook": false
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false
+				},
+				"pdf": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/En_busca_del_sentido-sample-pdf.acsm?id=y31ZvcPpQo0C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=y31ZvcPpQo0C&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "La obra En busca del sentido último, escrita por el prestigioso psquiatra Viktor Frankl (e igualmente publicada en castellano por Ediciones Paidós), es uno de los libros más importantes de nuestro tiempo."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "xgGIDwAAQBAJ",
+			"etag": "ticg+P/A62U",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/xgGIDwAAQBAJ",
+			"volumeInfo": {
+				"title": "El hombre doliente",
+				"subtitle": "Fundamentos antropológicos de la psicoterapia",
+				"authors": [
+					"Viktor Frankl"
+				],
+				"publisher": "Herder Editorial",
+				"publishedDate": "2010-01-01",
+				"description": "Esta obra de Frankl presenta una imagen global, pero bien articulada del hombre. Una imagen del hombre que deja muy atrás los modelos antropológicos usuales inspirados en el psicoanálisis, en la teoría del aprendizaje o en el behaviorismo y se interna en la dimensión del fenómeno específicamente humano. Estos fundamentos antropológicos de la psicoterapia constituyen una sinopsis interdisciplinar, ideal para iluminar los problemas actuales y las cuestiones permanentes del ser humano.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_13",
+						"identifier": "9788425427060"
+					},
+					{
+						"type": "ISBN_10",
+						"identifier": "8425427061"
+					}
+				],
+				"readingModes": {
+					"text": true,
+					"image": true
+				},
+				"pageCount": 426,
+				"printType": "BOOK",
+				"categories": [
+					"Social Science"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "1.6.7.0.preview.3",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=xgGIDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=xgGIDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=xgGIDwAAQBAJ&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=5&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=xgGIDwAAQBAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=xgGIDwAAQBAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FOR_SALE",
+				"isEbook": true,
+				"listPrice": {
+					"amount": 13.99,
+					"currencyCode": "USD"
+				},
+				"retailPrice": {
+					"amount": 13.99,
+					"currencyCode": "USD"
+				},
+				"buyLink": "https://play.google.com/store/books/details?id=xgGIDwAAQBAJ&rdid=book-xgGIDwAAQBAJ&rdot=1&source=gbs_api",
+				"offers": [
+					{
+						"finskyOfferType": 1,
+						"listPrice": {
+							"amountInMicros": 13990000,
+							"currencyCode": "USD"
+						},
+						"retailPrice": {
+							"amountInMicros": 13990000,
+							"currencyCode": "USD"
+						}
+					}
+				]
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": true
+				},
+				"pdf": {
+					"isAvailable": true
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=xgGIDwAAQBAJ&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "Esta obra de Frankl presenta una imagen global, pero bien articulada del hombre."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "vlNJlu8KWjEC",
+			"etag": "HJbRtKUxf30",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/vlNJlu8KWjEC",
+			"volumeInfo": {
+				"title": "En busca del sentido de la vida",
+				"subtitle": "El camino hacia la profundidad de nuestro ser",
+				"authors": [
+					"Willigis Jäger"
+				],
+				"publisher": "Narcea Ediciones",
+				"publishedDate": "1995-11-04",
+				"description": "Entre las grandes preguntas que se hace el hombre, hay una fundamental: el sentido de su vida. De ella parten todas las demás, y de la respuesta que vislumbre, depende su comportamiento. El autor, benedictino, estudioso de otras religiones y practicante de técnicas orientales de meditación, introduce al lector en este apasionante tema. Partiendo de las ciencias naturales, llega a la experiencia mística, básica en toda visión trascendente de la vida y a la que todos estamos convocados. Los testimonios con los que concluye ell ibro son experiencias personales que nos descubren la existencia de una amplia realidad global.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_10",
+						"identifier": "842771100X"
+					},
+					{
+						"type": "ISBN_13",
+						"identifier": "9788427711006"
+					}
+				],
+				"readingModes": {
+					"text": false,
+					"image": true
+				},
+				"pageCount": 324,
+				"printType": "BOOK",
+				"categories": [
+					"Religion"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "0.4.5.0.preview.1",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=vlNJlu8KWjEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=vlNJlu8KWjEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=vlNJlu8KWjEC&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=6&source=gbs_api",
+				"infoLink": "http://books.google.com.pa/books?id=vlNJlu8KWjEC&dq=hombre-en-busca-del-sentido&hl=&source=gbs_api",
+				"canonicalVolumeLink": "https://books.google.com/books/about/En_busca_del_sentido_de_la_vida.html?hl=&id=vlNJlu8KWjEC"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "NOT_FOR_SALE",
+				"isEbook": false
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": false
+				},
+				"pdf": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/En_busca_del_sentido_de_la_vida-sample-pdf.acsm?id=vlNJlu8KWjEC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=vlNJlu8KWjEC&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "Entre las grandes preguntas que se hace el hombre, hay una fundamental: el sentido de su vida."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "UWf7DwAAQBAJ",
+			"etag": "HedLteuPHx0",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/UWf7DwAAQBAJ",
+			"volumeInfo": {
+				"title": "La superación de la indiferencia",
+				"subtitle": "El sentido de la vida en tiempos de cambio",
+				"authors": [
+					"Alexander Batthyány"
+				],
+				"publisher": "Herder Editorial",
+				"publishedDate": "2020-09-07",
+				"description": "En medio de la abundancia material de los países ricos, emerge en su población un fenómeno de reacción: cada vez más personas se sienten atrapadas en una profunda incertidumbre existencial y crisis de valores. Así, la prosperidad material va ligada a un empobrecimiento espiritual y existencial, perdiendo el acceso a los valores reales de la vida. La cohesión y la responsabilidad personal, valores positivos para nosotros y la sociedad, quedan al margen y prevalecen la frialdad, el aislamiento, la soledad, el desánimo y la indiferencia. En esta obra, Alexander Batthyány analiza las causas y las razones de este fenómeno. La lectura de estas páginas ofrece claves para salir de esta indiferencia, orientadas a la práctica y basadas en diferentes evidencias científicas. Para el autor, todo ser humano está llamado a entrar en la corriente de la vida y participar de la realidad y sus posibilidades, involucrarse y ser receptivo, porque, en efecto, nuestra riqueza no viene de lo que recibimos, sino de lo que estamos dispuestos a dar.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_13",
+						"identifier": "9788425443558"
+					},
+					{
+						"type": "ISBN_10",
+						"identifier": "8425443555"
+					}
+				],
+				"readingModes": {
+					"text": true,
+					"image": true
+				},
+				"pageCount": 164,
+				"printType": "BOOK",
+				"categories": [
+					"Psychology"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": false,
+				"contentVersion": "0.2.2.0.preview.3",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=UWf7DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=UWf7DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=UWf7DwAAQBAJ&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=7&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=UWf7DwAAQBAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=UWf7DwAAQBAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FOR_SALE",
+				"isEbook": true,
+				"listPrice": {
+					"amount": 11.99,
+					"currencyCode": "USD"
+				},
+				"retailPrice": {
+					"amount": 11.99,
+					"currencyCode": "USD"
+				},
+				"buyLink": "https://play.google.com/store/books/details?id=UWf7DwAAQBAJ&rdid=book-UWf7DwAAQBAJ&rdot=1&source=gbs_api",
+				"offers": [
+					{
+						"finskyOfferType": 1,
+						"listPrice": {
+							"amountInMicros": 11990000,
+							"currencyCode": "USD"
+						},
+						"retailPrice": {
+							"amountInMicros": 11990000,
+							"currencyCode": "USD"
+						}
+					}
+				]
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": true
+				},
+				"pdf": {
+					"isAvailable": true
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=UWf7DwAAQBAJ&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "En esta obra, Alexander Batthyány analiza las causas y las razones de este fenómeno. La lectura de estas páginas ofrece claves para salir de esta indiferencia, orientadas a la práctica y basadas en diferentes evidencias científicas."
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "mXQCEAAAQBAJ",
+			"etag": "HkBk/AAfuO0",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/mXQCEAAAQBAJ",
+			"volumeInfo": {
+				"title": "En Auschwitz no había Prozac (Edición mexicana)",
+				"subtitle": "12 consejos de una superviviente para curar tus heridas y vivir en libertad",
+				"authors": [
+					"Edith Eger"
+				],
+				"publisher": "Planeta México",
+				"publishedDate": "2020-10-15",
+				"description": "LA CÁRCEL ESTÁ EN TU MENTE LA LLAVE, EN TU MANO Edith Eger, conocida como la bailarina de Auschwitz, nos describe cuáles son las 12 prisiones mentales en las que nos recluimos tras un episodio traumático, como el victimismo, la evasión, el abandono, la culpa o la vergüenza. A lo largo de 12 breves capítulos, nos revela la sabiduría y los consejos prácticos fruto de su larga experiencia atendiendo pacientes en su consulta. A partir del sufrimiento ajeno y con el ejemplo siempre presente del largo proceso que la llevó a ella misma hasta la sanación tras escapar del Holocausto, la doctora Eger ofrece herramientas prácticas y profundas reflexiones sobre cómo vivir en libertad, cómo trascender el dolor y cómo sanar las heridas, por profundas que sean. En resumen, cómo escapar de nuestras propias prisiones mentales para disfrutar de la vida. Los consejos de EDITH EGER, superviviente de Auschwitz, para ser feliz «Leer su historia me ha cambiado para siempre.» Oprah Winfrey",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_13",
+						"identifier": "9786070772078"
+					},
+					{
+						"type": "ISBN_10",
+						"identifier": "6070772075"
+					}
+				],
+				"readingModes": {
+					"text": true,
+					"image": true
+				},
+				"pageCount": 181,
+				"printType": "BOOK",
+				"categories": [
+					"Self-Help"
+				],
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": true,
+				"contentVersion": "0.5.5.0.preview.3",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=mXQCEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=mXQCEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=mXQCEAAAQBAJ&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=8&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=mXQCEAAAQBAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=mXQCEAAAQBAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FOR_SALE",
+				"isEbook": true,
+				"listPrice": {
+					"amount": 10.99,
+					"currencyCode": "USD"
+				},
+				"retailPrice": {
+					"amount": 10.99,
+					"currencyCode": "USD"
+				},
+				"buyLink": "https://play.google.com/store/books/details?id=mXQCEAAAQBAJ&rdid=book-mXQCEAAAQBAJ&rdot=1&source=gbs_api",
+				"offers": [
+					{
+						"finskyOfferType": 1,
+						"listPrice": {
+							"amountInMicros": 10990000,
+							"currencyCode": "USD"
+						},
+						"retailPrice": {
+							"amountInMicros": 10990000,
+							"currencyCode": "USD"
+						}
+					}
+				]
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/En_Auschwitz_no_hab%C3%ADa_Prozac_Edici%C3%B3n_m-sample-epub.acsm?id=mXQCEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"pdf": {
+					"isAvailable": true,
+					"acsTokenLink": "http://books.google.com.pa/books/download/En_Auschwitz_no_hab%C3%ADa_Prozac_Edici%C3%B3n_m-sample-pdf.acsm?id=mXQCEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=mXQCEAAAQBAJ&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "En resumen, cómo escapar de nuestras propias prisiones mentales para disfrutar de la vida. Los consejos de EDITH EGER, superviviente de Auschwitz, para ser feliz «Leer su historia me ha cambiado para siempre.» Oprah Winfrey"
+			}
+		},
+		{
+			"kind": "books#volume",
+			"id": "eAOIDwAAQBAJ",
+			"etag": "Etl3Odm1KPc",
+			"selfLink": "https://www.googleapis.com/books/v1/volumes/eAOIDwAAQBAJ",
+			"volumeInfo": {
+				"title": "El hombre en busca de sentido",
+				"authors": [
+					"Viktor Frankl"
+				],
+				"publisher": "Herder Editorial",
+				"publishedDate": "2015-12-16",
+				"description": "*Nueva traducción* \" El hombre en busca de sentido\" es el estremecedor relato en el que Viktor Frankl nos narra su experiencia en los campos de concentración. Durante todos esos años de sufrimiento, sintió en su propio ser lo que significaba una existencia desnuda, absolutamente desprovista de todo, salvo de la existencia misma. Él, que todo lo había perdido, que padeció hambre, frío y brutalidades, que tantas veces estuvo a punto de ser ejecutado, pudo reconocer que, pese a todo, la vida es digna de ser vivida y que la libertad interior y la dignidad humana son indestructibles. En su condición de psiquiatra y prisionero, Frankl reflexiona con palabras de sorprendente esperanza sobre la capacidad humana de trascender las dificultades y descubrir una verdad profunda que nos orienta y da sentido a nuestras vidas. La logoterapia, método psicoterapéutico creado por el propio Frankl, se centra precisamente en el sentido de la existencia y en la búsqueda de ese sentido por parte del hombre, que asume la responsabilidad ante sí mismo, ante los demás y ante la vida. ¿Qué espera la vida de nosotros? El hombre en busca de sentido es mucho más que el testimonio de un psiquiatra sobre los hechos y los acontecimientos vividos en un campo de concentración, es una lección existencial. Traducido a medio centenar de idiomas, se han vendido millones de ejemplares en todo el mundo. Según la Library of Congress de Washington, es uno de los diez libros de mayor influencia en Estados Unidos.",
+				"industryIdentifiers": [
+					{
+						"type": "ISBN_13",
+						"identifier": "9788425432033"
+					},
+					{
+						"type": "ISBN_10",
+						"identifier": "8425432030"
+					}
+				],
+				"readingModes": {
+					"text": true,
+					"image": true
+				},
+				"pageCount": 125,
+				"printType": "BOOK",
+				"categories": [
+					"Psychology"
+				],
+				"averageRating": 5,
+				"ratingsCount": 2,
+				"maturityRating": "NOT_MATURE",
+				"allowAnonLogging": true,
+				"contentVersion": "1.9.9.0.preview.3",
+				"panelizationSummary": {
+					"containsEpubBubbles": false,
+					"containsImageBubbles": false
+				},
+				"imageLinks": {
+					"smallThumbnail": "http://books.google.com/books/content?id=eAOIDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+					"thumbnail": "http://books.google.com/books/content?id=eAOIDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+				},
+				"language": "es",
+				"previewLink": "http://books.google.com.pa/books?id=eAOIDwAAQBAJ&printsec=frontcover&dq=hombre-en-busca-del-sentido&hl=&cd=9&source=gbs_api",
+				"infoLink": "https://play.google.com/store/books/details?id=eAOIDwAAQBAJ&source=gbs_api",
+				"canonicalVolumeLink": "https://play.google.com/store/books/details?id=eAOIDwAAQBAJ"
+			},
+			"saleInfo": {
+				"country": "PA",
+				"saleability": "FOR_SALE",
+				"isEbook": true,
+				"listPrice": {
+					"amount": 7.99,
+					"currencyCode": "USD"
+				},
+				"retailPrice": {
+					"amount": 7.99,
+					"currencyCode": "USD"
+				},
+				"buyLink": "https://play.google.com/store/books/details?id=eAOIDwAAQBAJ&rdid=book-eAOIDwAAQBAJ&rdot=1&source=gbs_api",
+				"offers": [
+					{
+						"finskyOfferType": 1,
+						"listPrice": {
+							"amountInMicros": 7990000,
+							"currencyCode": "USD"
+						},
+						"retailPrice": {
+							"amountInMicros": 7990000,
+							"currencyCode": "USD"
+						}
+					}
+				]
+			},
+			"accessInfo": {
+				"country": "PA",
+				"viewability": "PARTIAL",
+				"embeddable": true,
+				"publicDomain": false,
+				"textToSpeechPermission": "ALLOWED",
+				"epub": {
+					"isAvailable": true
+				},
+				"pdf": {
+					"isAvailable": true
+				},
+				"webReaderLink": "http://play.google.com/books/reader?id=eAOIDwAAQBAJ&hl=&source=gbs_api",
+				"accessViewStatus": "SAMPLE",
+				"quoteSharingAllowed": false
+			},
+			"searchInfo": {
+				"textSnippet": "*Nueva traducción* &quot; El hombre en busca de sentido&quot; es el estremecedor relato en el que Viktor Frankl nos narra su experiencia en los campos de concentración."
+			}
+		}
+	]
+}
