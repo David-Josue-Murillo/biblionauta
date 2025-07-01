@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BiblionautaLogo } from "../components/LogoApp";
 import { colors } from "../constants/theme";
+import { GoogleIcon } from "../components/Icons";
 
 const { width } = Dimensions.get("window");
 
@@ -73,14 +74,9 @@ export default function SignupScreen() {
 					>
 
 						<>
-							<MaterialIcons
-								name="login"
-								size={24}
-								color={colors.primary}
-								style={{ marginRight: 12 }}
-							/>
+							<GoogleIcon />
 							<Text
-								className="text-base font-semibold"
+								className="pl-2 text-lg font-semibold"
 								style={{ color: colors.text }}
 							>
 								Continuar con Google
