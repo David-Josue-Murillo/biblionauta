@@ -13,25 +13,25 @@ export default function CarourselBook({ books }) {
 				showsHorizontalScrollIndicator={false}
 				className='pl-4'
 			>
-				{featuredBooks.map((book) => (
-					<Link key={book.id} href={`/book/${book.id}`} asChild>
+				{featuredBooks.map(({id, image, title, authors, description}) => (
+					<Link key={id} href={`/book/${id}`} asChild>
 						<Pressable>
 							<View
 								className='mr-4 w-56 rounded-2xl shadow-lg p-3 flex-col items-center'
 								style={{ elevation: 6 }}
 							>
 								<Image
-									source={{ uri: book.imageLinks?.thumbnail }}
+									source={{ uri: image }}
 									className='w-32 h-44 rounded-xl mb-2'
 									resizeMode='cover'
-									accessibilityLabel={`Portada de ${book.title}`}
+									accessibilityLabel={`Portada de ${title}`}
 								/>
-								<Text className='text-base font-bold text-white text-center' numberOfLines={2}>{book.title}</Text>
-								{book.authors && (
-									<Text className='text-xs text-zinc-300 text-center mb-1' numberOfLines={1}>{book.authors.join(', ')}</Text>
+								<Text className='text-base font-bold text-white text-center' numberOfLines={2}>{title}</Text>
+								{authors && (
+									<Text className='text-xs text-zinc-300 text-center mb-1' numberOfLines={1}>{authors.join(', ')}</Text>
 								)}
-								{book.description && (
-									<Text className='text-xs text-zinc-400 text-center' numberOfLines={2}>{book.description}</Text>
+								{description && (
+									<Text className='text-xs text-zinc-400 text-center' numberOfLines={2}>{description}</Text>
 								)}
 							</View>
 						</Pressable>

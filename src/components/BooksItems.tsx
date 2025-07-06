@@ -5,7 +5,7 @@ import { Link } from 'expo-router'
 export default function BooksItems({ books }) {
 	return (
 		<View className="flex-row flex-wrap justify-between w-full">
-			{books.map(({ id, title, imageLinks }) => (
+			{books.map(({ id, title, image }) => (
 				<Link key={id} href={`/book/${id}`} asChild>
 					<Pressable
 						key={id}
@@ -21,15 +21,14 @@ export default function BooksItems({ books }) {
 								style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1, opacity: 0.25 }}
 								pointerEvents="none"
 							/>
-							{imageLinks?.thumbnail && (
-								<Image
-									source={{ uri: imageLinks.thumbnail }}
-									className="w-28 h-44 rounded-xl"
-									accessibilityLabel={`Portada de ${title}`}
-									resizeMode="cover"
-									style={{ zIndex: 2 }}
-								/>
-							)}
+
+							<Image
+								source={{ uri: image }}
+								className="w-28 h-44 rounded-xl"
+								accessibilityLabel={`Portada de ${title}`}
+								resizeMode="cover"
+								style={{ zIndex: 2 }}
+							/>
 						</View>
 						<Text
 							className="text-xs font-bold text-amber-300 text-center mt-2"

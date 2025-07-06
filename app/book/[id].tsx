@@ -3,20 +3,7 @@ import { Stack, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect, useState } from "react";
 import { StarIcon } from '../../src/components/Icons';
 import { getBookDetails } from "../../src/utils/book";
-
-// Simulación de fetch de datos (reemplaza con tu lógica real)
-const mockBook = {
-  id: "1",
-  title: "The Let Them Theory",
-  subtitle: "A Life-Changing Tool That Millions of People Can't Stop Talking About",
-  authors: ["Robbins, Mel"],
-  language: "en",
-  description: "From the multi-million copy New York Times bestselling author Mel Robbins: A life-changing tool that millions of people can't stop talking about.",
-  categories: ["Success", "Self-Help"],
-  image: "https://books.google.com/books/content?id=abc123&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-  rating: 4.5,
-  ratingsCount: 116,
-};
+import { StatusBar } from "expo-status-bar";
 
 function renderStars(rating) {
   const stars = [];
@@ -85,6 +72,7 @@ export default function BookDetailScreen() {
 
   return (
     <View className="flex-1 bg-zinc-900">
+      <StatusBar style="dark" />
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: "#ffee00" },
