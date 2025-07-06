@@ -24,3 +24,7 @@ export const SearchIcon = (props) => (
 export const GoogleIcon = (props) => (
   <Ionicons name="logo-google" size={32} color="white" {...props} />
 )
+
+export const StarIcon = () => (
+  <Ionicons name="star-outline" size={32} color="white" {...props} />
+)
