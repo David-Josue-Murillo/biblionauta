@@ -7,7 +7,7 @@ import { colors } from "../src/constants/theme";
 export default function Layout() {
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" backgroundColor={colors.background} />
+      <StatusBar style="light" />
       <Stack screenOptions={{
         headerShown: true,
         headerTitle: () => <BiblionautaLogo />,
