@@ -8,7 +8,7 @@ export default function Books({books}) {
   return (
     
         hasBooks 
-        ? <BooksItems books={books} />
+        ? <BooksItems books={books} startIndex={8}/>
         : <BookNotFound />
   );
 }
