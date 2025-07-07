@@ -3,61 +3,58 @@ import { StatusBar } from "expo-status-bar";
 import { COLORS } from "../../src/constants/colors";
 
 // Components
-import {
-  ReadingStats,
-  AchievementsSection,
+import { 
+  ReadingStats, 
+  AchievementsSection, 
   BookshelfOverview,
-  PersonalCollections,
+  PersonalCollections
 } from "../../src/components/Bookshelf";
 
 // Data
-import {
-  userBooks,
-  readingStats,
+import { 
+  userBooks, 
+  readingStats, 
   userAchievements,
-  personalCollections,
+  personalCollections
 } from "../../src/mocks/bookshelfData";
 
 export default function Bookshelf() {
   const handleStatsPress = () => {
-    console.log("Ver estadísticas detalladas");
+    console.log('Ver estadísticas detalladas');
     // TODO: Navegar a pantalla de estadísticas detalladas
   };
 
   const handleAchievementsPress = () => {
-    console.log("Ver todos los logros");
+    console.log('Ver todos los logros');
     // TODO: Navegar a pantalla de logros
   };
 
   const handleSectionPress = (sectionId: string) => {
-    console.log("Sección presionada:", sectionId);
+    console.log('Sección presionada:', sectionId);
     // TODO: Navegar a pantalla específica de la sección
   };
 
   const handleAddBookPress = () => {
-    console.log("Agregar nuevo libro");
+    console.log('Agregar nuevo libro');
     // TODO: Navegar a búsqueda de libros
   };
 
   const handleCollectionsPress = () => {
-    console.log("Gestionar colecciones");
+    console.log('Gestionar colecciones');
     // TODO: Navegar a gestión de colecciones
   };
 
   const handleCollectionPress = (collectionId: string) => {
-    console.log("Colección presionada:", collectionId);
+    console.log('Colección presionada:', collectionId);
     // TODO: Navegar a vista de colección específica
   };
 
   return (
-    <View
-      className="flex-1"
-      style={{ backgroundColor: COLORS.background.primary }}
-    >
+    <View className="flex-1" style={{ backgroundColor: COLORS.background.primary }}>
       <StatusBar style="light" />
-
-      <ScrollView
-        className="flex-1"
+      
+      <ScrollView 
+        className="flex-1" 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20 }}
       >
@@ -65,9 +62,7 @@ export default function Bookshelf() {
         <View className="mx-4 mt-8 mb-4">
           <View className="flex-row items-center justify-between">
             <View>
-              <Text className="text-2xl font-bold text-white">
-                📚 Mi Biblioteca
-              </Text>
+              <Text className="text-2xl font-bold text-white">📚 Mi Biblioteca</Text>
               <Text className="text-zinc-400 text-sm">
                 {userBooks.length} libros en tu colección
               </Text>
@@ -79,9 +74,7 @@ export default function Bookshelf() {
               accessibilityLabel="Agregar libro"
               accessibilityHint="Toca para buscar y agregar un nuevo libro"
               style={({ pressed }) => [
-                {
-                  backgroundColor: pressed ? "#d97706" : COLORS.accent.primary,
-                },
+                { backgroundColor: pressed ? '#d97706' : COLORS.accent.primary }
               ]}
             >
               <Text className="text-white font-semibold">+ Agregar</Text>
@@ -90,10 +83,13 @@ export default function Bookshelf() {
         </View>
 
         {/* Estadísticas de lectura */}
-        <ReadingStats stats={readingStats} onPress={handleStatsPress} />
+        <ReadingStats 
+          stats={readingStats} 
+          onPress={handleStatsPress}
+        />
 
         {/* Logros */}
-        <AchievementsSection
+        <AchievementsSection 
           achievements={userAchievements}
           onPress={handleAchievementsPress}
         />
@@ -106,7 +102,7 @@ export default function Bookshelf() {
         />
 
         {/* Secciones de libros */}
-        <BookshelfOverview
+        <BookshelfOverview 
           books={userBooks}
           onSectionPress={handleSectionPress}
         />
@@ -119,16 +115,14 @@ export default function Bookshelf() {
               Tu biblioteca está vacía
             </Text>
             <Text className="text-zinc-400 text-center mb-6">
-              Comienza agregando libros a tu colección personal. Busca tus
-              títulos favoritos y organízalos como prefieras.
+              Comienza agregando libros a tu colección personal. 
+              Busca tus títulos favoritos y organízalos como prefieras.
             </Text>
             <Pressable
               className="bg-amber-500 px-6 py-3 rounded-xl"
               onPress={handleAddBookPress}
               style={({ pressed }) => [
-                {
-                  backgroundColor: pressed ? "#d97706" : COLORS.accent.primary,
-                },
+                { backgroundColor: pressed ? '#d97706' : COLORS.accent.primary }
               ]}
             >
               <Text className="text-white font-semibold">Buscar libros</Text>
