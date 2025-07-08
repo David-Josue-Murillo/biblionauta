@@ -1,12 +1,17 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { View, Text, TextInput, ScrollView, Pressable, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useBooks } from "../../src/hooks/useBooks";
+=======
+
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
 import { colors } from "../../src/constants/theme";
 
 const filterOptions = ["Todos", "Título", "Autor", "Género"];
 
 export default function SearchScreen() {
+<<<<<<< HEAD
   const { books, loading, error } = useBooks();
   const [search, setSearch] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Todos");
@@ -22,14 +27,21 @@ export default function SearchScreen() {
   }
 
   // Filtrar según búsqueda y filtro seleccionado
-  const filteredBooks = uniqueBooks.filter((book) => {
+
+  const filteredBooks = books.filter((book) => {
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
     const text = search.toLowerCase();
     const title = book.title?.toLowerCase() || "";
     const authors = (book.authors?.join(", ") || "").toLowerCase();
     const categories = (book.categories?.join(", ") || "").toLowerCase();
+<<<<<<< HEAD
 
     if (!text) return true;
 
+=======
+  
+  
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
     if (selectedFilter === "Todos") {
       return (
         title.includes(text) ||
@@ -52,11 +64,16 @@ export default function SearchScreen() {
       <View
         style={{
           margin: 16,
-          backgroundColor: colors.card || "#3a3327",
+<<<<<<< HEAD
+         
+=======
+          backgroundColor: colors.card,
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
           borderRadius: 24,
           flexDirection: "row",
           alignItems: "center",
           paddingHorizontal: 16,
+<<<<<<< HEAD
           borderWidth: 1,
           borderColor: "#a89c7c"
         }}
@@ -65,6 +82,11 @@ export default function SearchScreen() {
         <TextInput
           placeholder="Título, autor, género, tema"
           placeholderTextColor="#a89c7c"
+=======
+        }}
+      >
+
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
           style={{
             flex: 1,
             color: "#fff",
@@ -78,7 +100,11 @@ export default function SearchScreen() {
       </View>
 
       {/* Filtros */}
+<<<<<<< HEAD
       <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 10 }}>
+=======
+
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
         {filterOptions.map((option) => (
           <Pressable
             key={option}
@@ -86,13 +112,21 @@ export default function SearchScreen() {
             style={{
               paddingVertical: 6,
               paddingHorizontal: 12,
+<<<<<<< HEAD
               backgroundColor: selectedFilter === option ? "#FFD600" : (colors.card || "#3a3327"),
+=======
+              
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
               borderRadius: 12,
             }}
           >
             <Text
               style={{
+<<<<<<< HEAD
                 color: selectedFilter === option ? "#23201a" : "#fff",
+=======
+              
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
                 fontWeight: "bold",
                 fontSize: 14,
               }}
@@ -105,6 +139,7 @@ export default function SearchScreen() {
 
       {/* Resultados */}
       <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}>
+<<<<<<< HEAD
         {loading ? (
           <ActivityIndicator color="#FFD600" size="large" style={{ marginTop: 40 }} />
         ) : error ? (
@@ -160,6 +195,9 @@ export default function SearchScreen() {
           ))
         ) : (
           <Text style={{ color: "#fff", textAlign: "center", marginTop: 32 }}>
+=======
+       
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
             No se encontraron resultados.
           </Text>
         )}

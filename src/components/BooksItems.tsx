@@ -46,6 +46,7 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
 							>
 								{title}
 							</Text>
+<<<<<<< HEAD
 							{/* Mostrar detalles solo si showDetails es true */}
                             {showDetails && authors && (
                                 <Text style={{ fontSize: 10, color: "#d1d5db", textAlign: "center" }} numberOfLines={1}>
@@ -57,6 +58,9 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
                                     {categories.join(", ")}
                                 </Text>
                             )}
+=======
+							
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
 						</Pressable>
 					</Link>
 				)
