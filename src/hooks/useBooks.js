@@ -77,5 +77,15 @@ export function useBooks() {
     language: book.volumeInfo.language || "N/A"
   }));
 
-  return { books: mappedBooks, loading: false, error: null };
+  // filepath: src/hooks/useBooks.js
+  const uniqueBooks = [];
+  const seenIds = new Set();
+  for (const book of mappedBooks) {
+    if (!seenIds.has(book.id)) {
+      uniqueBooks.push(book);
+      seenIds.add(book.id);
+    }
+  }
+  
+  return { books: uniqueBooks, loading: false, error: null };
 }

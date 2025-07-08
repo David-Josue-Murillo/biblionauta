@@ -2,7 +2,11 @@ import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 
+<<<<<<< HEAD
 export default function BooksItems({ books, startIndex = 0, highlighted = false, showDetails = false }) {
+=======
+
+>>>>>>> b4b0d8c4b584cc9d88c5e55e4cb03d8eee1d3b27
 	const booksToRender = books.slice(startIndex)
 	
 	const generateUniqueKey = (id, index) => {
@@ -47,6 +51,7 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
 								{title}
 							</Text>
 <<<<<<< HEAD
+<<<<<<< HEAD
 							{/* Mostrar detalles solo si showDetails es true */}
                             {showDetails && authors && (
                                 <Text style={{ fontSize: 10, color: "#d1d5db", textAlign: "center" }} numberOfLines={1}>
@@ -61,6 +66,9 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
 =======
 							
 >>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
+=======
+							
+>>>>>>> b4b0d8c4b584cc9d88c5e55e4cb03d8eee1d3b27
 						</Pressable>
 					</Link>
 				)
