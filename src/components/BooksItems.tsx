@@ -11,7 +11,7 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false 
 	
 	return (
 		<View className="flex-row flex-wrap justify-between w-full">
-			{booksToRender.map(({ id, title, image }, index) => {
+			{booksToRender.map(({ id, title, image, authors, categories }, index) => {
 				const uniqueKey = generateUniqueKey(id, index)
 				return (
 					<Link key={uniqueKey} href={`/book/${id}`} asChild>
@@ -46,6 +46,18 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false 
 							>
 								{title}
 							</Text>
+							{/* Mostrar autor */}
+							{authors && (
+							<Text className="text-[10px] text-zinc-300 text-center" numberOfLines={1}>
+								{Array.isArray(authors) ? authors.join(", ") : authors}
+							</Text>
+							)}
+							{/* Mostrar género/categoría */}
+							{categories && categories.length > 0 && (
+							<Text className="text-[10px] text-zinc-400 text-center italic" numberOfLines={1}>
+								{categories.join(", ")}
+							</Text>
+							)}
 						</Pressable>
 					</Link>
 				)
@@ -64,8 +76,8 @@ const styles = StyleSheet.create({
 	  padding: 6,
 	  shadowColor: "#4A90E2",
 	  shadowOffset: { width: 0, height: 6 },
-	  shadowOpacity: 0.5, // Aumentar la opacidad
-	  shadowRadius: 50,   // Aumentar el radio de difuminado
+	  shadowOpacity: 0.5, 
+	  shadowRadius: 50,   
 	  elevation: 8,
 	  alignItems: 'center',
 	},
