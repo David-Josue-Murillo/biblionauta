@@ -77,5 +77,5 @@ export function useBooks() {
     language: book.volumeInfo.language || "N/A"
   }));
 
-  return { books: mappedBooks, loading: false, error: null };
+  return { books: mappedBooks, loading: false, error: null, refetch: () => {} };
 }
