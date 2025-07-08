@@ -1,3 +1,4 @@
+import '../../global.css'
 import { View, Text, ScrollView, Image, StyleSheet  } from "react-native";
 import { useBooks } from '../../src/hooks/useBooks';
 import BooksItems from '../../src/components/BooksItems';
@@ -11,7 +12,7 @@ export default function TrendingScreen(){
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.title}>Top libros</Text>
-        <BooksItems books={books} highlighted />
+        <BooksItems books={books} highlighted showDetails />
       </ScrollView>
     </View>
   );

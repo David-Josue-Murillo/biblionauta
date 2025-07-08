@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 
-export default function BooksItems({ books, startIndex = 0, highlighted = false }) {
+export default function BooksItems({ books, startIndex = 0, highlighted = false, showDetails = false }) {
 	const booksToRender = books.slice(startIndex)
 	
 	const generateUniqueKey = (id, index) => {
@@ -11,7 +11,7 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false 
 	
 	return (
 		<View className="flex-row flex-wrap justify-between w-full">
-			{booksToRender.map(({ id, title, image }, index) => {
+			{booksToRender.map(({ id, title, image, authors, categories }, index) => {
 				const uniqueKey = generateUniqueKey(id, index)
 				return (
 					<Link key={uniqueKey} href={`/book/${id}`} asChild>
@@ -46,6 +46,17 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false 
 							>
 								{title}
 							</Text>
+							{/* Mostrar detalles solo si showDetails es true */}
+                            {showDetails && authors && (
+                                <Text style={{ fontSize: 10, color: "#d1d5db", textAlign: "center" }} numberOfLines={1}>
+                                    {Array.isArray(authors) ? authors.join(", ") : authors}
+                                </Text>
+                            )}
+                            {showDetails && categories && categories.length > 0 && (
+                                <Text style={{ fontSize: 10, color: "#a1a1aa", textAlign: "center", fontStyle: "italic" }} numberOfLines={1}>
+                                    {categories.join(", ")}
+                                </Text>
+                            )}
 						</Pressable>
 					</Link>
 				)
@@ -64,8 +75,8 @@ const styles = StyleSheet.create({
 	  padding: 6,
 	  shadowColor: "#4A90E2",
 	  shadowOffset: { width: 0, height: 6 },
-	  shadowOpacity: 0.5, // Aumentar la opacidad
-	  shadowRadius: 50,   // Aumentar el radio de difuminado
+	  shadowOpacity: 0.5, 
+	  shadowRadius: 50,   
 	  elevation: 8,
 	  alignItems: 'center',
 	},
