@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform } from 'react-native'
+import { useState, useEffect } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform, Image, ScrollView } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
-
+import { colors } from '../../constants/theme'
+import { AuthAlert } from './AuthAlert'
+import BotonSubmit from './BotonSubmit'
 
 const RegisterScreen = ({ onSwitchToLogin }) => {
-  const { createAccount, isLoading } = useAuth()
+  const { createAccount, isLoading, error, clearError } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
+  const [alertVisible, setAlertVisible] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertType, setAlertType] = useState('error')
 
   const {
     control,
@@ -21,143 +26,271 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
     }
   })
 
+  // Mostrar alerta cuando hay un error del contexto
+  useEffect(() => {
+    if (error) {
+      setAlertMessage(error)
+      setAlertType('error')
+      setAlertVisible(true)
+      // Limpiar el error después de mostrarlo
+      setTimeout(() => {
+        clearError()
+      }, 100)
+    }
+  }, [error, clearError])
+
+  const showSuccessAlert = (message) => {
+    setAlertMessage(message)
+    setAlertType('success')
+    setAlertVisible(true)
+  }
+
   const onSubmit = async (data) => {
     try {
       await createAccount(data.email, data.password, data.name)
-      Alert.alert(
-        'Cuenta creada',
-        'Se ha enviado un email de verificación. Por favor, verifica tu cuenta.',
-        [{ text: 'OK' }]
-      )
+      showSuccessAlert('Se ha enviado un email de verificación. Por favor, verifica tu cuenta.')
     } catch (error) {
-      Alert.alert('Error', error.message)
+      // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
+      console.log('Error capturado en pantalla:', error.message)
     }
   }
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 justify-center bg-white px-6"
+      className="flex-1"
+      style={{ backgroundColor: colors.background }}
     >
-      <View className="mb-8">
-        <Text className="text-3xl font-bold text-gray-800 mb-2 text-center">
-          Crear Cuenta
-        </Text>
-        <Text className="text-lg text-gray-600 text-center">
-          Únete a Biblionauta
-        </Text>
-      </View>
+      <ScrollView>
 
-      <View className="space-y-4">
-        {/* Name */}
-        <View>
-          <Text className="text-gray-700 font-medium mb-2">Nombre</Text>
-          <Controller
-            control={control}
-            name="name"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-3 text-gray-800"
-                placeholder="Tu nombre"
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                autoCapitalize="words"
+
+        {/* AuthAlert para errores y éxito */}
+        <AuthAlert
+          visible={alertVisible}
+          message={alertMessage}
+          type={alertType}
+          onClose={() => setAlertVisible(false)}
+          autoHide={true}
+          duration={alertType === 'success' ? 6000 : 5000}
+        />
+
+        {/* Header con logo y branding */}
+        <View className="flex-1 justify-center items-center px-6">
+          <View className="items-center">
+            <Text
+              className="text-2xl text-center font-semibold mt-4 leading-6"
+              style={{ color: colors.textSecondary }}
+            >
+              Únete a Biblionauta
+            </Text>
+          </View>
+
+          {/* Ilustración */}
+          <View>
+            <Image
+              source={require("../../../assets/logoBiblionauta.png")}
+              className="w-64 h-64 opacity-80"
+              resizeMode="contain"
+            />
+          </View>
+
+          {/* Formulario */}
+          <View className="w-full space-y-4">
+            {/* Name */}
+            <View className='my-2'>
+              <Text
+                className="text-base font-semibold mb-2"
+                style={{ color: colors.text }}
+              >
+                Nombre
+              </Text>
+              <Controller
+                control={control}
+                name="name"
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    className="rounded-xl py-4 px-4 text-base"
+                    placeholder="Tu nombre"
+                    placeholderTextColor={colors.textSecondary}
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    autoCapitalize="words"
+                    style={{
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.border,
+                      color: colors.text
+                    }}
+                  />
+                )}
               />
-            )}
-          />
-          {errors.name && (
-            <Text className="text-red-500 text-sm mt-1">{errors.name.message}</Text>
-          )}
-        </View>
+              {errors.name && (
+                <Text
+                  className="text-sm mt-2"
+                  style={{ color: colors.error }}
+                >
+                  {errors.name.message}
+                </Text>
+              )}
+            </View>
 
-        {/* Email */}
-        <View>
-          <Text className="text-gray-700 font-medium mb-2">Email</Text>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-3 text-gray-800"
-                placeholder="tu@email.com"
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
+            {/* Email */}
+            <View className='my-2'>
+              <Text
+                className="text-base font-semibold mb-2"
+                style={{ color: colors.text }}
+              >
+                Email
+              </Text>
+              <Controller
+                control={control}
+                name="email"
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    className="rounded-xl py-4 px-4 text-base"
+                    placeholder="tu@email.com"
+                    placeholderTextColor={colors.textSecondary}
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    style={{
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.border,
+                      color: colors.text
+                    }}
+                  />
+                )}
               />
-            )}
-          />
-          {errors.email && (
-            <Text className="text-red-500 text-sm mt-1">{errors.email.message}</Text>
-          )}
-        </View>
+              {errors.email && (
+                <Text
+                  className="text-sm mt-2"
+                  style={{ color: colors.error }}
+                >
+                  {errors.email.message}
+                </Text>
+              )}
+            </View>
 
-        {/* Password */}
-        <View>
-          <Text className="text-gray-700 font-medium mb-2">Contraseña</Text>
-          <Controller
-            control={control}
-            name="password"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-3 text-gray-800"
-                placeholder="••••••••"
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                secureTextEntry={!showPassword}
+            {/* Password */}
+            <View className='my-2'>
+              <Text
+                className="text-base font-semibold mb-2"
+                style={{ color: colors.text }}
+              >
+                Contraseña
+              </Text>
+              <Controller
+                control={control}
+                name="password"
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    className="rounded-xl py-4 px-4 text-base"
+                    placeholder="••••••••"
+                    placeholderTextColor={colors.textSecondary}
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    secureTextEntry={!showPassword}
+                    style={{
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.border,
+                      color: colors.text
+                    }}
+                  />
+                )}
               />
-            )}
-          />
-          {errors.password && (
-            <Text className="text-red-500 text-sm mt-1">{errors.password.message}</Text>
-          )}
-        </View>
+              {errors.password && (
+                <Text
+                  className="text-sm mt-2"
+                  style={{ color: colors.error }}
+                >
+                  {errors.password.message}
+                </Text>
+              )}
+            </View>
 
-        {/* Confirm Password */}
-        <View>
-          <Text className="text-gray-700 font-medium mb-2">Confirmar Contraseña</Text>
-          <Controller
-            control={control}
-            name="confirmPassword"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                className="border border-gray-300 rounded-lg px-4 py-3 text-gray-800"
-                placeholder="••••••••"
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                secureTextEntry={!showPassword}
+            {/* Confirm Password */}
+            <View className='my-2'>
+              <Text
+                className="text-base font-semibold mb-2"
+                style={{ color: colors.text }}
+              >
+                Confirmar Contraseña
+              </Text>
+              <Controller
+                control={control}
+                name="confirmPassword"
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    className="rounded-xl py-4 px-4 text-base"
+                    placeholder="••••••••"
+                    placeholderTextColor={colors.textSecondary}
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    secureTextEntry={!showPassword}
+                    style={{
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.border,
+                      color: colors.text
+                    }}
+                  />
+                )}
               />
-            )}
-          />
-          {errors.confirmPassword && (
-            <Text className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</Text>
-          )}
-        </View>
+              {errors.confirmPassword && (
+                <Text
+                  className="text-sm mt-2"
+                  style={{ color: colors.error }}
+                >
+                  {errors.confirmPassword.message}
+                </Text>
+              )}
+            </View>
 
-        {/* Register Button */}
-        <TouchableOpacity
-          onPress={handleSubmit(onSubmit)}
-          disabled={isSubmitting || isLoading}
-          className="bg-blue-600 rounded-lg py-3 px-4 mt-6"
-        >
-          <Text className="text-white font-medium text-center text-lg">
-            {isSubmitting || isLoading ? 'Creando cuenta...' : 'Crear Cuenta'}
-          </Text>
-        </TouchableOpacity>
+            {/* Register Button */}
+            <TouchableOpacity
+              onPress={handleSubmit(onSubmit)}
+              disabled={isSubmitting || isLoading}
+              className="rounded-xl py-4 px-6 mt-6"
+              style={{
+                backgroundColor: isSubmitting || isLoading ? colors.disabled : colors.primary,
+                shadowColor: colors.primary,
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.3,
+                shadowRadius: 8,
+                elevation: 8
+              }}
+            >
+              <Text
+                className="font-bold text-center text-lg"
+                style={{
+                  color: isSubmitting || isLoading ? colors.textSecondary : '#000000'
+                }}
+              >
+                {isSubmitting || isLoading ? 'Creando cuenta...' : 'Crear Cuenta'}
+              </Text>
+            </TouchableOpacity>
 
-        {/* Switch to Login */}
-        <View className="flex-row justify-center mt-6">
-          <Text className="text-gray-600">¿Ya tienes cuenta? </Text>
-          <TouchableOpacity onPress={onSwitchToLogin}>
-            <Text className="text-blue-600 font-medium">Iniciar sesión</Text>
-          </TouchableOpacity>
+            {/* Switch to Login */}
+            <View className="flex-row justify-center mt-8">
+              <Text
+                className="text-sm"
+                style={{ color: colors.textSecondary }}
+              >
+                ¿Ya tienes cuenta?{' '}
+              </Text>
+              <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />
+            </View>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   )
 }
