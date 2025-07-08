@@ -9,7 +9,7 @@ export function BiblionautaLogo({ size = 28 }) {
           fontWeight: "bold",
           letterSpacing: 1,
           color: "#fff",
-          fontFamily: "serif",
+          fontFamily: "Roboto_900Black_Italic",
         }}
         accessibilityRole="header"
         accessible

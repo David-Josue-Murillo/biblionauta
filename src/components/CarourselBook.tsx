@@ -1,5 +1,6 @@
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { Link } from 'expo-router';
+import { COLORS } from "../constants/colors";
 
 export default function CarourselBook({ books }) {
 	// Selecciona los primeros 8 libros como destacados
@@ -11,7 +12,14 @@ export default function CarourselBook({ books }) {
 			<ScrollView
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				className='pl-4'
+				className='pl-4 py-2 border-t-2 border-b-2 rounded-xl'
+				style={{
+					borderColor: '#FFD700',
+					shadowColor: '#FFD700',
+					shadowOpacity: 0.7,
+					shadowRadius: 16,
+					shadowOffset: { width: 0, height: 0 },
+				}}
 			>
 				{featuredBooks.map(({id, image, title, authors, description}) => (
 					<Link key={id} href={`/book/${id}`} asChild>
