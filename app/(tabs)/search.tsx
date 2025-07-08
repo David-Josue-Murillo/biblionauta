@@ -1,33 +1,50 @@
 import { useState } from "react";
-import { View, Text, TextInput, ScrollView } from "react-native";
+import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Books from "../../src/components/Books"; 
+import { useBooks } from "../../src/hooks/useBooks";
+import Books from "../../src/components/Books";
+import BooksItems from '../../src/components/BooksItems';
+import { colors } from "../../src/constants/theme";
 
-// Ejemplo de lista de libros solo para prueba
-const books = [
-  { id: 1, title: "Cien años de soledad", author: "Gabriel García Márquez", image: "url_del_imagen" },
-  { id: 2, title: "El amor en los tiempos del cólera", author: "Gabriel García Márquez", image: "url_del_imagen" },
-  { id: 3, title: "1984", author: "George Orwell", image: "url_del_imagen" },
-
-];
+const filterOptions = ["Todos", "Título", "Autor", "Género"];
 
 export default function SearchScreen() {
+  const { books } = useBooks();
   const [search, setSearch] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("Todos");
 
-  // Filtra los libros según el texto de búsqueda
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(search.toLowerCase()) ||
-      book.author.toLowerCase().includes(search.toLowerCase())
-  );
+  // Función de filtrado por campo, ahora incluye género
+  const filteredBooks = books.filter((book) => {
+    const text = search.toLowerCase();
+    const title = book.title?.toLowerCase() || "";
+    const authors = (book.authors?.join(", ") || "").toLowerCase();
+    const categories = (book.categories?.join(", ") || "").toLowerCase();
+  
+    if (!text) return true;
+  
+    if (selectedFilter === "Todos") {
+      return (
+        title.includes(text) ||
+        authors.includes(text) ||
+        categories.includes(text)
+      );
+    } else if (selectedFilter === "Título") {
+      return title.includes(text);
+    } else if (selectedFilter === "Autor") {
+      return authors.includes(text);
+    } else if (selectedFilter === "Género") {
+      return categories.includes(text);
+    }
+    return false;
+  });
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#23201a" }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       {/* Barra de búsqueda */}
       <View
         style={{
           margin: 16,
-          backgroundColor: "#2d2921",
+          backgroundColor: colors.card,
           borderRadius: 24,
           flexDirection: "row",
           alignItems: "center",
@@ -36,7 +53,7 @@ export default function SearchScreen() {
       >
         <Ionicons name="search" size={22} color="#aaa" />
         <TextInput
-          placeholder="Título, autor, género, tema"
+          placeholder="Buscar por título, autor o género"
           placeholderTextColor="#aaa"
           style={{
             flex: 1,
@@ -50,9 +67,49 @@ export default function SearchScreen() {
         />
       </View>
 
-      {/* Componente de libros */}
+      {/* Filtros */}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          marginBottom: 10,
+        }}
+      >
+        {filterOptions.map((option) => (
+          <Pressable
+            key={option}
+            onPress={() => setSelectedFilter(option)}
+            style={{
+              paddingVertical: 6,
+              paddingHorizontal: 12,
+              backgroundColor:
+                selectedFilter === option ? colors.primary : colors.card,
+              borderRadius: 12,
+            }}
+          >
+            <Text
+              style={{
+                color:
+                  selectedFilter === option ? colors.background : colors.text,
+                fontWeight: "bold",
+                fontSize: 14,
+              }}
+            >
+              {option}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+
+      {/* Resultados */}
       <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}>
-        <Books books={filteredBooks} />
+        {filteredBooks.length > 0 ? (
+          <BooksItems books={filteredBooks} />
+        ) : (
+          <Text style={{ color: colors.textSecondary, textAlign: "center", marginTop: 32 }}>
+            No se encontraron resultados.
+          </Text>
+        )}
       </ScrollView>
     </View>
   );
