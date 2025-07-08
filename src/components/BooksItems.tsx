@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 
-export default function BooksItems({ books, startIndex = 0, highlighted = false }) {
+export default function BooksItems({ books, showDetails = false, startIndex = 0, highlighted = false }) {
 	const booksToRender = books.slice(startIndex)
 	
 	const generateUniqueKey = (id, index) => {
@@ -46,14 +46,14 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false 
 							>
 								{title}
 							</Text>
-							{/* Mostrar autor */}
-							{authors && (
+							{/* Mostrar autor solo si showDetails es true */}
+							{showDetails && authors && (
 							<Text className="text-[10px] text-zinc-300 text-center" numberOfLines={1}>
 								{Array.isArray(authors) ? authors.join(", ") : authors}
 							</Text>
 							)}
-							{/* Mostrar género/categoría */}
-							{categories && categories.length > 0 && (
+							{/* Mostrar género/categoría solo si showDetails es true */}
+							{showDetails && categories && categories.length > 0 && (
 							<Text className="text-[10px] text-zinc-400 text-center italic" numberOfLines={1}>
 								{categories.join(", ")}
 							</Text>
