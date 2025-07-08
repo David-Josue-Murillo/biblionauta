@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   sendEmailVerification,
-  User
+  User  
 } from 'firebase/auth'
 import { auth } from '../config/firebase'
 
