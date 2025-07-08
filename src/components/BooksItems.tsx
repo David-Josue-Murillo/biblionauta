@@ -1,8 +1,8 @@
-import { View, Text, Image, Pressable } from 'react-native'
+import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 
-export default function BooksItems({ books, startIndex = 0 }) {
+export default function BooksItems({ books, startIndex = 0, highlighted = false }) {
 	const booksToRender = books.slice(startIndex)
 	
 	const generateUniqueKey = (id, index) => {
@@ -22,7 +22,7 @@ export default function BooksItems({ books, startIndex = 0 }) {
 							accessibilityLabel={`Libro: ${title}`}
 							style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.97 : 1 }] }]}
 						>
-							<View className="rounded-xl overflow-hidden shadow-lg border border-zinc-700">
+							<View style={highlighted ? styles.bookCard : null} className="rounded-xl overflow-hidden">
 								<LinearGradient
 									colors={["#232526", "#414345"]}
 									className="w-28 h-44 justify-end"
@@ -53,3 +53,20 @@ export default function BooksItems({ books, startIndex = 0 }) {
 		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	bookCard: {
+	  backgroundColor: "#fff",
+	  borderRadius: 16,
+	  borderWidth: 2,
+	  borderColor: "#4A90E2",
+	  marginBottom: 8,
+	  padding: 6,
+	  shadowColor: "#4A90E2",
+	  shadowOffset: { width: 0, height: 6 },
+	  shadowOpacity: 0.5, // Aumentar la opacidad
+	  shadowRadius: 50,   // Aumentar el radio de difuminado
+	  elevation: 8,
+	  alignItems: 'center',
+	},
+  });
