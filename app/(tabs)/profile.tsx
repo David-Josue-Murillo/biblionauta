@@ -2,9 +2,7 @@ import { View, ScrollView, Text, Pressable, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { COLORS } from "../../src/constants/colors";
 import { mockUserProfile } from "../../src/mocks/profileData";
-import { Ionicons } from "@expo/vector-icons";
 import {
-  EditProfileButton,
   StatsCard,
   ReadingProgress,
   RecentBookCard,

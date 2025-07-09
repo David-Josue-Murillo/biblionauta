@@ -2,10 +2,7 @@ import { View, ScrollView, Text, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
 import { COLORS } from "../../src/constants/colors";
-import { useAuth } from "../../src/hooks/useAuth";
-
 export default function EditProfileScreen() {
-  const { user } = useAuth()
 
   const handleCancel = () => {
     router.back();

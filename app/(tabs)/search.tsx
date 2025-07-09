@@ -1,5 +1,5 @@
 import '../../global.css'
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { View, Text, TextInput, ScrollView, Pressable, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { googleBooksApi } from '../../src/api/googleBooksApi'; 

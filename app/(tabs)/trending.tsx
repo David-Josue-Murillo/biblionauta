@@ -3,7 +3,6 @@ import { View, Text, ScrollView, Image, StyleSheet  } from "react-native";
 import { useBooks } from '../../src/hooks/useBooks';
 import BooksItems from '../../src/components/BooksItems';
 import { colors } from "../../src/constants/theme";
-import { AddToShelfButton } from "../../src/components/Buttons";
 
 export default function TrendingScreen(){
   const { books } = useBooks();

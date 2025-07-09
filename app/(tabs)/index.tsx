@@ -1,5 +1,5 @@
 import '../../global.css'
-import { ScrollView, Text, View, Image } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import Books from '../../src/components/Books';
 import { useBooks } from '../../src/hooks/useBooks';
 import { StyleSheet } from 'react-native';
