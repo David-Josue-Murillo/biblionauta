@@ -3,12 +3,12 @@ import { googleBooksApi } from "../api/googleBooksApi";
 import responseBooks from '../mocks/results-api.json'
 
 const terms = [
-  "computer science bestsellers 2024",
-  "psychology bestsellers 2024"
+  "Libros de autoayuda",
+  "Libros de informatica"
 ];
 
 export function useBooks() {
-  /*const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -54,14 +54,13 @@ export function useBooks() {
       });
 
     return () => { isMounted = false; };
+    console.log("Libros obtenidos");
   }, []);
 
-  console.log(books);
-  
-  console.log("Fin de la busqueda");
   return { books, loading, error };
-  */
-  const books = responseBooks.items || [];
+}
+  
+  /*const books = responseBooks.items || [];
 
   const mappedBooks = books.map(book => ({
     id: book.id,
@@ -89,3 +88,4 @@ export function useBooks() {
   
   return { books: uniqueBooks, loading: false, error: null };
 }
+*/

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app"
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import { Platform } from "react-native";
 
 
 const firebaseConfig = {
@@ -16,8 +17,16 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 
-// Inicializar Auth
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-});
-export default app
+let auth;
+if (Platform.OS === "web") {
+  // En web, solo inicializa Auth sin persistencia personalizada
+  auth = initializeAuth(app);
+} else {
+  // En móvil, usa persistencia nativa
+  auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+  });
+}
+
+export { auth };
+export default app;

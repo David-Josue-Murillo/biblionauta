@@ -11,10 +11,10 @@ export function EditProfileButton({ onPress }: EditProfileButtonProps) {
     <Pressable
       onPress={onPress}
       className="flex-row items-center px-4 py-2 rounded-full"
-      style={{ backgroundColor: COLORS.accent.secondary }}
+      style={{ backgroundColor: COLORS.accent.primary }}
     >
-      <Ionicons name="create-outline" size={16} color="white" />
-      <Text className="text-white font-medium ml-2">Editar Perfil</Text>
+      <Ionicons name="create-outline" size={16} color="blank" />
+      <Text className="text-blank font-medium ml-2">Editar Perfil</Text>
     </Pressable>
   );
 } 

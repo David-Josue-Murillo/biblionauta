@@ -22,6 +22,9 @@ export interface Book {
   personalRating?: number;
   personalNotes?: string;
   readingTime?: number; // en minutos
+  categories?: string[];
+  language?: string;
+  description?: string;
 }
 
 export interface ReadingStats {

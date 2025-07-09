@@ -11,11 +11,11 @@ interface StatsCardProps {
 export function StatsCard({ icon, value, label, color = COLORS.accent.primary }: StatsCardProps) {
   return (
     <View 
-      className="flex-1 items-center py-4 rounded-xl"
-      style={{ backgroundColor: COLORS.background.secondary }}
+      className="flex-1 items-center py-4 rounded-2xl border"
+      style={{ backgroundColor: COLORS.background.secondary, borderColor: COLORS.border.primary }}
     >
       <View 
-        className="w-12 h-12 rounded-full items-center justify-center mb-2"
+        className="w-12 h-12 rounded-full items-center justify-center mb-"
         style={{ backgroundColor: color + '20' }}
       >
         <Text className="text-2xl">{icon}</Text>

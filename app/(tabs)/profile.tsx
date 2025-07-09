@@ -11,6 +11,7 @@ import {
   AchievementCard,
   ContactInfo
 } from "../../src/components/Profile";
+import HeaderProfile from "../../src/components/Profile/HeaderProfile";
 
 export default function ProfileScreen() {
   const profile = mockUserProfile;
@@ -31,73 +32,10 @@ export default function ProfileScreen() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header con foto de perfil */}
-        <View className="relative">
-          {/* Banner de fondo con gradiente */}
-          <View className="h-56 w-full relative">
-            <View 
-              className="absolute inset-0"
-              style={{ backgroundColor: COLORS.background.secondary }}
-            />
-          </View>
-          
-          {/* Información del perfil */}
-          <View className="absolute bottom-0 left-0 right-0 px-4 pb-6">
-            <View className="flex-row items-end">
-              {/* Foto de perfil */}
-              <View className="relative">
-                <Image
-                  source={{ uri: profile.photoURL ? profile.photoURL : require('../../assets/img/avatar.webp') }}
-                  className="w-28 h-28 rounded-full border-4"
-                  style={{ borderColor: COLORS.background.primary }}
-                />
-                <View 
-                  className="absolute -bottom-1 -right-1 w-10 h-10 rounded-full items-center justify-center shadow-lg"
-                  style={{ 
-                    backgroundColor: COLORS.accent.primary,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 4,
-                    elevation: 5
-                  }}
-                >
-                  <Ionicons name="camera" size={18} color="white" />
-                </View>
-              </View>
-              
-              <View className="flex-1 ml-5">
-                <Text className="text-3xl font-bold text-white mb-2 shadow-sm">
-                  {profile.displayName}
-                </Text>
-                <View className="flex-row items-center mb-3">
-                  <View 
-                    className="px-3 py-1 rounded-full mr-3"
-                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-                  >
-                    <Text className="text-white font-medium text-sm">
-                      Miembro desde {profile.memberSince}
-                    </Text>
-                  </View>
-                </View>
-                <View className="flex-row items-center mb-4">
-                  <View 
-                    className="w-8 h-8 rounded-full items-center justify-center mr-2"
-                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-                  >
-                    <Ionicons name="location" size={16} color="white" />
-                  </View>
-                  <Text className="text-white font-medium text-base">
-                    {profile.location}
-                  </Text>
-                </View>
-                <EditProfileButton onPress={() => {}} />
-              </View>
-            </View>
-          </View>
-        </View>
+        <HeaderProfile profile={profile}/>
 
         {/* Estadísticas rápidas */}
-        <View className="px-4 -mt-4 mb-6">
+        <View className="px-4 mt-4 mb-6">
           <View className="flex-row gap-3">
             <StatsCard
               icon="📚"
@@ -123,8 +61,8 @@ export default function ProfileScreen() {
         {profile.bio && (
           <View className="px-4 mb-6">
             <View
-              className="rounded-2xl p-4"
-              style={{ backgroundColor: COLORS.background.secondary }}
+              className="rounded-2xl p-4 border"
+              style={{ backgroundColor: COLORS.background.secondary, borderColor: COLORS.border.secondary }}
             >
               <Text className="text-white text-base leading-6">{profile.bio}</Text>
             </View>
@@ -135,8 +73,8 @@ export default function ProfileScreen() {
         <View className="px-4 mb-6">
           <Text className="text-xl font-bold text-white mb-4">Estadísticas de Lectura</Text>
           <View
-            className="rounded-2xl p-4"
-            style={{ backgroundColor: COLORS.background.secondary }}
+            className="rounded-2xl p-4 border"
+            style={{ backgroundColor: COLORS.background.secondary, borderColor: "#10B981" }}
           >
             <ReadingProgress
               current={profile.readingStats.monthlyProgress}
