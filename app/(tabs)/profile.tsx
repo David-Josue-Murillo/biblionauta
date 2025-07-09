@@ -61,8 +61,8 @@ export default function ProfileScreen() {
         {profile.bio && (
           <View className="px-4 mb-6">
             <View
-              className="rounded-2xl p-4"
-              style={{ backgroundColor: COLORS.background.secondary }}
+              className="rounded-2xl p-4 border"
+              style={{ backgroundColor: COLORS.background.secondary, borderColor: COLORS.border.secondary }}
             >
               <Text className="text-white text-base leading-6">{profile.bio}</Text>
             </View>
@@ -73,8 +73,8 @@ export default function ProfileScreen() {
         <View className="px-4 mb-6">
           <Text className="text-xl font-bold text-white mb-4">Estadísticas de Lectura</Text>
           <View
-            className="rounded-2xl p-4"
-            style={{ backgroundColor: COLORS.background.secondary }}
+            className="rounded-2xl p-4 border"
+            style={{ backgroundColor: COLORS.background.secondary, borderColor: "#10B981" }}
           >
             <ReadingProgress
               current={profile.readingStats.monthlyProgress}
