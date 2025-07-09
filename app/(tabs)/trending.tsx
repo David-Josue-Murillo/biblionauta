@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, StyleSheet  } from "react-native";
+import { View, Text, ScrollView, StyleSheet  } from "react-native";
 import { useBooks } from '../../src/hooks/useBooks';
 import BooksItems from '../../src/components/BooksItems';
 import { colors } from "../../src/constants/theme";
@@ -18,20 +18,26 @@ export default function TrendingScreen(){
 }
 
 const styles = StyleSheet.create({
-container: {
-  flex: 1,
-  backgroundColor: colors.background,
-  padding: 16,
-},
-scrollContainer: {
-  paddingVertical: 16,
-},
+  container: {
+    flex: 1,
+    backgroundColor: colors.background, 
+    paddingHorizontal: 20,
+    paddingTop: 24,
+  },
 
-title: {
-  fontSize: 24,
-  fontWeight: "bold",
-  color: colors.primary,
-  textAlign: "center",
-  marginBottom: 16,
-},
+  scrollContainer: {
+    paddingBottom: 40,
+  },
+
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: colors.primary || "#FFD700", 
+    textAlign: "center",
+    marginBottom: 20,
+    letterSpacing: 1,
+    textShadowColor: "#000",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
 });
