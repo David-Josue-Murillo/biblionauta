@@ -1,66 +1,105 @@
 import '../../global.css'
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { View, Text, TextInput, ScrollView, Pressable, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useBooks } from "../../src/hooks/useBooks";
+import { googleBooksApi } from '../../src/api/googleBooksApi'; 
 import { colors } from "../../src/constants/theme";
 const filterOptions = ["Todos", "Título", "Autor", "Género", "Categoría"];
 
+interface GoogleBook {
+  id: string;
+  title: string;
+  subtitle?: string;
+  authors: string[];
+  description: string;
+  categories: string[];
+  image: string;
+  publishedDate: string;
+  rating: number;
+  ratingsCount: number;
+  language: string;
+}
+
 export default function SearchScreen() {
-  const { books, loading, error } = useBooks();
   const [search, setSearch] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Todos");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (books && books.length > 0) {
-      const categories = new Set<string>();
-      books.forEach(book => {
-        book.categories?.forEach(cat => categories.add(cat));
-      });
-      const newCategories = Array.from(categories);
-      // Solo actualiza si hay cambios reales
-      if (JSON.stringify(newCategories) !== JSON.stringify(uniqueCategories)) {
-        setUniqueCategories(newCategories);
-      }
+  const [books, setBooks] = useState<GoogleBook[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSearch = async () => {
+    if (!search.trim()) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await googleBooksApi.get(`volumes?q=${encodeURIComponent(search)}&maxResults=20`);
+      const items = response.data.items || [];
+      const mappedBooks: GoogleBook[] = items.map((book: any) => ({
+        id: book.id,
+        title: book.volumeInfo.title,
+        subtitle: book.volumeInfo.subtitle || "",
+        authors: book.volumeInfo.authors || ["Autor desconocido"],
+        description: book.volumeInfo.description || "",
+        categories: book.volumeInfo.categories || [],
+        image: book.volumeInfo.imageLinks?.thumbnail || "",
+        publishedDate: book.volumeInfo.publishedDate || "",
+        rating: book.volumeInfo.averageRating || 0,
+        ratingsCount: book.volumeInfo.ratingsCount || 0,
+        language: book.volumeInfo.language || "N/A"
+      }));
+      setBooks(mappedBooks);
+    } catch (e) {
+      setError("No se pudieron cargar los libros");
+    } finally {
+      setLoading(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
+  // Obtener categorías únicas de los libros
+  const uniqueCategories = useMemo(() => {
+    const categoriesSet = new Set<string>();
+    books.forEach(book => {
+      book.categories?.forEach(cat => categoriesSet.add(cat));
+    });
+    return Array.from(categoriesSet).sort();
   }, [books]);
 
   // Filtrar según búsqueda, filtro seleccionado y categoría
-  const filteredBooks = books.filter((book) => {
+  const filteredBooks = useMemo(() => {
     const text = search.toLowerCase();
-    const title = book.title?.toLowerCase() || "";
-    const authors = (book.authors?.join(", ") || "").toLowerCase();
-  
-    let matchesFilter = false;
+    return books.filter((book) => {
+      const title = book.title?.toLowerCase() || "";
+      const authors = (book.authors?.join(", ") || "").toLowerCase();
+      const categories = book.categories || [];
+      let matchesFilter = false;
 
-    if (selectedFilter === "Todos") {
-      matchesFilter = title.includes(text) || authors.includes(text) || (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
-    } else if (selectedFilter === "Título") {
-      matchesFilter = title.includes(text);
-    } else if (selectedFilter === "Autor") {
-      matchesFilter = authors.includes(text);
-    } else if (selectedFilter === "Género") {
-      matchesFilter = (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
-    } else if (selectedFilter === "Categoría") {
-      if (selectedCategory) {
-        matchesFilter = book.categories?.includes(selectedCategory) || false;
-        if (text) {
-          matchesFilter = matchesFilter && (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
-        }
-      } else {
-        if (text) {
-          matchesFilter = (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
+      if (selectedFilter === "Todos") {
+        matchesFilter = title.includes(text) || authors.includes(text) || categories.some(cat => cat.toLowerCase().includes(text));
+      } else if (selectedFilter === "Título") {
+        matchesFilter = title.includes(text);
+      } else if (selectedFilter === "Autor") {
+        matchesFilter = authors.includes(text);
+      } else if (selectedFilter === "Género") {
+        matchesFilter = categories.some(cat => cat.toLowerCase().includes(text));
+      } else if (selectedFilter === "Categoría") {
+        if (selectedCategory) {
+          matchesFilter = categories.includes(selectedCategory);
+          if (text) {
+            matchesFilter = matchesFilter && categories.some(cat => cat.toLowerCase().includes(text));
+          }
         } else {
-          matchesFilter = (book.categories && book.categories.length > 0) || false;
+          if (text) {
+            matchesFilter = categories.some(cat => cat.toLowerCase().includes(text));
+          } else {
+            matchesFilter = categories.length > 0;
+          }
         }
       }
-    }
-
-    return matchesFilter;
-  });
+      return matchesFilter;
+    });
+  }, [books, search, selectedFilter, selectedCategory]);
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
@@ -68,13 +107,11 @@ export default function SearchScreen() {
       <View
         style={{
           margin: 16,
-         
           backgroundColor: colors.card,
           borderRadius: 24,
           flexDirection: "row",
           alignItems: "center",
           paddingHorizontal: 16,
-
           borderWidth: 1,
           borderColor: "#a89c7c"
         }}
@@ -83,7 +120,6 @@ export default function SearchScreen() {
         <TextInput
           placeholder="Título, autor, género, tema"
           placeholderTextColor="#a89c7c"
-
           style={{
             flex: 1,
             color: "#fff",
@@ -93,7 +129,17 @@ export default function SearchScreen() {
           }}
           value={search}
           onChangeText={setSearch}
+          onSubmitEditing={handleSearch}
+          returnKeyType="search"
         />
+        <Pressable
+          onPress={handleSearch}
+          style={{ marginLeft: 8, padding: 8, backgroundColor: '#FFD600', borderRadius: 16 }}
+          accessibilityRole="button"
+          accessibilityLabel="Buscar libros"
+        >
+          <Ionicons name="arrow-forward" size={20} color="#23201a" />
+        </Pressable>
       </View>
 
       {/* Filtros */}
@@ -103,10 +149,7 @@ export default function SearchScreen() {
             key={option}
             onPress={() => {
               setSelectedFilter(option);
-              // Resetear categoría seleccionada si el filtro cambia a algo que no sea 'Categoría'
-              if (option !== "Categoría") {
-                setSelectedCategory(null);
-              }
+              if (option !== "Categoría") setSelectedCategory(null);
             }}
             style={{
               paddingVertical: 6,
@@ -128,40 +171,53 @@ export default function SearchScreen() {
         ))}
       </View>
 
-      {/* Chips de Categorías (solo si el filtro 'Categoría' está seleccionado) */}
+      {/* Selector de categorías */}
       {selectedFilter === "Categoría" && uniqueCategories.length > 0 && (
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 10, paddingHorizontal: 16 }}>
-          {uniqueCategories.map((category) => (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ marginBottom: 10, paddingHorizontal: 8 }}
+          contentContainerStyle={{ alignItems: "center" }}
+        >
+          <Pressable
+            onPress={() => setSelectedCategory(null)}
+            style={{
+              paddingVertical: 6,
+              paddingHorizontal: 14,
+              backgroundColor: !selectedCategory ? "#FFD600" : (colors.card || "#3a3327"),
+              borderRadius: 12,
+              marginRight: 8,
+            }}
+            accessibilityRole="button"
+            accessibilityLabel="Todas las categorías"
+          >
+            <Text style={{ color: !selectedCategory ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
+              Todas
+            </Text>
+          </Pressable>
+          {uniqueCategories.map((cat) => (
             <Pressable
-              key={category}
-              onPress={() => setSelectedCategory(category)}
+              key={cat}
+              onPress={() => setSelectedCategory(cat)}
               style={{
                 paddingVertical: 6,
-                paddingHorizontal: 12,
-                backgroundColor: selectedCategory === category ? "#FFD600" : (colors.card || "#3a3327"),
+                paddingHorizontal: 14,
+                backgroundColor: selectedCategory === cat ? "#FFD600" : (colors.card || "#3a3327"),
                 borderRadius: 12,
                 marginRight: 8,
-                marginBottom: 6,
-                height: 32, 
-                minWidth: 80, 
-                justifyContent: 'center', 
-                alignItems: 'center', 
               }}
+              accessibilityRole="button"
+              accessibilityLabel={`Categoría ${cat}`}
             >
-              <Text
-                style={{
-                  color: selectedCategory === category ? "#23201a" : "#fff",
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  textAlign: 'center', 
-                }}
-              >
-                {category}
+              <Text style={{ color: selectedCategory === cat ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
+                {cat}
               </Text>
             </Pressable>
           ))}
         </ScrollView>
       )}
+
+
 
       {/* Resultados */}
       <ScrollView
@@ -180,45 +236,63 @@ export default function SearchScreen() {
             Error al cargar los libros.
           </Text>
         ) : filteredBooks.length > 0 ? (
-          filteredBooks.map((book) => (
+          filteredBooks.map((book, idx) => (
             <View
               key={book.id}
               style={{
-                flexDirection: "row",
-                backgroundColor: colors.card || "#3a3327",
-                borderRadius: 16,
-                marginBottom: 14,
-                padding: 10,
-                elevation: 2,
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.12,
-                shadowRadius: 4,
+                width: '100%',
+                backgroundColor: colors.card || '#23201a',
+                borderRadius: 18,
+                marginBottom: 18,
+                flexDirection: 'row',
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.13,
+                shadowRadius: 8,
+                elevation: 4,
                 borderWidth: 1,
-                borderColor: "#5a5040"
+                borderColor: '#3a3327',
+                overflow: 'hidden',
               }}
             >
               <Image
                 source={{ uri: book.image }}
-                style={{ width: 70, height: 100, borderRadius: 8, marginRight: 16, backgroundColor: "#444" }}
+                style={{ width: 90, height: 130, borderTopLeftRadius: 18, borderBottomLeftRadius: 18, backgroundColor: '#444' }}
                 resizeMode="cover"
               />
-              <View style={{ flex: 1 }}>
-                <Text style={{ color: "#FFD600", fontWeight: "bold", fontSize: 16, marginBottom: 2 }}>
+              <View style={{ flex: 1, padding: 12, justifyContent: 'center' }}>
+                <Text style={{ color: '#FFD600', fontWeight: 'bold', fontSize: 17, marginBottom: 2 }} numberOfLines={2}>
                   {book.title}
                 </Text>
                 {book.authors && (
-                  <Text style={{ color: "#fff", fontSize: 13, marginBottom: 2 }}>
+                  <Text style={{ color: '#fff', fontSize: 13, marginBottom: 2 }} numberOfLines={1}>
                     {Array.isArray(book.authors) ? book.authors.join(", ") : book.authors}
                   </Text>
                 )}
-                {book.categories && book.categories.length > 0 && (
-                  <Text style={{ color: "#aaa", fontSize: 12, marginBottom: 2 }}>
-                    {book.categories.join(", ")}
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                  {/* Estrellas de rating */}
+                  {[1,2,3,4,5].map(i => (
+                    <Ionicons
+                      key={i}
+                      name={i <= Math.round(book.rating) ? 'star' : 'star-outline'}
+                      size={15}
+                      color="#FFD700"
+                      style={{ marginRight: 1 }}
+                    />
+                  ))}
+                  {book.ratingsCount > 0 && (
+                    <Text style={{ color: '#FFD700', fontSize: 12, marginLeft: 4 }}>
+                      ({book.ratingsCount})
+                    </Text>
+                  )}
+                </View>
+                {book.publishedDate && (
+                  <Text style={{ color: '#aaa', fontSize: 12, marginBottom: 2 }}>
+                    {book.publishedDate}
                   </Text>
                 )}
                 {book.description ? (
-                  <Text style={{ color: "#ccc", fontSize: 12 }} numberOfLines={3}>
+                  <Text style={{ color: '#ccc', fontSize: 12 }} numberOfLines={3}>
                     {book.description}
                   </Text>
                 ) : null}
