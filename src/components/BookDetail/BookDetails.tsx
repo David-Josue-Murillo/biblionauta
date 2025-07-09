@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import { COLORS } from '../../constants/colors';
+import { stripHtmlTags } from '../../utils/book';
 
 interface BookDetailsProps {
   book: {
@@ -36,14 +37,14 @@ export function BookDetails({ book }: BookDetailsProps) {
       style={{ 
         backgroundColor: COLORS.background.secondary, 
         borderWidth: 1, 
-        borderColor: COLORS.border.primary 
+        borderColor: COLORS.border.muted
       }}
     >
       <DetailRow label="TÍTULO" value={book.title} valueColor={COLORS.text.primary} />
       <DetailRow label="SUBTÍTULO" value={book.subtitle} />
       <DetailRow label="AUTORES" value={book.authors.join(", ")} />
       <DetailRow label="IDIOMA" value={book.language} />
-      <DetailRow label="DESCRIPCIÓN" value={book.description} valueColor={COLORS.text.primary} />
+      <DetailRow label="DESCRIPCIÓN" value={stripHtmlTags(book.description)} valueColor={COLORS.text.primary} />
       <DetailRow label="CATEGORÍAS" value={book.categories.join(", ")} valueColor={COLORS.accent.tertiary} />
     </View>
   );

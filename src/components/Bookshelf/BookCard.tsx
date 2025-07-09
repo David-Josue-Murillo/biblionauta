@@ -49,7 +49,7 @@ export function BookCard({ book, showProgress = true, showStatus = true }: BookC
   return (
     <Link href={`/book/${book.id}`} asChild>
       <Pressable
-        className="w-[48%] mb-4"
+        className="w-44 mb-4"
         accessible
         accessibilityLabel={`Libro: ${book.title}`}
         accessibilityHint="Toca para ver detalles del libro"

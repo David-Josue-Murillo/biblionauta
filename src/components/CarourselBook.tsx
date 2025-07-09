@@ -1,5 +1,8 @@
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { Link } from 'expo-router';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import { colors } from "../constants/theme";
+import { COLORS } from "../constants/colors";
 
 export default function CarourselBook({ books }) {
 	// Selecciona los primeros 8 libros como destacados
@@ -15,10 +18,14 @@ export default function CarourselBook({ books }) {
 			>
 				{featuredBooks.map(({id, image, title, authors, description}) => (
 					<Link key={id} href={`/book/${id}`} asChild>
-						<Pressable>
+						<Pressable
+							accessibilityRole="button"
+							accessibilityLabel={`Ver detalles de ${title}`}
+							style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.97 : 1 }], minWidth: 220, minHeight: 240 }]}
+						>
 							<View
-								className='mr-4 w-56 rounded-2xl shadow-lg p-3 flex-col items-center'
-								style={{ elevation: 6 }}
+								className='flex mr-4 w-56 h-80 rounded-2xl shadow-lg p-3 flex-col items-center border-2'
+								style={{ elevation: 6, borderColor: COLORS.border.secondary, backgroundColor: '#18181b', shadowColor: '#00fff7', shadowOpacity: 0.4 }}
 							>
 								<Image
 									source={{ uri: image }}
@@ -26,12 +33,12 @@ export default function CarourselBook({ books }) {
 									resizeMode='cover'
 									accessibilityLabel={`Portada de ${title}`}
 								/>
-								<Text className='text-base font-bold text-white text-center' numberOfLines={2}>{title}</Text>
+								<Text className='text-base font-bold text-white text-center' numberOfLines={2} style={{ fontSize: 18, marginBottom: 2 }}>{title}</Text>
 								{authors && (
-									<Text className='text-xs text-zinc-300 text-center mb-1' numberOfLines={1}>{authors.join(', ')}</Text>
+									<Text className='text-xs text-zinc-300 text-center mb-1' numberOfLines={1} style={{ fontSize: 14 }}>{authors.join(', ')}</Text>
 								)}
 								{description && (
-									<Text className='text-xs text-zinc-400 text-center' numberOfLines={2}>{description}</Text>
+									<Text className='text-xs text-zinc-400 text-center' numberOfLines={2} style={{ fontSize: 13 }}>{description}</Text>
 								)}
 							</View>
 						</Pressable>

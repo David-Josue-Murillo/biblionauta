@@ -1,6 +1,8 @@
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
+import Animated from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function BooksItems({ books, startIndex = 0, highlighted = false, showDetails = false }) {
 	const booksToRender = books.slice(startIndex)
@@ -19,44 +21,35 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
 							key={uniqueKey}
 							className="w-[32%] mb-6 items-center"
 							accessible
-							accessibilityLabel={`Libro: ${title}`}
-							style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.97 : 1 }] }]}
+							accessibilityRole="button"
+							accessibilityLabel={`Ver detalles de ${title}`}
+							style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.97 : 1 }], minWidth: 120, minHeight: 240, padding: 4 }]}
 						>
-							<View style={highlighted ? styles.bookCard : null} className="rounded-xl overflow-hidden">
-								<LinearGradient
-									colors={["#232526", "#414345"]}
-									className="w-28 h-44 justify-end"
-									style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1, opacity: 0.25 }}
-									pointerEvents="none"
-								/>
-
+							<View style={styles.cardRecentLike} className="rounded-lg overflow-hidden border">
 								<Image
 									source={{ uri: image }}
-									className="w-28 h-44 rounded-xl"
+									className="w-full h-40 rounded-lg mb-2"
 									accessibilityLabel={`Portada de ${title}`}
 									resizeMode="cover"
-									style={{ zIndex: 2 }}
 								/>
+								<Text
+									className="text-white font-semibold text-sm mb-1"
+									numberOfLines={2}
+									accessibilityRole="header"
+								>
+									{title}
+								</Text>
+								{authors && (
+									<Text className="text-zinc-400 text-xs mb-1" numberOfLines={1}>
+										{Array.isArray(authors) ? authors.join(", ") : authors}
+									</Text>
+								)}
+								{showDetails && categories && categories.length > 0 && (
+									<Text className="text-zinc-500 text-xs mb-1" numberOfLines={1}>
+										{categories.join(", ")}
+									</Text>
+								)}
 							</View>
-							<Text
-								className="text-xs font-bold text-amber-300 text-center mt-2"
-								numberOfLines={2}
-								accessibilityRole="header"
-								style={{ textShadowColor: '#000', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3 }}
-							>
-								{title}
-							</Text>
-							{/* Mostrar detalles solo si showDetails es true */}
-							{showDetails && authors && (
-								<Text style={{ fontSize: 10, color: "#d1d5db", textAlign: "center" }} numberOfLines={1}>
-									{Array.isArray(authors) ? authors.join(", ") : authors}
-								</Text>
-							)}
-							{showDetails && categories && categories.length > 0 && (
-								<Text style={{ fontSize: 10, color: "#a1a1aa", textAlign: "center", fontStyle: "italic" }} numberOfLines={1}>
-									{categories.join(", ")}
-								</Text>
-							)}
 						</Pressable>
 					</Link>
 				)
@@ -79,5 +72,33 @@ const styles = StyleSheet.create({
 		shadowRadius: 50,
 		elevation: 8,
 		alignItems: 'center',
+	},
+	bookCardUnified: {
+		backgroundColor: "#18181b",
+		borderRadius: 16,
+		borderWidth: 2,
+		borderColor: "#00fff7",
+		marginBottom: 8,
+		padding: 6,
+		shadowColor: "#00fff7",
+		shadowOffset: { width: 0, height: 6 },
+		shadowOpacity: 0.4,
+		shadowRadius: 16,
+		elevation: 8,
+		alignItems: 'center',
+	},
+	cardRecentLike: {
+		backgroundColor: '#18181b',
+		borderRadius: 12,
+		borderWidth: 1,
+		borderColor: '#232946',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.18,
+		shadowRadius: 6,
+		elevation: 4,
+		padding: 8,
+		width: '100%',
+		alignItems: 'flex-start',
 	},
 });

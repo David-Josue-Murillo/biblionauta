@@ -1,5 +1,10 @@
 import { googleBooksApi } from "../api/googleBooksApi";
 
+export function stripHtmlTags(htmlString) {
+    if (!htmlString) return "";
+    return htmlString.replace(/<[^>]*>/g, '');
+}
+
 export async function getBookDetails(id) {
     const response = await googleBooksApi.get(`volumes/${id}`);
     const data = response.data;
