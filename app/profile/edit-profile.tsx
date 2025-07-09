@@ -2,7 +2,6 @@ import { View, ScrollView, Text, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
 import { COLORS } from "../../src/constants/colors";
-import { NetworkStatus } from "../../src/components/NetworkStatus";
 import { useAuth } from "../../src/hooks/useAuth";
 
 export default function EditProfileScreen() {
@@ -56,7 +55,6 @@ export default function EditProfileScreen() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Estado de red */}
-        <NetworkStatus showDetails={false} />
 
         {/* Avatar Section */}
         <View className="mx-4 mt-6 mb-6">

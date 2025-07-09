@@ -3,12 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { router } from "expo-router";
 import { COLORS } from "../../src/constants/colors";
-import { useUserUpdate } from "../../src/hooks/useUserUpdate";
-import { ValidationSchemas } from "../../src/utils/validationSchemas";
 
 export default function ChangePasswordScreen() {
-  const { updatePassword, isLoading } = useUserUpdate();
-  
   const [formData, setFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -30,11 +26,6 @@ export default function ChangePasswordScreen() {
       newErrors.currentPassword = "La contraseña actual es requerida";
     }
 
-    // Validar nueva contraseña
-    const passwordValidation = ValidationSchemas.validatePassword(formData.newPassword);
-    if (!passwordValidation.isValid) {
-      newErrors.newPassword = passwordValidation.error!;
-    }
 
     // Validar confirmación
     if (formData.newPassword !== formData.confirmPassword) {
@@ -45,15 +36,6 @@ export default function ChangePasswordScreen() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSave = async () => {
-    if (validateForm()) {
-      const result = await updatePassword(formData.newPassword, formData.currentPassword);
-      
-      if (result.success) {
-        router.back();
-      }
-    }
-  };
 
   const handleCancel = () => {
     router.back();
@@ -127,13 +109,10 @@ export default function ChangePasswordScreen() {
         <Text className="text-xl font-bold text-white">Cambiar Contraseña</Text>
 
         <Pressable
-          onPress={handleSave}
-          disabled={isLoading}
           className="p-2 rounded-lg"
           style={({ pressed }) => [
             {
               backgroundColor: pressed ? COLORS.background.tertiary : "transparent",
-              opacity: isLoading ? 0.5 : 1,
             },
           ]}
         >
@@ -141,7 +120,6 @@ export default function ChangePasswordScreen() {
             className="text-lg font-semibold"
             style={{ color: COLORS.accent.primary }}
           >
-            {isLoading ? "Guardando..." : "Guardar"}
           </Text>
         </Pressable>
       </View>
