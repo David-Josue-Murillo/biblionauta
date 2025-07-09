@@ -18,36 +18,6 @@ import { useUserBooks } from '../../src/contexts/UserBooksContext';
 export default function Bookshelf() {
   const { books } = useUserBooks();
 
-  const handleStatsPress = () => {
-    console.log('Ver estadísticas detalladas');
-    // TODO: Navegar a pantalla de estadísticas detalladas
-  };
-
-  const handleAchievementsPress = () => {
-    console.log('Ver todos los logros');
-    // TODO: Navegar a pantalla de logros
-    // Aquí podrías pasar los logros al contexto o a la pantalla de logros
-  };
-
-  const handleSectionPress = (sectionId: string) => {
-    console.log('Sección presionada:', sectionId);
-    // TODO: Navegar a pantalla específica de la sección
-  };
-
-  const handleAddBookPress = () => {
-    console.log('Agregar nuevo libro');
-    // TODO: Navegar a búsqueda de libros
-  };
-
-  const handleCollectionsPress = () => {
-    console.log('Gestionar colecciones');
-    // TODO: Navegar a gestión de colecciones
-  };
-
-  const handleCollectionPress = (collectionId: string) => {
-    console.log('Colección presionada:', collectionId);
-    // TODO: Navegar a vista de colección específica
-  };
 
   return (
     <View className="flex-1" style={{ backgroundColor: COLORS.background.primary }}>
@@ -69,7 +39,6 @@ export default function Bookshelf() {
             </View>
             <Pressable
               className="bg-amber-500 px-4 py-2 rounded-xl"
-              onPress={handleAddBookPress}
               accessible
               accessibilityLabel="Agregar libro"
               accessibilityHint="Toca para buscar y agregar un nuevo libro"
@@ -85,26 +54,21 @@ export default function Bookshelf() {
         {/* Estadísticas de lectura */}
         <ReadingStats 
           stats={readingStats} 
-          onPress={handleStatsPress}
         />
 
         {/* Logros */}
         <AchievementsSection 
           achievements={userAchievements}
-          onPress={handleAchievementsPress}
         />
 
         {/* Colecciones personalizadas */}
         <PersonalCollections
           collections={personalCollections}
-          onPress={handleCollectionsPress}
-          onCollectionPress={handleCollectionPress}
         />
 
         {/* Secciones de libros */}
         <BookshelfOverview 
           books={books}
-          onSectionPress={handleSectionPress}
         />
 
         {/* Mensaje si no hay libros */}
@@ -120,7 +84,6 @@ export default function Bookshelf() {
             </Text>
             <Pressable
               className="bg-amber-500 px-6 py-3 rounded-xl"
-              onPress={handleAddBookPress}
               style={({ pressed }) => [
                 { backgroundColor: pressed ? '#d97706' : COLORS.accent.primary }
               ]}
