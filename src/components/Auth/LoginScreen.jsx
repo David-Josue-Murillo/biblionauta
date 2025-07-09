@@ -8,6 +8,7 @@ import { useFormValidation } from '../../hooks/useFormValidation'
 import AuthLayout from './AuthLayout'
 import { FormEmailField, FormPasswordField } from './FormField'
 import SubmitButton from './SubmitButton'
+import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated'
 
 const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
   const { signIn, isLoading, error, clearError } = useAuth()
@@ -46,7 +47,7 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
   const onSubmit = async (data) => {
     // Validar formulario antes de enviar
     const validation = validateForm(data)
-    
+
     if (!validation.isValid) {
       // Los errores se muestran debajo de cada campo
       return
@@ -61,43 +62,45 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
   }
 
   return (
-    <AuthLayout headerText="Tu biblioteca personal en el bolsillo">
-      {/* Formulario */}
-      <View className="w-full space-y-16">
-        {/* Email y Password*/}
-        <FormEmailField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} />
-        <FormPasswordField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} showPassword={showPassword}/>
+    <ScrollView>
+      <AuthLayout headerText="Tu biblioteca personal en el bolsillo">
+        {/* Formulario */}
+        <View className="w-full space-y-16">
+          {/* Email y Password*/}
+          <FormEmailField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} />
+          <FormPasswordField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} showPassword={showPassword} />
 
-        {/* Forgot Password */}
-        <TouchableOpacity onPress={onSwitchToReset} className="self-end">
-          <Text 
-            className="text-sm font-medium"
-            style={{ color: colors.primary }}
-          >
-            ¿Olvidaste tu contraseña?
-          </Text>
-        </TouchableOpacity>
+          {/* Forgot Password */}
+          <TouchableOpacity onPress={onSwitchToReset} className="self-end">
+            <Text
+              className="text-sm font-medium"
+              style={{ color: colors.primary }}
+            >
+              ¿Olvidaste tu contraseña?
+            </Text>
+          </TouchableOpacity>
 
-        {/* Login Button */}
-        <SubmitButton
-          onPress={handleSubmit(onSubmit)}
-          disabled={isSubmitting || isLoading}
-          loadingText="Iniciando sesión..."
-          defaultText="Iniciar Sesión"
-        />
+          {/* Login Button */}
+          <SubmitButton
+            onPress={handleSubmit(onSubmit)}
+            disabled={isSubmitting || isLoading}
+            loadingText="Iniciando sesión..."
+            defaultText="Iniciar Sesión"
+          />
 
-        {/* Switch to Register */}
-        <View className="flex-row justify-center mt-8">
-          <Text 
-            className="text-sm"
-            style={{ color: colors.textSecondary }}
-          >
-            ¿No tienes cuenta?{' '}
-          </Text>
-          <BotonSubmit action={onSwitchToRegister} text={'Crear cuenta'} />
+          {/* Switch to Register */}
+          <View className="flex-row justify-center mt-8">
+            <Text
+              className="text-sm"
+              style={{ color: colors.textSecondary }}
+            >
+              ¿No tienes cuenta?{' '}
+            </Text>
+            <BotonSubmit action={onSwitchToRegister} text={'Crear cuenta'} />
+          </View>
         </View>
-      </View>
-    </AuthLayout>
+      </AuthLayout>
+    </ScrollView>
   )
 }
 
