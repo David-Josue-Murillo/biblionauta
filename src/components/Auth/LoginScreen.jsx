@@ -8,7 +8,7 @@ import { useFormValidation } from '../../hooks/useFormValidation'
 import AuthLayout from './AuthLayout'
 import { FormEmailField, FormPasswordField } from './FormField'
 import SubmitButton from './SubmitButton'
-import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated'
+import { ScrollView } from 'react-native' 
 
 const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
   const { signIn, isLoading, error, clearError } = useAuth()

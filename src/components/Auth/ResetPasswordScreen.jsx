@@ -8,7 +8,7 @@ import BotonSubmit from './BotonSubmit'
 import { useFormValidation } from '../../hooks/useFormValidation'
 import HeaderSign from './HeaderSign'
 import { FormEmailField } from './FormField'
-import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated'
+import { ScrollView } from 'react-native' 
 
 const ResetPasswordScreen = ({ onSwitchToLogin }) => {
   const { resetPassword, isLoading, error, clearError } = useAuth()
@@ -86,7 +86,7 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
         />
 
         {/* Header con logo y branding */}
-        <View className="flex-1 justify-center items-center px-6">
+        <View className="flex-1 justify-center items-center px-6 mb-6">
           <HeaderSign text={'Restablecer Contraseña'} />
 
           {/* Formulario */}

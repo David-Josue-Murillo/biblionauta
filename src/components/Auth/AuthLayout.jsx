@@ -9,7 +9,7 @@ const AuthLayout = ({
   ScrollViewComponent = null
 }) => {
   const content = (
-    <View className="flex-1 justify-center items-center px-6">
+    <View className="flex-1 justify-center items-center px-6 mb-6">
       <HeaderSign text={headerText} />
       {children}
     </View>

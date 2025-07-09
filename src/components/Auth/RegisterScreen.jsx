@@ -70,7 +70,7 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
     >
       <ScrollView>
         {/* Header con logo y branding */}
-        <View className="flex-1 justify-center items-center px-6">
+        <View className="flex-1 justify-center items-center px-6 mb-6">
           <HeaderSign text={'Únete a Biblionauta'}/>
 
           {/* Formulario */}
