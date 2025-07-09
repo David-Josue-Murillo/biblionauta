@@ -3,8 +3,8 @@ import { googleBooksApi } from "../api/googleBooksApi";
 import responseBooks from '../mocks/results-api.json'
 
 const terms = [
-  "computer science bestsellers 2024",
-  "psychology bestsellers 2024"
+  "top 10 libros de autoayuda",
+  "top 10 libros de informatica"
 ];
 
 export function useBooks() {
