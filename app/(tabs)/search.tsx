@@ -57,41 +57,50 @@ export default function SearchScreen() {
     }
   };
 
-  // Obtener categorías únicas de los libros
+  // Obtener categorías únicas normalizadas (case-insensitive, sin espacios extra)
   const uniqueCategories = useMemo(() => {
-    const categoriesSet = new Set<string>();
+    const categoriesMap = new Map<string, string>();
     books.forEach(book => {
-      book.categories?.forEach(cat => categoriesSet.add(cat));
+      book.categories?.forEach(cat => {
+        const normalized = cat.trim().toLowerCase();
+        if (!categoriesMap.has(normalized)) {
+          categoriesMap.set(normalized, cat.trim());
+        }
+      });
     });
-    return Array.from(categoriesSet).sort();
+    // Ordenar alfabéticamente por display name
+    return Array.from(categoriesMap.values()).sort((a, b) => a.localeCompare(b));
   }, [books]);
 
-  // Filtrar según búsqueda, filtro seleccionado y categoría
+  // Filtrar según búsqueda, filtro seleccionado y categoría (case-insensitive)
   const filteredBooks = useMemo(() => {
-    const text = search.toLowerCase();
+    const text = search.trim().toLowerCase();
+    const selectedCategoryNorm = selectedCategory ? selectedCategory.trim().toLowerCase() : null;
     return books.filter((book) => {
       const title = book.title?.toLowerCase() || "";
       const authors = (book.authors?.join(", ") || "").toLowerCase();
-      const categories = book.categories || [];
+      const categories = (book.categories || []).map(cat => cat.trim());
+      const categoriesNorm = categories.map(cat => cat.toLowerCase());
       let matchesFilter = false;
 
       if (selectedFilter === "Todos") {
-        matchesFilter = title.includes(text) || authors.includes(text) || categories.some(cat => cat.toLowerCase().includes(text));
+        matchesFilter = title.includes(text) || authors.includes(text) || categoriesNorm.some(cat => cat.includes(text));
       } else if (selectedFilter === "Título") {
         matchesFilter = title.includes(text);
       } else if (selectedFilter === "Autor") {
         matchesFilter = authors.includes(text);
       } else if (selectedFilter === "Género") {
-        matchesFilter = categories.some(cat => cat.toLowerCase().includes(text));
+        matchesFilter = categoriesNorm.some(cat => cat.includes(text));
       } else if (selectedFilter === "Categoría") {
-        if (selectedCategory) {
-          matchesFilter = categories.includes(selectedCategory);
+        if (selectedCategoryNorm) {
+          // Coincidencia exacta de categoría (case-insensitive)
+          matchesFilter = categoriesNorm.includes(selectedCategoryNorm);
           if (text) {
-            matchesFilter = matchesFilter && categories.some(cat => cat.toLowerCase().includes(text));
+            matchesFilter = matchesFilter && categoriesNorm.some(cat => cat.includes(text));
           }
         } else {
           if (text) {
-            matchesFilter = categories.some(cat => cat.toLowerCase().includes(text));
+            matchesFilter = categoriesNorm.some(cat => cat.includes(text));
           } else {
             matchesFilter = categories.length > 0;
           }
@@ -106,7 +115,9 @@ export default function SearchScreen() {
       {/* Barra de búsqueda */}
       <View
         style={{
-          margin: 16,
+          marginHorizontal: 16,
+          marginTop: 16,
+          marginBottom: 8,
           backgroundColor: colors.card,
           borderRadius: 24,
           flexDirection: "row",
@@ -143,7 +154,7 @@ export default function SearchScreen() {
       </View>
 
       {/* Filtros */}
-      <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 10 }}>
+      <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 12, marginTop: 2 }}>
         {filterOptions.map((option) => (
           <Pressable
             key={option}
@@ -173,48 +184,53 @@ export default function SearchScreen() {
 
       {/* Selector de categorías */}
       {selectedFilter === "Categoría" && uniqueCategories.length > 0 && (
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={{ marginBottom: 10, paddingHorizontal: 8 }}
-          contentContainerStyle={{ alignItems: "center" }}
-        >
-          <Pressable
-            onPress={() => setSelectedCategory(null)}
-            style={{
-              paddingVertical: 6,
-              paddingHorizontal: 14,
-              backgroundColor: !selectedCategory ? "#FFD600" : (colors.card || "#3a3327"),
-              borderRadius: 12,
-              marginRight: 8,
-            }}
-            accessibilityRole="button"
-            accessibilityLabel="Todas las categorías"
+        <View style={{ marginBottom: 12 }}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ paddingHorizontal: 8 }}
+            contentContainerStyle={{ alignItems: "center", paddingVertical: 2 }}
           >
-            <Text style={{ color: !selectedCategory ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
-              Todas
-            </Text>
-          </Pressable>
-          {uniqueCategories.map((cat) => (
             <Pressable
-              key={cat}
-              onPress={() => setSelectedCategory(cat)}
+              onPress={() => setSelectedCategory(null)}
               style={{
                 paddingVertical: 6,
                 paddingHorizontal: 14,
-                backgroundColor: selectedCategory === cat ? "#FFD600" : (colors.card || "#3a3327"),
+                backgroundColor: !selectedCategory ? "#FFD600" : (colors.card || "#3a3327"),
                 borderRadius: 12,
                 marginRight: 8,
               }}
               accessibilityRole="button"
-              accessibilityLabel={`Categoría ${cat}`}
+              accessibilityLabel="Todas las categorías"
             >
-              <Text style={{ color: selectedCategory === cat ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
-                {cat}
+              <Text style={{ color: !selectedCategory ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
+                Todas
               </Text>
             </Pressable>
-          ))}
-        </ScrollView>
+            {uniqueCategories.map((cat) => {
+              const isSelected = selectedCategory && cat.trim().toLowerCase() === selectedCategory.trim().toLowerCase();
+              return (
+                <Pressable
+                  key={cat}
+                  onPress={() => setSelectedCategory(cat)}
+                  style={{
+                    paddingVertical: 6,
+                    paddingHorizontal: 14,
+                    backgroundColor: isSelected ? "#FFD600" : (colors.card || "#3a3327"),
+                    borderRadius: 12,
+                    marginRight: 8,
+                  }}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Categoría ${cat}`}
+                >
+                  <Text style={{ color: isSelected ? "#23201a" : "#fff", fontWeight: "bold", fontSize: 14 }}>
+                    {cat}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </View>
       )}
 
 
