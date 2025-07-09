@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { googleBooksApi } from "../api/googleBooksApi";
-import responseBooks from '../mocks/results-api.json'
 
 const terms = [
   "Libros de autoayuda",

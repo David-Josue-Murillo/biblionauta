@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import { createContext, useContext, useReducer, ReactNode } from 'react';
 import { UserData } from '../mocks/profileData';
 
 interface UserProfileState {
