@@ -72,24 +72,24 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
     switch (type) {
       case 'success':
         return {
-          background: `${colors.success}20`,
+          background: `${colors.success}40`,
           border: colors.success,
-          text: colors.success,
+          text: colors.text,
           icon: '✅'
         }
       case 'warning':
         return {
-          background: `${colors.warning}20`,
+          background: `${colors.warning}40`,
           border: colors.warning,
-          text: colors.warning,
+          text: colors.text,
           icon: '⚠️'
         }
       case 'error':
       default:
         return {
-          background: `${colors.error}20`,
+          background: `${colors.error}40`,
           border: colors.error,
-          text: colors.error,
+          text: colors.text,
           icon: '❌'
         }
     }

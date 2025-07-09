@@ -3,15 +3,23 @@ import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, P
 import { useForm, Controller } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
 import { colors } from '../../constants/theme'
-import { AuthAlert } from './AuthAlert'
+
 import BotonSubmit from './BotonSubmit'
+import { useFormValidation } from '../../hooks/useFormValidation'
+import HeaderSign from './HeaderSign'
 
 const RegisterScreen = ({ onSwitchToLogin }) => {
-  const { createAccount, isLoading, error, clearError } = useAuth()
+  const { signUp, isLoading, error, clearError } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
-  const [alertVisible, setAlertVisible] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
-  const [alertType, setAlertType] = useState('error')
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+
+  // Hook de validación
+  const {
+    validateForm,
+    errors: validationErrors,
+    clearErrors: clearValidationErrors
+  } = useFormValidation('register')
 
   const {
     control,
@@ -29,26 +37,25 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
   // Mostrar alerta cuando hay un error del contexto
   useEffect(() => {
     if (error) {
-      setAlertMessage(error)
-      setAlertType('error')
-      setAlertVisible(true)
-      // Limpiar el error después de mostrarlo
-      setTimeout(() => {
-        clearError()
-      }, 100)
+      // Mostrar error como alerta nativa para errores de Firebase
+      Alert.alert('Error', error, [{ text: 'OK' }])
+      clearError()
     }
   }, [error, clearError])
 
-  const showSuccessAlert = (message) => {
-    setAlertMessage(message)
-    setAlertType('success')
-    setAlertVisible(true)
-  }
+
 
   const onSubmit = async (data) => {
+    // Validar formulario antes de enviar
+    const validation = validateForm(data)
+    
+    if (!validation.isValid) {
+      // Los errores se muestran debajo de cada campo
+      return
+    }
+
     try {
-      await createAccount(data.email, data.password, data.name)
-      showSuccessAlert('Se ha enviado un email de verificación. Por favor, verifica tu cuenta.')
+      await signUp(data.email, data.password, data.name)
     } catch (error) {
       // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
       console.log('Error capturado en pantalla:', error.message)
@@ -56,43 +63,15 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
   }
 
   return (
-    <KeyboardAvoidingView
+    <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
       style={{ backgroundColor: colors.background }}
     >
       <ScrollView>
-
-
-        {/* AuthAlert para errores y éxito */}
-        <AuthAlert
-          visible={alertVisible}
-          message={alertMessage}
-          type={alertType}
-          onClose={() => setAlertVisible(false)}
-          autoHide={true}
-          duration={alertType === 'success' ? 6000 : 5000}
-        />
-
         {/* Header con logo y branding */}
         <View className="flex-1 justify-center items-center px-6">
-          <View className="items-center">
-            <Text
-              className="text-2xl text-center font-semibold mt-4 leading-6"
-              style={{ color: colors.textSecondary }}
-            >
-              Únete a Biblionauta
-            </Text>
-          </View>
-
-          {/* Ilustración */}
-          <View>
-            <Image
-              source={require("../../../assets/logoBiblionauta.png")}
-              className="w-64 h-64 opacity-80"
-              resizeMode="contain"
-            />
-          </View>
+          <HeaderSign text={'Únete a Biblionauta'}/>
 
           {/* Formulario */}
           <View className="w-full space-y-4">
@@ -113,24 +92,30 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     placeholder="Tu nombre"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={onChange}
+                    onChangeText={(text) => {
+                      onChange(text)
+                      // Limpiar error de validación cuando el usuario empiece a escribir
+                      if (validationErrors.name) {
+                        clearValidationErrors()
+                      }
+                    }}
                     onBlur={onBlur}
                     autoCapitalize="words"
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: colors.border,
+                      borderColor: validationErrors.name ? colors.error : colors.border,
                       color: colors.text
                     }}
                   />
                 )}
               />
-              {errors.name && (
-                <Text
+              {validationErrors.name && (
+                <Text 
                   className="text-sm mt-2"
                   style={{ color: colors.error }}
                 >
-                  {errors.name.message}
+                  {validationErrors.name}
                 </Text>
               )}
             </View>
@@ -149,10 +134,16 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 render={({ field: { onChange, onBlur, value } }) => (
                   <TextInput
                     className="rounded-xl py-4 px-4 text-base"
-                    placeholder="tu@email.com"
+                    placeholder="usuario@email.com"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={onChange}
+                    onChangeText={(text) => {
+                      onChange(text)
+                      // Limpiar error de validación cuando el usuario empiece a escribir
+                      if (validationErrors.email) {
+                        clearValidationErrors()
+                      }
+                    }}
                     onBlur={onBlur}
                     keyboardType="email-address"
                     autoCapitalize="none"
@@ -160,18 +151,18 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: colors.border,
+                      borderColor: validationErrors.email ? colors.error : colors.border,
                       color: colors.text
                     }}
                   />
                 )}
               />
-              {errors.email && (
-                <Text
+              {validationErrors.email && (
+                <Text 
                   className="text-sm mt-2"
                   style={{ color: colors.error }}
                 >
-                  {errors.email.message}
+                  {validationErrors.email}
                 </Text>
               )}
             </View>
@@ -193,24 +184,30 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     placeholder="••••••••"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={onChange}
+                    onChangeText={(text) => {
+                      onChange(text)
+                      // Limpiar error de validación cuando el usuario empiece a escribir
+                      if (validationErrors.password) {
+                        clearValidationErrors()
+                      }
+                    }}
                     onBlur={onBlur}
                     secureTextEntry={!showPassword}
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: colors.border,
+                      borderColor: validationErrors.password ? colors.error : colors.border,
                       color: colors.text
                     }}
                   />
                 )}
               />
-              {errors.password && (
-                <Text
+              {validationErrors.password && (
+                <Text 
                   className="text-sm mt-2"
                   style={{ color: colors.error }}
                 >
-                  {errors.password.message}
+                  {validationErrors.password}
                 </Text>
               )}
             </View>
@@ -232,24 +229,30 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     placeholder="••••••••"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={onChange}
+                    onChangeText={(text) => {
+                      onChange(text)
+                      // Limpiar error de validación cuando el usuario empiece a escribir
+                      if (validationErrors.confirmPassword) {
+                        clearValidationErrors()
+                      }
+                    }}
                     onBlur={onBlur}
-                    secureTextEntry={!showPassword}
+                    secureTextEntry={!showConfirmPassword}
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: colors.border,
+                      borderColor: validationErrors.confirmPassword ? colors.error : colors.border,
                       color: colors.text
                     }}
                   />
                 )}
               />
-              {errors.confirmPassword && (
-                <Text
+              {validationErrors.confirmPassword && (
+                <Text 
                   className="text-sm mt-2"
                   style={{ color: colors.error }}
                 >
-                  {errors.confirmPassword.message}
+                  {validationErrors.confirmPassword}
                 </Text>
               )}
             </View>
@@ -268,9 +271,9 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 elevation: 8
               }}
             >
-              <Text
+              <Text 
                 className="font-bold text-center text-lg"
-                style={{
+                style={{ 
                   color: isSubmitting || isLoading ? colors.textSecondary : '#000000'
                 }}
               >
@@ -279,8 +282,8 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
             </TouchableOpacity>
 
             {/* Switch to Login */}
-            <View className="flex-row justify-center mt-8">
-              <Text
+            <View className="flex-row justify-center my-8">
+              <Text 
                 className="text-sm"
                 style={{ color: colors.textSecondary }}
               >

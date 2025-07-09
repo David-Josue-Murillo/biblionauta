@@ -1,11 +1,26 @@
-import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform, Image } from 'react-native'
+import { useState, useEffect } from 'react'
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, Image } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
 import { colors } from '../../constants/theme'
+import { AuthAlert } from './AuthAlert'
 import BotonSubmit from './BotonSubmit'
+import { useFormValidation } from '../../hooks/useFormValidation'
+import HeaderSign from './HeaderSign'
+import { FormEmailField } from './FormField'
 
 const ResetPasswordScreen = ({ onSwitchToLogin }) => {
-  const { resetPassword, isLoading } = useAuth()
+  const { resetPassword, isLoading, error, clearError } = useAuth()
+  const [alertVisible, setAlertVisible] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertType, setAlertType] = useState('error')
+
+  // Hook de validación
+  const {
+    validateForm,
+    errors: validationErrors,
+    clearErrors: clearValidationErrors
+  } = useFormValidation('reset-password')
 
   const {
     control,
@@ -17,16 +32,38 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
     }
   })
 
+  // Mostrar alerta cuando hay un error del contexto
+  useEffect(() => {
+    if (error) {
+      // Mostrar error como alerta nativa para errores de Firebase
+      Alert.alert('Error', error, [{ text: 'OK' }])
+      clearError()
+    }
+  }, [error, clearError])
+
+
+
+  const showSuccessAlert = (message) => {
+    setAlertMessage(message)
+    setAlertType('success')
+    setAlertVisible(true)
+  }
+
   const onSubmit = async (data) => {
+    // Validar formulario antes de enviar
+    const validation = validateForm(data)
+    
+    if (!validation.isValid) {
+      // Los errores se muestran debajo del campo
+      return
+    }
+
     try {
       await resetPassword(data.email)
-      Alert.alert(
-        'Email enviado',
-        'Se ha enviado un email con instrucciones para restablecer tu contraseña.',
-        [{ text: 'OK', onPress: onSwitchToLogin }]
-      )
+      showSuccessAlert('Se ha enviado un email con las instrucciones para restablecer tu contraseña.')
     } catch (error) {
-      Alert.alert('Error', error.message)
+      // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
+      console.log('Error capturado en pantalla:', error.message)
     }
   }
 
@@ -36,74 +73,23 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
       className="flex-1"
       style={{ backgroundColor: colors.background }}
     >
-      {/* Header con branding */}
-      <View className="flex-1 justify-center items-center px-6">
-        <View className="items-center mb-6">
-          <Text 
-            className="text-2xl text-center font-semibold mb-2"
-            style={{ color: colors.text }}
-          >
-            Recuperar Contraseña
-          </Text>
-          <Text 
-            className="text-lg text-center leading-6"
-            style={{ color: colors.textSecondary }}
-          >
-            Ingresa tu email para recibir instrucciones
-          </Text>
-        </View>
+      {/* AuthAlert para errores y éxito */}
+      <AuthAlert
+        visible={alertVisible}
+        message={alertMessage}
+        type={alertType}
+        onClose={() => setAlertVisible(false)}
+        autoHide={true}
+        duration={alertType === 'success' ? 6000 : 5000}
+      />
 
-        {/* Ilustración */}
-        <View className="mb-8">
-          <Image 
-            source={require("../../../assets/logoBiblionauta.png")}
-            className="w-64 h-64 opacity-80"
-            resizeMode="contain"
-          />
-        </View>
+      {/* Header con logo y branding */}
+      <View className="flex-1 justify-center items-center px-6">
+        <HeaderSign text={'Restablecer Contraseña'}/>
 
         {/* Formulario */}
         <View className="w-full space-y-16">
-          {/* Email */}
-          <View className='my-4'>
-            <Text 
-              className="text-base font-semibold mb-2"
-              style={{ color: colors.text }}
-            >
-              Email
-            </Text>
-            <Controller
-              control={control}
-              name="email"
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  className="rounded-xl py-4 px-4 text-base"
-                  placeholder="tu@email.com"
-                  placeholderTextColor={colors.textSecondary}
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  style={{
-                    backgroundColor: colors.card,
-                    borderWidth: 1,
-                    borderColor: colors.border,
-                    color: colors.text
-                  }}
-                />
-              )}
-            />
-            {errors.email && (
-              <Text 
-                className="text-sm mt-2"
-                style={{ color: colors.error }}
-              >
-                {errors.email.message}
-              </Text>
-            )}
-          </View>
+          <FormEmailField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} />
 
           {/* Reset Button */}
           <TouchableOpacity
@@ -125,11 +111,20 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
                 color: isSubmitting || isLoading ? colors.textSecondary : '#000000'
               }}
             >
-              {isSubmitting || isLoading ? 'Enviando...' : 'Enviar Email'}
+              {isSubmitting || isLoading ? 'Enviando...' : 'Enviar Instrucciones'}
             </Text>
           </TouchableOpacity>
 
-          <BotonSubmit action={onSwitchToLogin} text={'Volver al inicio de sesión'}/>
+          {/* Switch to Login */}
+          <View className="flex-row justify-center mt-8">
+            <Text 
+              className="text-sm"
+              style={{ color: colors.textSecondary }}
+            >
+              ¿Recordaste tu contraseña?{' '}
+            </Text>
+            <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />
+          </View>
         </View>
       </View>
     </KeyboardAvoidingView>
