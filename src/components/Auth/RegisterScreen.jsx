@@ -9,7 +9,7 @@ import { useFormValidation } from '../../hooks/useFormValidation'
 import HeaderSign from './HeaderSign'
 
 const RegisterScreen = ({ onSwitchToLogin }) => {
-  const { signUp, isLoading, error, clearError } = useAuth()
+  const { createAccount, isLoading, error, clearError } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -55,7 +55,7 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
     }
 
     try {
-      await signUp(data.email, data.password, data.name)
+      await createAccount(data.email, data.password, data.name)
     } catch (error) {
       // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
       console.log('Error capturado en pantalla:', error.message)
