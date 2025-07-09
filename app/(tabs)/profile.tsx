@@ -1,4 +1,5 @@
-import { View, ScrollView, Text, Pressable, Image } from "react-native";
+import { View, ScrollView, Text, Pressable, Image, TouchableOpacity, ActivityIndicator } from "react-native";
+import { useAuth } from "../../src/hooks/useAuth";
 import { StatusBar } from "expo-status-bar";
 import { COLORS } from "../../src/constants/colors";
 import { mockUserProfile } from "../../src/mocks/profileData";
@@ -13,6 +14,15 @@ import HeaderProfile from "../../src/components/Profile/HeaderProfile";
 
 export default function ProfileScreen() {
   const profile = mockUserProfile;
+  const { signOut, isLoading } = useAuth();
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (e) {
+      // Puedes mostrar un toast o alerta si lo deseas
+      console.error('Error al cerrar sesión', e);
+    }
+  };
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('es-ES', {
@@ -158,6 +168,20 @@ export default function ProfileScreen() {
             phoneNumber={profile.phoneNumber}
             website={profile.website}
           />
+        </View>
+
+        {/* Botón cerrar sesión (parte inferior) */}
+        <View className="items-center mb-8 mt-2 w-full">
+          <TouchableOpacity
+            onPress={handleSignOut}
+            disabled={isLoading}
+            className="bg-red-400 py-3 px-8 w-11/12 rounded-xl"
+          >
+            <Text className="text-white font-bold text-center text-lg">
+              {isLoading ? 'Cerrando sesión...' : 'Cerrar sesión'}
+            </Text>
+            {isLoading && <ActivityIndicator color="#fff" size={18} style={{ marginLeft: 10 }} />}
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
