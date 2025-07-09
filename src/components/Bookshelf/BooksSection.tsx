@@ -1,8 +1,6 @@
 import { View, Text, ScrollView, Pressable } from "react-native";
-import { COLORS } from '../../constants/colors';
 import { Book } from '../../mocks/bookshelfData';
 import { BookCard } from './BookCard';
-import { BOOKSHELF_SECTIONS } from '../../constants/bookshelf';
 
 interface BooksSectionProps {
   title: string;

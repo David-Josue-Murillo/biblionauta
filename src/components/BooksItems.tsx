@@ -1,8 +1,5 @@
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
-import Animated from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 
 export default function BooksItems({ books, startIndex = 0, highlighted = false, showDetails = false }) {
 	const booksToRender = books.slice(startIndex)

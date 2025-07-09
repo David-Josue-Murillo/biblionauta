@@ -1,4 +1,3 @@
-import { Text, View } from "react-native";
 import BooksItems from "./BooksItems";
 import BookNotFound from "./BookNotFound";
 

@@ -1,6 +1,4 @@
-import { View, Text, Image } from "react-native";
-import { StarIcon } from '../Icons';
-import { COLORS } from '../../constants/colors';
+import { Image } from "react-native";
 
 interface BookHeaderProps {
   book: {

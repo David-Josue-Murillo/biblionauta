@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, Image } from 'react-native'
-import { useForm, Controller } from 'react-hook-form'
+import { View, Text, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native'
+import { useForm } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
 import { colors } from '../../constants/theme'
 import { AuthAlert } from './AuthAlert'

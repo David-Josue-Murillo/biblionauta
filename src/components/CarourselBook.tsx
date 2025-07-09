@@ -1,7 +1,5 @@
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { Link } from 'expo-router';
-import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
-import { colors } from "../constants/theme";
 import { COLORS } from "../constants/colors";
 
 export default function CarourselBook({ books }) {

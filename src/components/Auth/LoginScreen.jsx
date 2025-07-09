@@ -6,7 +6,7 @@ import { colors } from '../../constants/theme'
 import BotonSubmit from './BotonSubmit'
 import { useFormValidation } from '../../hooks/useFormValidation'
 import AuthLayout from './AuthLayout'
-import FormField, { FormEmailField, FormPasswordField } from './FormField'
+import { FormEmailField, FormPasswordField } from './FormField'
 import SubmitButton from './SubmitButton'
 
 const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
