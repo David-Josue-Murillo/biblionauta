@@ -1,48 +1,65 @@
 import '../../global.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, TextInput, ScrollView, Pressable, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useBooks } from "../../src/hooks/useBooks";
 import { colors } from "../../src/constants/theme";
-const filterOptions = ["Todos", "Título", "Autor", "Género"];
+const filterOptions = ["Todos", "Título", "Autor", "Género", "Categoría"];
 
 export default function SearchScreen() {
   const { books, loading, error } = useBooks();
   const [search, setSearch] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
 
-  const uniqueBooks = [];
-  const seenIds = new Set();
-  for (const book of books) {
-    if (!seenIds.has(book.id)) {
-      uniqueBooks.push(book);
-      seenIds.add(book.id);
+  useEffect(() => {
+    if (books && books.length > 0) {
+      const categories = new Set<string>();
+      books.forEach(book => {
+        book.categories?.forEach(cat => categories.add(cat));
+      });
+      const newCategories = Array.from(categories);
+      // Solo actualiza si hay cambios reales
+      if (JSON.stringify(newCategories) !== JSON.stringify(uniqueCategories)) {
+        setUniqueCategories(newCategories);
+      }
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [books]);
 
-  // Filtrar según búsqueda y filtro seleccionado
-
+  // Filtrar según búsqueda, filtro seleccionado y categoría
   const filteredBooks = books.filter((book) => {
     const text = search.toLowerCase();
     const title = book.title?.toLowerCase() || "";
     const authors = (book.authors?.join(", ") || "").toLowerCase();
-    const categories = (book.categories?.join(", ") || "").toLowerCase();
   
-  
+    let matchesFilter = false;
+
     if (selectedFilter === "Todos") {
-      return (
-        title.includes(text) ||
-        authors.includes(text) ||
-        categories.includes(text)
-      );
+      matchesFilter = title.includes(text) || authors.includes(text) || (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
     } else if (selectedFilter === "Título") {
-      return title.includes(text);
+      matchesFilter = title.includes(text);
     } else if (selectedFilter === "Autor") {
-      return authors.includes(text);
+      matchesFilter = authors.includes(text);
     } else if (selectedFilter === "Género") {
-      return categories.includes(text);
+      matchesFilter = (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
+    } else if (selectedFilter === "Categoría") {
+      if (selectedCategory) {
+        matchesFilter = book.categories?.includes(selectedCategory) || false;
+        if (text) {
+          matchesFilter = matchesFilter && (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
+        }
+      } else {
+        if (text) {
+          matchesFilter = (book.categories?.some(cat => cat.toLowerCase().includes(text)) || false);
+        } else {
+          matchesFilter = (book.categories && book.categories.length > 0) || false;
+        }
+      }
     }
-    return false;
+
+    return matchesFilter;
   });
 
   return (
@@ -84,7 +101,13 @@ export default function SearchScreen() {
         {filterOptions.map((option) => (
           <Pressable
             key={option}
-            onPress={() => setSelectedFilter(option)}
+            onPress={() => {
+              setSelectedFilter(option);
+              // Resetear categoría seleccionada si el filtro cambia a algo que no sea 'Categoría'
+              if (option !== "Categoría") {
+                setSelectedCategory(null);
+              }
+            }}
             style={{
               paddingVertical: 6,
               paddingHorizontal: 12,
@@ -105,8 +128,51 @@ export default function SearchScreen() {
         ))}
       </View>
 
+      {/* Chips de Categorías (solo si el filtro 'Categoría' está seleccionado) */}
+      {selectedFilter === "Categoría" && uniqueCategories.length > 0 && (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 10, paddingHorizontal: 16 }}>
+          {uniqueCategories.map((category) => (
+            <Pressable
+              key={category}
+              onPress={() => setSelectedCategory(category)}
+              style={{
+                paddingVertical: 6,
+                paddingHorizontal: 12,
+                backgroundColor: selectedCategory === category ? "#FFD600" : (colors.card || "#3a3327"),
+                borderRadius: 12,
+                marginRight: 8,
+                marginBottom: 6,
+                height: 32, 
+                minWidth: 80, 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+              }}
+            >
+              <Text
+                style={{
+                  color: selectedCategory === category ? "#23201a" : "#fff",
+                  fontWeight: "bold",
+                  fontSize: 14,
+                  textAlign: 'center', 
+                }}
+              >
+                {category}
+              </Text>
+            </Pressable>
+          ))}
+        </ScrollView>
+      )}
+
       {/* Resultados */}
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}>
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingBottom: 32,
+          alignItems: "flex-start",
+          justifyContent: 'flex-start', // Asegura que el contenido se alinee arriba
+        }}
+        keyboardShouldPersistTaps="handled"
+      >
         {loading ? (
           <ActivityIndicator color="#FFD600" size="large" style={{ marginTop: 40 }} />
         ) : error ? (
@@ -119,7 +185,6 @@ export default function SearchScreen() {
               key={book.id}
               style={{
                 flexDirection: "row",
-                alignItems: "center",
                 backgroundColor: colors.card || "#3a3327",
                 borderRadius: 16,
                 marginBottom: 14,
