@@ -2,7 +2,11 @@ import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 
-export default function BooksItems({ books, showDetails = false, startIndex = 0, highlighted = false }) {
+<<<<<<< HEAD
+export default function BooksItems({ books, startIndex = 0, highlighted = false, showDetails = false }) {
+=======
+
+>>>>>>> b4b0d8c4b584cc9d88c5e55e4cb03d8eee1d3b27
 	const booksToRender = books.slice(startIndex)
 	
 	const generateUniqueKey = (id, index) => {
@@ -46,18 +50,25 @@ export default function BooksItems({ books, showDetails = false, startIndex = 0,
 							>
 								{title}
 							</Text>
-							{/* Mostrar autor solo si showDetails es true */}
-							{showDetails && authors && (
-							<Text className="text-[10px] text-zinc-300 text-center" numberOfLines={1}>
-								{Array.isArray(authors) ? authors.join(", ") : authors}
-							</Text>
-							)}
-							{/* Mostrar género/categoría solo si showDetails es true */}
-							{showDetails && categories && categories.length > 0 && (
-							<Text className="text-[10px] text-zinc-400 text-center italic" numberOfLines={1}>
-								{categories.join(", ")}
-							</Text>
-							)}
+<<<<<<< HEAD
+<<<<<<< HEAD
+							{/* Mostrar detalles solo si showDetails es true */}
+                            {showDetails && authors && (
+                                <Text style={{ fontSize: 10, color: "#d1d5db", textAlign: "center" }} numberOfLines={1}>
+                                    {Array.isArray(authors) ? authors.join(", ") : authors}
+                                </Text>
+                            )}
+                            {showDetails && categories && categories.length > 0 && (
+                                <Text style={{ fontSize: 10, color: "#a1a1aa", textAlign: "center", fontStyle: "italic" }} numberOfLines={1}>
+                                    {categories.join(", ")}
+                                </Text>
+                            )}
+=======
+							
+>>>>>>> 29fc85b2848e39c64ecb9ff18505ac50bdf94e82
+=======
+							
+>>>>>>> b4b0d8c4b584cc9d88c5e55e4cb03d8eee1d3b27
 						</Pressable>
 					</Link>
 				)

@@ -1,23 +1,48 @@
-import '../../global.css';
-import { colors } from "../../src/constants/theme";
+import '../../global.css'
 import { useState } from "react";
 import { View, Text, TextInput, ScrollView, Pressable, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useBooks } from "../../src/hooks/useBooks";
-import { useRouter } from 'expo-router'; 
+import { colors } from "../../src/constants/theme";
+const filterOptions = ["Todos", "Título", "Autor", "Género"];
 
 export default function SearchScreen() {
   const { books, loading, error } = useBooks();
   const [search, setSearch] = useState("");
-  const router = useRouter(); 
+  const [selectedFilter, setSelectedFilter] = useState("Todos");
 
-  // Solo se filtra por título o autor
+  const uniqueBooks = [];
+  const seenIds = new Set();
+  for (const book of books) {
+    if (!seenIds.has(book.id)) {
+      uniqueBooks.push(book);
+      seenIds.add(book.id);
+    }
+  }
+
+  // Filtrar según búsqueda y filtro seleccionado
+
   const filteredBooks = books.filter((book) => {
     const text = search.toLowerCase();
     const title = book.title?.toLowerCase() || "";
     const authors = (book.authors?.join(", ") || "").toLowerCase();
-
-    return title.includes(text) || authors.includes(text);
+    const categories = (book.categories?.join(", ") || "").toLowerCase();
+  
+  
+    if (selectedFilter === "Todos") {
+      return (
+        title.includes(text) ||
+        authors.includes(text) ||
+        categories.includes(text)
+      );
+    } else if (selectedFilter === "Título") {
+      return title.includes(text);
+    } else if (selectedFilter === "Autor") {
+      return authors.includes(text);
+    } else if (selectedFilter === "Género") {
+      return categories.includes(text);
+    }
+    return false;
   });
 
   return (
@@ -26,36 +51,62 @@ export default function SearchScreen() {
       <View
         style={{
           margin: 16,
-          backgroundColor: "#232946",
+         
+          backgroundColor: colors.card,
           borderRadius: 24,
           flexDirection: "row",
           alignItems: "center",
           paddingHorizontal: 16,
+
           borderWidth: 1,
-          borderColor: "#00fff7"
+          borderColor: "#a89c7c"
         }}
       >
         <Ionicons name="search" size={22} color="#a89c7c" />
         <TextInput
-          placeholder="Buscar por título o autor"
+          placeholder="Título, autor, género, tema"
           placeholderTextColor="#a89c7c"
+
           style={{
             flex: 1,
-            color: "#ffffff", 
+            color: "#fff",
             fontSize: 16,
             marginLeft: 8,
             height: 48,
-            paddingHorizontal: 4, 
           }}
           value={search}
           onChangeText={setSearch}
         />
+      </View>
 
+      {/* Filtros */}
+      <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 10 }}>
+        {filterOptions.map((option) => (
+          <Pressable
+            key={option}
+            onPress={() => setSelectedFilter(option)}
+            style={{
+              paddingVertical: 6,
+              paddingHorizontal: 12,
+              backgroundColor: selectedFilter === option ? "#FFD600" : (colors.card || "#3a3327"),
+              borderRadius: 12,
+            }}
+          >
+            <Text
+              style={{
+                color: selectedFilter === option ? "#23201a" : "#fff",
+                fontWeight: "bold",
+                fontSize: 14,
+              }}
+            >
+              {option}
+            </Text>
+          </Pressable>
+        ))}
       </View>
 
       {/* Resultados */}
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 8, paddingBottom: 32 }}>
-
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 32 }}>
         {loading ? (
           <ActivityIndicator color="#FFD600" size="large" style={{ marginTop: 40 }} />
         ) : error ? (
@@ -64,12 +115,12 @@ export default function SearchScreen() {
           </Text>
         ) : filteredBooks.length > 0 ? (
           filteredBooks.map((book) => (
-            <Pressable
+            <View
               key={book.id}
-              onPress={() => router.push(`/book/${book.id}`)}  // navegar a su respectiva información
               style={{
                 flexDirection: "row",
                 alignItems: "center",
+                backgroundColor: colors.card || "#3a3327",
                 borderRadius: 16,
                 marginBottom: 14,
                 padding: 10,
@@ -79,7 +130,7 @@ export default function SearchScreen() {
                 shadowOpacity: 0.12,
                 shadowRadius: 4,
                 borderWidth: 1,
-                borderColor: "#00fff7"
+                borderColor: "#5a5040"
               }}
             >
               <Image
@@ -107,7 +158,7 @@ export default function SearchScreen() {
                   </Text>
                 ) : null}
               </View>
-            </Pressable>
+            </View>
           ))
         ) : (
           <Text style={{ color: "#fff", textAlign: "center", marginTop: 32 }}>
