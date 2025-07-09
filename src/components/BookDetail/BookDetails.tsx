@@ -1,16 +1,10 @@
 import { View, Text } from "react-native";
 import { COLORS } from '../../constants/colors';
 import { stripHtmlTags } from '../../utils/book';
+import type { Book } from '../../mocks/bookshelfData';
 
 interface BookDetailsProps {
-  book: {
-    title: string;
-    subtitle: string;
-    authors: string[];
-    language: string;
-    description: string;
-    categories: string[];
-  };
+  book: Partial<Book>;
 }
 
 interface DetailRowProps {
@@ -40,12 +34,12 @@ export function BookDetails({ book }: BookDetailsProps) {
         borderColor: COLORS.border.muted
       }}
     >
-      <DetailRow label="TÍTULO" value={book.title} valueColor={COLORS.text.primary} />
-      <DetailRow label="SUBTÍTULO" value={book.subtitle} />
-      <DetailRow label="AUTORES" value={book.authors.join(", ")} />
-      <DetailRow label="IDIOMA" value={book.language} />
-      <DetailRow label="DESCRIPCIÓN" value={stripHtmlTags(book.description)} valueColor={COLORS.text.primary} />
-      <DetailRow label="CATEGORÍAS" value={book.categories.join(", ")} valueColor={COLORS.accent.tertiary} />
+      <DetailRow label="TÍTULO" value={book.title || ''} valueColor={COLORS.text.primary} />
+      <DetailRow label="SUBTÍTULO" value={book.subtitle || ''} />
+      <DetailRow label="AUTORES" value={book.authors?.join(", ") || ''} />
+      <DetailRow label="IDIOMA" value={book.language || ''} />
+      <DetailRow label="DESCRIPCIÓN" value={stripHtmlTags(book.description || '')} valueColor={COLORS.text.primary} />
+      <DetailRow label="CATEGORÍAS" value={book.categories?.join(", ") || ''} valueColor={COLORS.accent.tertiary} />
     </View>
   );
 } 

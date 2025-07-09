@@ -3,13 +3,8 @@ import { Modal, TouchableOpacity, Pressable, Text, View, ScrollView } from 'reac
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useNavigation } from "expo-router";
 import { StatusBar } from 'expo-status-bar';
-
-
-// Custom hooks
 import { useBookDetails } from "../../src/hooks/useBookDetails";
-
-// Utils
-import { stripHtmlTags } from "../../src/utils/book";
+import { useUserBooks } from '../../src/contexts/UserBooksContext';
 
 // Components
 import {
@@ -41,18 +36,39 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function BookDetailScreen() {
   const { id } = useLocalSearchParams();
-  const { book, loading, error } = useBookDetails(id as string);
+  const { book: detailedBook, loading, error } = useBookDetails(id as string);
+  const { books, toggleFavorite, addBook } = useUserBooks();
+  // Busca si el libro es favorito en el contexto
+  const favoriteBook = books.find(b => b.id === id);
+  const isFavorite = favoriteBook?.isFavorite ?? false;
   const navigate = useNavigation();
-
+  // Estado para manejar el modal de categorías
   const [showCategoriesModal, setShowCategoriesModal] = useState(false);
-  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const maxChips = 2;
-  const extraCategories = (book?.categories?.length || 0) - maxChips;
+  const extraCategories = (detailedBook?.categories?.length || 0) - maxChips;
 
   const handleGoBack = () => navigate.goBack();
-  const handleAddToWishlist = () => console.log('Añadir a lista de deseos:', book?.title);
-  const handleAddToShelf = () => console.log('Añadir a estantería:', book?.title);
+  const [isTogglingFavorite, setIsTogglingFavorite] = useState(false);
+  const handleAddToWishlist = () => {
+    if (!detailedBook) return;
+    setIsTogglingFavorite(true);
+    if (!favoriteBook) {
+      // Si el libro no está en la biblioteca, lo agregamos como favorito
+      addBook({
+        ...detailedBook,
+        isFavorite: true,
+        totalPages: 0,
+        status: 'NOT_STARTED',
+        genre: 'FICTION', // valor por defecto válido
+        addedDate: new Date().toISOString(),
+      } as any);
+    } else {
+      toggleFavorite(favoriteBook.id);
+    }
+    setTimeout(() => setIsTogglingFavorite(false), 350); // Breve feedback visual
+  };
+  const handleAddToShelf = () => console.log('Añadir a estantería:', detailedBook?.title);
 
   // Loading state
   if (loading) {
@@ -60,9 +76,11 @@ export default function BookDetailScreen() {
   }
 
   // Error state
-  if (error || !book) {
-    return <ErrorState error={error || ''} onGoBack={handleGoBack} />;
+  if (error || !detailedBook) {
+    return <ErrorState error={error || 'Libro no encontrado'} onGoBack={handleGoBack} />;
   }
+
+  const book = { ...detailedBook, isFavorite };
 
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.background.primary }}>
@@ -157,20 +175,34 @@ export default function BookDetailScreen() {
             justifyContent: 'center',
             borderRadius: 14,
             paddingVertical: 14,
-            backgroundColor: pressed ? COLORS.accent.secondary : COLORS.accent.primary,
+            backgroundColor: book?.isFavorite
+              ? (isTogglingFavorite ? COLORS.accent.secondary : '#FFD700')
+              : (pressed ? COLORS.accent.secondary : COLORS.accent.primary),
             marginRight: 8,
-            minHeight: 48
+            minHeight: 48,
+            opacity: isTogglingFavorite ? 0.7 : 1
           }]}
           accessibilityRole="button"
-          accessibilityLabel="Añadir a lista de deseos"
+          accessibilityLabel={book?.isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
         >
           <Ionicons
-            name="heart"
-            size={20}
-            color= {COLORS.accent.primary}
-            style={{ marginRight: 8, alignSelf: 'center' }} />
-          <Text style={{ color: COLORS.text.primary, fontWeight: 'bold', fontSize: 16 }}>
-            Lista de deseos
+            name={book?.isFavorite
+              ? (isTogglingFavorite ? 'heart-dislike' : 'heart')
+              : (isTogglingFavorite ? 'heart' : 'heart-outline')}
+            size={22}
+            color={book?.isFavorite ? COLORS.accent.primary : COLORS.accent.primary}
+            style={{ marginRight: 8, alignSelf: 'center', transform: [{ scale: isTogglingFavorite ? 1.2 : 1 }] }}
+          />
+          <Text style={{
+            color: COLORS.text.primary,
+            fontWeight: 'bold',
+            fontSize: 16,
+            textAlignVertical: 'center',
+            opacity: isTogglingFavorite ? 0.7 : 1
+          }}>
+            {book?.isFavorite
+              ? (isTogglingFavorite ? 'Quitando...' : 'En Favorito')
+              : (isTogglingFavorite ? 'Agregando...' : 'Agregar a favorito')}
           </Text>
         </Pressable>
         <Pressable

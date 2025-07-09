@@ -11,14 +11,13 @@ import {
 } from "../../src/components/Bookshelf";
 
 // Data
-import { 
-  userBooks, 
-  readingStats, 
-  userAchievements,
-  personalCollections
-} from "../../src/mocks/bookshelfData";
+
+import { readingStats, userAchievements, personalCollections } from "../../src/mocks/bookshelfData";
+import { useUserBooks } from '../../src/contexts/UserBooksContext';
 
 export default function Bookshelf() {
+  const { books } = useUserBooks();
+
   const handleStatsPress = () => {
     console.log('Ver estadísticas detalladas');
     // TODO: Navegar a pantalla de estadísticas detalladas
@@ -27,6 +26,7 @@ export default function Bookshelf() {
   const handleAchievementsPress = () => {
     console.log('Ver todos los logros');
     // TODO: Navegar a pantalla de logros
+    // Aquí podrías pasar los logros al contexto o a la pantalla de logros
   };
 
   const handleSectionPress = (sectionId: string) => {
@@ -64,7 +64,7 @@ export default function Bookshelf() {
             <View>
               <Text className="text-2xl font-bold text-white">📚 Mi Biblioteca</Text>
               <Text className="text-zinc-400 text-sm">
-                {userBooks.length} libros en tu colección
+                {books.length} libros en tu colección
               </Text>
             </View>
             <Pressable
@@ -103,12 +103,12 @@ export default function Bookshelf() {
 
         {/* Secciones de libros */}
         <BookshelfOverview 
-          books={userBooks}
+          books={books}
           onSectionPress={handleSectionPress}
         />
 
         {/* Mensaje si no hay libros */}
-        {userBooks.length === 0 && (
+        {books.length === 0 && (
           <View className="mx-4 mt-8 items-center">
             <Text className="text-6xl mb-4">📚</Text>
             <Text className="text-white text-lg font-semibold mb-2">
