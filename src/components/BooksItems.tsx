@@ -27,9 +27,9 @@ export default function BooksItems({ books, startIndex = 0, highlighted = false,
 						>
 							<View style={styles.cardRecentLike} className="rounded-lg overflow-hidden border">
 								<Image
-									source={{ uri: image }}
+									source={ image ? { uri: image } : require('../../assets/img/default-cover.webp') }
 									className="w-full h-40 rounded-lg mb-2"
-									accessibilityLabel={`Portada de ${title}`}
+									accessibilityLabel={`Portada de ${title}`}	
 									resizeMode="cover"
 								/>
 								<Text
