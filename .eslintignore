@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.expo/
+.expo-shared/
+web-build/
+
+# Environment files
+.env*
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage directory
+coverage/
+
+# Android
+android/
+
+# iOS
+ios/
+
+# Generated files
+*.generated.*
+*.min.js
+
+# Config files that might have different rules
+babel.config.js
+metro.config.js
+tailwind.config.js
+
+# Package files
+package-lock.json
+yarn.lock 
