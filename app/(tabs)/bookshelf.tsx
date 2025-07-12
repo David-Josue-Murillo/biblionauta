@@ -1,21 +1,21 @@
-import { View, ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { COLORS } from '../../src/constants/colors'
 
 // Components
 import {
-  ReadingStats,
   AchievementsSection,
   BookshelfOverview,
   PersonalCollections,
+  ReadingStats,
 } from '../../src/components/Bookshelf'
 
 // Data
 
 import {
+  personalCollections,
   readingStats,
   userAchievements,
-  personalCollections,
 } from '../../src/mocks/bookshelfData'
 import { useUserBooks } from '../../src/contexts/UserBooksContext'
 import BookshelfHeader from '../../src/components/Bookshelf/BookshelfHeader'
@@ -31,11 +31,7 @@ export default function Bookshelf() {
     >
       <StatusBar style="light" />
 
-      <ScrollView
-        className="flex-1"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
-      >
+      <ScrollView className="flex-1 pb-5" showsVerticalScrollIndicator={false}>
         {/* Header */}
         <BookshelfHeader books={books} />
 
