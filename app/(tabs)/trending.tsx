@@ -1,5 +1,5 @@
 import '../../global.css'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useBooks } from '../../src/hooks/useBooks'
 import BooksItems from '../../src/components/BooksItems'
 import { colors } from '../../src/constants/theme'
@@ -19,8 +19,8 @@ export default function TrendingScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.background,
+    flex: 1,
     padding: 16,
   },
   scrollContainer: {
@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
   },
 
   title: {
+    color: colors.primary,
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.primary,
-    textAlign: 'center',
     marginBottom: 16,
+    textAlign: 'center',
   },
 })
