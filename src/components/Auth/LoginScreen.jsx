@@ -8,29 +8,28 @@ import { useFormValidation } from '../../hooks/useFormValidation'
 import AuthLayout from './AuthLayout'
 import { FormEmailField, FormPasswordField } from './FormField'
 import SubmitButton from './SubmitButton'
-import { ScrollView } from 'react-native' 
+import { ScrollView } from 'react-native'
 
 const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
   const { signIn, isLoading, error, clearError } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
 
-
   // Hook de validación
   const {
     validateForm,
     errors: validationErrors,
-    clearErrors: clearValidationErrors
+    clearErrors: clearValidationErrors,
   } = useFormValidation('login')
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
       email: '',
-      password: ''
-    }
+      password: '',
+    },
   })
 
   // Mostrar alerta cuando hay un error del contexto
@@ -42,9 +41,7 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
     }
   }, [error, clearError])
 
-
-
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     // Validar formulario antes de enviar
     const validation = validateForm(data)
 
@@ -67,8 +64,17 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
         {/* Formulario */}
         <View className="w-full space-y-16">
           {/* Email y Password*/}
-          <FormEmailField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} />
-          <FormPasswordField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} showPassword={showPassword} />
+          <FormEmailField
+            control={control}
+            validationErrors={validationErrors}
+            clearValidationErrors={clearValidationErrors}
+          />
+          <FormPasswordField
+            control={control}
+            validationErrors={validationErrors}
+            clearValidationErrors={clearValidationErrors}
+            showPassword={showPassword}
+          />
 
           {/* Forgot Password */}
           <TouchableOpacity onPress={onSwitchToReset} className="self-end">
@@ -89,11 +95,8 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
           />
 
           {/* Switch to Register */}
-          <View className="flex-row justify-center mt-8">
-            <Text
-              className="text-sm"
-              style={{ color: colors.textSecondary }}
-            >
+          <View className="mt-8 flex-row justify-center">
+            <Text className="text-sm" style={{ color: colors.textSecondary }}>
               ¿No tienes cuenta?{' '}
             </Text>
             <BotonSubmit action={onSwitchToRegister} text={'Crear cuenta'} />

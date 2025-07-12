@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   sendEmailVerification,
-  User  
+  User,
 } from 'firebase/auth'
 import { auth } from '../config/firebase'
 
@@ -21,7 +21,7 @@ const errorMessages: Record<string, string> = {
   'auth/invalid-email': 'Email inválido',
   'auth/too-many-requests': 'Demasiados intentos. Intenta más tarde',
   'auth/user-disabled': 'Esta cuenta ha sido deshabilitada',
-  'auth/network-request-failed': 'Error de conexión. Verifica tu internet'
+  'auth/network-request-failed': 'Error de conexión. Verifica tu internet',
 }
 
 function handleAuthError(error: any): Error {
@@ -29,9 +29,17 @@ function handleAuthError(error: any): Error {
 }
 
 // Crear cuenta con email y contraseña
-export async function createAccount(email: string, password: string, displayName: string): Promise<AuthUser> {
+export async function createAccount(
+  email: string,
+  password: string,
+  displayName: string
+): Promise<AuthUser> {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
     const user = userCredential.user
     await updateProfile(user, { displayName })
     await sendEmailVerification(user)
@@ -43,9 +51,16 @@ export async function createAccount(email: string, password: string, displayName
 }
 
 // Iniciar sesión con email y contraseña
-export async function signIn(email: string, password: string): Promise<AuthUser> {
+export async function signIn(
+  email: string,
+  password: string
+): Promise<AuthUser> {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password)
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
     return userCredential.user as AuthUser
   } catch (error: any) {
     console.error('Error al iniciar sesión:', error)
@@ -82,4 +97,4 @@ export function onAuthStateChanged(callback: (user: AuthUser | null) => void) {
 // Obtener usuario actual
 export function getCurrentUser(): AuthUser | null {
   return auth.currentUser as AuthUser | null
-} 
+}

@@ -1,5 +1,14 @@
 import { useState, useEffect } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
 import { colors } from '../../constants/theme'
@@ -13,25 +22,24 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-
   // Hook de validación
   const {
     validateForm,
     errors: validationErrors,
-    clearErrors: clearValidationErrors
+    clearErrors: clearValidationErrors,
   } = useFormValidation('register')
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
       name: '',
       email: '',
       password: '',
-      confirmPassword: ''
-    }
+      confirmPassword: '',
+    },
   })
 
   // Mostrar alerta cuando hay un error del contexto
@@ -43,12 +51,10 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
     }
   }, [error, clearError])
 
-
-
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     // Validar formulario antes de enviar
     const validation = validateForm(data)
-    
+
     if (!validation.isValid) {
       // Los errores se muestran debajo de cada campo
       return
@@ -63,22 +69,22 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
   }
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
       style={{ backgroundColor: colors.background }}
     >
       <ScrollView>
         {/* Header con logo y branding */}
-        <View className="flex-1 justify-center items-center px-6 mb-6">
-          <HeaderSign text={'Únete a Biblionauta'}/>
+        <View className="mb-6 flex-1 items-center justify-center px-6">
+          <HeaderSign text={'Únete a Biblionauta'} />
 
           {/* Formulario */}
           <View className="w-full space-y-4">
             {/* Name */}
-            <View className='my-2'>
+            <View className="my-2">
               <Text
-                className="text-base font-semibold mb-2"
+                className="mb-2 text-base font-semibold"
                 style={{ color: colors.text }}
               >
                 Nombre
@@ -88,11 +94,11 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 name="name"
                 render={({ field: { onChange, onBlur, value } }) => (
                   <TextInput
-                    className="rounded-xl py-4 px-4 text-base"
+                    className="rounded-xl px-4 py-4 text-base"
                     placeholder="Tu nombre"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={(text) => {
+                    onChangeText={text => {
                       onChange(text)
                       // Limpiar error de validación cuando el usuario empiece a escribir
                       if (validationErrors.name) {
@@ -104,26 +110,25 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: validationErrors.name ? colors.error : colors.border,
-                      color: colors.text
+                      borderColor: validationErrors.name
+                        ? colors.error
+                        : colors.border,
+                      color: colors.text,
                     }}
                   />
                 )}
               />
               {validationErrors.name && (
-                <Text 
-                  className="text-sm mt-2"
-                  style={{ color: colors.error }}
-                >
+                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
                   {validationErrors.name}
                 </Text>
               )}
             </View>
 
             {/* Email */}
-            <View className='my-2'>
+            <View className="my-2">
               <Text
-                className="text-base font-semibold mb-2"
+                className="mb-2 text-base font-semibold"
                 style={{ color: colors.text }}
               >
                 Email
@@ -133,11 +138,11 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 name="email"
                 render={({ field: { onChange, onBlur, value } }) => (
                   <TextInput
-                    className="rounded-xl py-4 px-4 text-base"
+                    className="rounded-xl px-4 py-4 text-base"
                     placeholder="usuario@email.com"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={(text) => {
+                    onChangeText={text => {
                       onChange(text)
                       // Limpiar error de validación cuando el usuario empiece a escribir
                       if (validationErrors.email) {
@@ -151,26 +156,25 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: validationErrors.email ? colors.error : colors.border,
-                      color: colors.text
+                      borderColor: validationErrors.email
+                        ? colors.error
+                        : colors.border,
+                      color: colors.text,
                     }}
                   />
                 )}
               />
               {validationErrors.email && (
-                <Text 
-                  className="text-sm mt-2"
-                  style={{ color: colors.error }}
-                >
+                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
                   {validationErrors.email}
                 </Text>
               )}
             </View>
 
             {/* Password */}
-            <View className='my-2'>
+            <View className="my-2">
               <Text
-                className="text-base font-semibold mb-2"
+                className="mb-2 text-base font-semibold"
                 style={{ color: colors.text }}
               >
                 Contraseña
@@ -180,11 +184,11 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 name="password"
                 render={({ field: { onChange, onBlur, value } }) => (
                   <TextInput
-                    className="rounded-xl py-4 px-4 text-base"
+                    className="rounded-xl px-4 py-4 text-base"
                     placeholder="••••••••"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={(text) => {
+                    onChangeText={text => {
                       onChange(text)
                       // Limpiar error de validación cuando el usuario empiece a escribir
                       if (validationErrors.password) {
@@ -196,26 +200,25 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: validationErrors.password ? colors.error : colors.border,
-                      color: colors.text
+                      borderColor: validationErrors.password
+                        ? colors.error
+                        : colors.border,
+                      color: colors.text,
                     }}
                   />
                 )}
               />
               {validationErrors.password && (
-                <Text 
-                  className="text-sm mt-2"
-                  style={{ color: colors.error }}
-                >
+                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
                   {validationErrors.password}
                 </Text>
               )}
             </View>
 
             {/* Confirm Password */}
-            <View className='my-2'>
+            <View className="my-2">
               <Text
-                className="text-base font-semibold mb-2"
+                className="mb-2 text-base font-semibold"
                 style={{ color: colors.text }}
               >
                 Confirmar Contraseña
@@ -225,11 +228,11 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                 name="confirmPassword"
                 render={({ field: { onChange, onBlur, value } }) => (
                   <TextInput
-                    className="rounded-xl py-4 px-4 text-base"
+                    className="rounded-xl px-4 py-4 text-base"
                     placeholder="••••••••"
                     placeholderTextColor={colors.textSecondary}
                     value={value}
-                    onChangeText={(text) => {
+                    onChangeText={text => {
                       onChange(text)
                       // Limpiar error de validación cuando el usuario empiece a escribir
                       if (validationErrors.confirmPassword) {
@@ -241,17 +244,16 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
                     style={{
                       backgroundColor: colors.card,
                       borderWidth: 1,
-                      borderColor: validationErrors.confirmPassword ? colors.error : colors.border,
-                      color: colors.text
+                      borderColor: validationErrors.confirmPassword
+                        ? colors.error
+                        : colors.border,
+                      color: colors.text,
                     }}
                   />
                 )}
               />
               {validationErrors.confirmPassword && (
-                <Text 
-                  className="text-sm mt-2"
-                  style={{ color: colors.error }}
-                >
+                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
                   {validationErrors.confirmPassword}
                 </Text>
               )}
@@ -261,32 +263,35 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
             <TouchableOpacity
               onPress={handleSubmit(onSubmit)}
               disabled={isSubmitting || isLoading}
-              className="rounded-xl py-4 px-6 mt-6"
+              className="mt-6 rounded-xl px-6 py-4"
               style={{
-                backgroundColor: isSubmitting || isLoading ? colors.disabled : colors.primary,
+                backgroundColor:
+                  isSubmitting || isLoading ? colors.disabled : colors.primary,
                 shadowColor: colors.primary,
                 shadowOffset: { width: 0, height: 4 },
                 shadowOpacity: 0.3,
                 shadowRadius: 8,
-                elevation: 8
+                elevation: 8,
               }}
             >
-              <Text 
-                className="font-bold text-center text-lg"
-                style={{ 
-                  color: isSubmitting || isLoading ? colors.textSecondary : '#000000'
+              <Text
+                className="text-center text-lg font-bold"
+                style={{
+                  color:
+                    isSubmitting || isLoading
+                      ? colors.textSecondary
+                      : '#000000',
                 }}
               >
-                {isSubmitting || isLoading ? 'Creando cuenta...' : 'Crear Cuenta'}
+                {isSubmitting || isLoading
+                  ? 'Creando cuenta...'
+                  : 'Crear Cuenta'}
               </Text>
             </TouchableOpacity>
 
             {/* Switch to Login */}
-            <View className="flex-row justify-center my-8">
-              <Text 
-                className="text-sm"
-                style={{ color: colors.textSecondary }}
-              >
+            <View className="my-8 flex-row justify-center">
+              <Text className="text-sm" style={{ color: colors.textSecondary }}>
                 ¿Ya tienes cuenta?{' '}
               </Text>
               <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />

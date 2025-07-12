@@ -6,25 +6,23 @@ const AuthLayout = ({
   children,
   headerText,
   showScrollView = false,
-  ScrollViewComponent = null
+  ScrollViewComponent = null,
 }) => {
   const content = (
-    <View className="flex-1 justify-center items-center px-6 mb-6">
+    <View className="mb-6 flex-1 items-center justify-center px-6">
       <HeaderSign text={headerText} />
       {children}
     </View>
   )
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
       style={{ backgroundColor: colors.background }}
     >
       {showScrollView && ScrollViewComponent ? (
-        <ScrollViewComponent>
-          {content}
-        </ScrollViewComponent>
+        <ScrollViewComponent>{content}</ScrollViewComponent>
       ) : (
         content
       )}
@@ -32,4 +30,4 @@ const AuthLayout = ({
   )
 }
 
-export default AuthLayout 
+export default AuthLayout

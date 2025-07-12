@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../../hooks/useAuth'
 import { colors } from '../../constants/theme'
@@ -8,7 +14,7 @@ import BotonSubmit from './BotonSubmit'
 import { useFormValidation } from '../../hooks/useFormValidation'
 import HeaderSign from './HeaderSign'
 import { FormEmailField } from './FormField'
-import { ScrollView } from 'react-native' 
+import { ScrollView } from 'react-native'
 
 const ResetPasswordScreen = ({ onSwitchToLogin }) => {
   const { resetPassword, isLoading, error, clearError } = useAuth()
@@ -20,17 +26,17 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
   const {
     validateForm,
     errors: validationErrors,
-    clearErrors: clearValidationErrors
+    clearErrors: clearValidationErrors,
   } = useFormValidation('reset-password')
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      email: ''
-    }
+      email: '',
+    },
   })
 
   // Mostrar alerta cuando hay un error del contexto
@@ -42,15 +48,13 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
     }
   }, [error, clearError])
 
-
-
-  const showSuccessAlert = (message) => {
+  const showSuccessAlert = message => {
     setAlertMessage(message)
     setAlertType('success')
     setAlertVisible(true)
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     // Validar formulario antes de enviar
     const validation = validateForm(data)
 
@@ -61,7 +65,9 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
 
     try {
       await resetPassword(data.email)
-      showSuccessAlert('Se ha enviado un email con las instrucciones para restablecer tu contraseña.')
+      showSuccessAlert(
+        'Se ha enviado un email con las instrucciones para restablecer tu contraseña.'
+      )
     } catch (error) {
       // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
       console.log('Error capturado en pantalla:', error.message)
@@ -86,43 +92,50 @@ const ResetPasswordScreen = ({ onSwitchToLogin }) => {
         />
 
         {/* Header con logo y branding */}
-        <View className="flex-1 justify-center items-center px-6 mb-6">
+        <View className="mb-6 flex-1 items-center justify-center px-6">
           <HeaderSign text={'Restablecer Contraseña'} />
 
           {/* Formulario */}
           <View className="w-full space-y-16">
-            <FormEmailField control={control} validationErrors={validationErrors} clearValidationErrors={clearValidationErrors} />
+            <FormEmailField
+              control={control}
+              validationErrors={validationErrors}
+              clearValidationErrors={clearValidationErrors}
+            />
 
             {/* Reset Button */}
             <TouchableOpacity
               onPress={handleSubmit(onSubmit)}
               disabled={isSubmitting || isLoading}
-              className="rounded-xl py-4 px-6 mt-6"
+              className="mt-6 rounded-xl px-6 py-4"
               style={{
-                backgroundColor: isSubmitting || isLoading ? colors.disabled : colors.primary,
+                backgroundColor:
+                  isSubmitting || isLoading ? colors.disabled : colors.primary,
                 shadowColor: colors.primary,
                 shadowOffset: { width: 0, height: 4 },
                 shadowOpacity: 0.3,
                 shadowRadius: 8,
-                elevation: 8
+                elevation: 8,
               }}
             >
               <Text
-                className="font-bold text-center text-lg"
+                className="text-center text-lg font-bold"
                 style={{
-                  color: isSubmitting || isLoading ? colors.textSecondary : '#000000'
+                  color:
+                    isSubmitting || isLoading
+                      ? colors.textSecondary
+                      : '#000000',
                 }}
               >
-                {isSubmitting || isLoading ? 'Enviando...' : 'Enviar Instrucciones'}
+                {isSubmitting || isLoading
+                  ? 'Enviando...'
+                  : 'Enviar Instrucciones'}
               </Text>
             </TouchableOpacity>
 
             {/* Switch to Login */}
-            <View className="flex-row justify-center mt-8">
-              <Text
-                className="text-sm"
-                style={{ color: colors.textSecondary }}
-              >
+            <View className="mt-8 flex-row justify-center">
+              <Text className="text-sm" style={{ color: colors.textSecondary }}>
                 ¿Recordaste tu contraseña?{' '}
               </Text>
               <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />

@@ -21,9 +21,9 @@ const AuthWrapper = ({ children }) => {
   // Mostrar loading mientras se verifica el estado de autenticación
   if (isLoading) {
     return (
-      <View className="flex-1 justify-center items-center bg-white">
+      <View className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator size="large" color="#3B82F6" />
-        <Text className="text-gray-600 mt-4 text-lg">Cargando...</Text>
+        <Text className="mt-4 text-lg text-gray-600">Cargando...</Text>
       </View>
     )
   }

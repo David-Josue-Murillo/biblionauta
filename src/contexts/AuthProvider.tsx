@@ -3,13 +3,15 @@ import { AuthContext, AuthContextProps } from './AuthContext'
 import { AuthUser } from '../services/authService'
 import * as authService from '../services/authService'
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const unsubscribe = authService.onAuthStateChanged((user) => {
+    const unsubscribe = authService.onAuthStateChanged(user => {
       setUser(user)
       setIsLoading(false)
     })
@@ -31,7 +33,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }
 
-  const createAccount = async (email: string, password: string, displayName: string) => {
+  const createAccount = async (
+    email: string,
+    password: string,
+    displayName: string
+  ) => {
     try {
       setIsLoading(true)
       setError(null)
@@ -85,9 +91,5 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     isAuthenticated: !!user,
   }
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
-} 
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+}

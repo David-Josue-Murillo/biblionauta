@@ -17,7 +17,7 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
   type = 'error',
   onClose,
   autoHide = true,
-  duration = 4000
+  duration = 4000,
 }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current
   const slideAnim = useRef(new Animated.Value(-100)).current
@@ -75,14 +75,14 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
           background: `${colors.success}40`,
           border: colors.success,
           text: colors.text,
-          icon: '✅'
+          icon: '✅',
         }
       case 'warning':
         return {
           background: `${colors.warning}40`,
           border: colors.warning,
           text: colors.text,
-          icon: '⚠️'
+          icon: '⚠️',
         }
       case 'error':
       default:
@@ -90,7 +90,7 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
           background: `${colors.error}40`,
           border: colors.error,
           text: colors.text,
-          icon: '❌'
+          icon: '❌',
         }
     }
   }
@@ -101,14 +101,14 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
 
   return (
     <Animated.View
-      className="absolute top-16 left-4 right-4 z-50"
+      className="absolute left-4 right-4 top-16 z-50"
       style={{
         opacity: fadeAnim,
         transform: [{ translateY: slideAnim }],
       }}
     >
       <View
-        className="rounded-xl p-4 flex-row items-center justify-between"
+        className="flex-row items-center justify-between rounded-xl p-4"
         style={{
           backgroundColor: alertColors.background,
           borderWidth: 1,
@@ -120,16 +120,16 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
           elevation: 8,
         }}
       >
-        <View className="flex-row items-center flex-1">
-          <Text className="text-lg mr-3">{alertColors.icon}</Text>
+        <View className="flex-1 flex-row items-center">
+          <Text className="mr-3 text-lg">{alertColors.icon}</Text>
           <Text
-            className="text-sm font-medium flex-1"
+            className="flex-1 text-sm font-medium"
             style={{ color: alertColors.text }}
           >
             {message}
           </Text>
         </View>
-        
+
         {!autoHide && onClose && (
           <TouchableOpacity
             onPress={hideAlert}
@@ -147,4 +147,4 @@ export const AuthAlert: React.FC<AuthAlertProps> = ({
       </View>
     </Animated.View>
   )
-} 
+}

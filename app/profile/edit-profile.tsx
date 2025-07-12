@@ -1,12 +1,11 @@
-import { View, ScrollView, Text, Pressable } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { router } from "expo-router";
-import { COLORS } from "../../src/constants/colors";
+import { View, ScrollView, Text, Pressable } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import { router } from 'expo-router'
+import { COLORS } from '../../src/constants/colors'
 export default function EditProfileScreen() {
-
   const handleCancel = () => {
-    router.back();
-  };
+    router.back()
+  }
 
   return (
     <View
@@ -17,36 +16,39 @@ export default function EditProfileScreen() {
 
       {/* Header */}
       <View
-        className="flex-row items-center justify-between px-4 py-4 border-b"
+        className="flex-row items-center justify-between border-b px-4 py-4"
         style={{ borderColor: COLORS.border.muted }}
       >
         <Pressable
           onPress={handleCancel}
-          className="p-2 rounded-lg"
+          className="rounded-lg p-2"
           style={({ pressed }) => [
             {
-              backgroundColor: pressed ? COLORS.background.tertiary : "transparent",
+              backgroundColor: pressed
+                ? COLORS.background.tertiary
+                : 'transparent',
             },
           ]}
         >
-          <Text className="text-white text-lg">Cancelar</Text>
+          <Text className="text-lg text-white">Cancelar</Text>
         </Pressable>
 
         <Text className="text-xl font-bold text-white">Editar Perfil</Text>
 
         <Pressable
-          className="p-2 rounded-lg"
+          className="rounded-lg p-2"
           style={({ pressed }) => [
             {
-              backgroundColor: pressed ? COLORS.background.tertiary : "transparent",
+              backgroundColor: pressed
+                ? COLORS.background.tertiary
+                : 'transparent',
             },
           ]}
         >
-          <Text 
+          <Text
             className="text-lg font-semibold"
             style={{ color: COLORS.accent.primary }}
-          >
-          </Text>
+          ></Text>
         </Pressable>
       </View>
 
@@ -54,7 +56,7 @@ export default function EditProfileScreen() {
         {/* Estado de red */}
 
         {/* Avatar Section */}
-        <View className="mx-4 mt-6 mb-6">
+        <View className="mx-4 mb-6 mt-6">
           <View
             className="rounded-2xl p-6"
             style={{
@@ -62,14 +64,12 @@ export default function EditProfileScreen() {
               borderWidth: 1,
               borderColor: COLORS.border.muted,
             }}
-          >
-          </View>
+          ></View>
         </View>
 
         {/* Form Section */}
-        <View className="mx-4 mb-8">
-        </View>
+        <View className="mx-4 mb-8"></View>
       </ScrollView>
     </View>
-  );
-} 
+  )
+}
