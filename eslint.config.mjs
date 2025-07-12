@@ -49,6 +49,7 @@ export default defineConfig([
         ecmaFeatures: {
           jsx: true,
         },
+        project: './tsconfig.json',
       },
     },
     // Plugins habilitados para el análisis
@@ -183,10 +184,22 @@ export default defineConfig([
   },
   // Configuración específica para archivos de configuración
   {
-    files: ['**/*.config.{js,mjs}', '**/*.config.ts'],
+    files: ['**/*.config.{js,mjs}', '**/*.config.ts', '.prettierrc.*'],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
     rules: {
       '@typescript-eslint/no-var-requires': 'off', // Permite require en configs
       'no-console': 'off', // Permite console en configs
+      '@typescript-eslint/prefer-optional-chain': 'off', // Desactiva regla que requiere tipos
+      '@typescript-eslint/prefer-nullish-coalescing': 'off', // Desactiva regla que requiere tipos
     },
   },
 ])
