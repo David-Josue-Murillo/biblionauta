@@ -85,7 +85,7 @@ export default defineConfig([
         'error',
         { extensions: ['.jsx', '.tsx'] },
       ], // Solo permite JSX en archivos .jsx/.tsx
-      'react/jsx-no-bind': 'warn', // Advertencia al usar bind en JSX
+      'react/jsx-no-bind': 'off', // Advertencia al usar bind en JSX
       'react/no-array-index-key': 'warn', // Advertencia al usar índice como key
       'react/no-unstable-nested-components': 'error', // Error en componentes anidados inestables
       'react/jsx-no-useless-fragment': 'warn', // Advertencia en fragmentos innecesarios
@@ -159,7 +159,7 @@ export default defineConfig([
         {
           singleQuote: true, // Comillas simples
           semi: false, // Sin punto y coma
-          trailingComma: 'all', // Coma final en todo
+          trailingComma: '', // Coma final en todo
           printWidth: 80, // Ancho máximo de línea
           tabWidth: 2, // Ancho de tabulación
         },
