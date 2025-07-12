@@ -1,12 +1,21 @@
 import { Tabs } from 'expo-router'
 import {
-  HomeIcon,
-  TopBooksIcon,
-  SearchIcon,
   BookmarkIcon,
+  HomeIcon,
+  SearchIcon,
+  TopBooksIcon,
   UserIcon,
 } from '../../src/components/Icons'
 import { colors } from '../../src/constants/theme'
+
+// Definir los iconos fuera del componente para evitar recreaciones
+const TabIcons = {
+  home: ({ color }: { color: string }) => <HomeIcon color={color} />,
+  trending: ({ color }: { color: string }) => <TopBooksIcon color={color} />,
+  search: ({ color }: { color: string }) => <SearchIcon color={color} />,
+  bookshelf: ({ color }: { color: string }) => <BookmarkIcon color={color} />,
+  profile: ({ color }: { color: string }) => <UserIcon color={color} />,
+}
 
 export default function TabsLayout() {
   return (
@@ -21,39 +30,35 @@ export default function TabsLayout() {
         name="index"
         options={{
           title: 'Inicio',
-          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          tabBarIcon: TabIcons.home,
         }}
       />
-
       <Tabs.Screen
         name="trending"
         options={{
           title: 'Top libros',
-          tabBarIcon: ({ color }) => <TopBooksIcon color={color} />,
+          tabBarIcon: TabIcons.trending,
         }}
       />
-
       <Tabs.Screen
         name="search"
         options={{
           title: 'Buscar',
-          tabBarIcon: ({ color }) => <SearchIcon color={color} />,
+          tabBarIcon: TabIcons.search,
         }}
       />
-
       <Tabs.Screen
         name="bookshelf"
         options={{
           title: 'Mi Biblioteca',
-          tabBarIcon: ({ color }) => <BookmarkIcon color={color} />,
+          tabBarIcon: TabIcons.bookshelf,
         }}
       />
-
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Cuenta',
-          tabBarIcon: ({ color }) => <UserIcon color={color} />,
+          tabBarIcon: TabIcons.profile,
         }}
       />
     </Tabs>
