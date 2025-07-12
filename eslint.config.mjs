@@ -81,10 +81,7 @@ export default defineConfig([
       'react/prop-types': 'off', // No requiere PropTypes (usamos TypeScript)
       'react/jsx-props-no-spreading': 'off', // Permite spread de props
       'react/require-default-props': 'off', // No requiere props por defecto
-      'react/jsx-filename-extension': [
-        'error',
-        { extensions: ['.jsx', '.tsx'] },
-      ], // Solo permite JSX en archivos .jsx/.tsx
+      'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }], // Solo permite JSX en archivos .jsx/.tsx
       'react/jsx-no-bind': 'off', // Advertencia al usar bind en JSX
       'react/no-array-index-key': 'warn', // Advertencia al usar índice como key
       'react/no-unstable-nested-components': 'error', // Error en componentes anidados inestables
@@ -160,7 +157,7 @@ export default defineConfig([
           singleQuote: true, // Comillas simples
           semi: false, // Sin punto y coma
           trailingComma: '', // Coma final en todo
-          printWidth: 80, // Ancho máximo de línea
+          printWidth: 100, // Ancho máximo de línea
           tabWidth: 2, // Ancho de tabulación
         },
       ],
