@@ -19,9 +19,9 @@ export function useBooks() {
     Promise.all(
       terms.map(term =>
         googleBooksApi.get(
-          `volumes?q=${encodeURIComponent(term)}&maxResults=12`
-        )
-      )
+          `volumes?q=${encodeURIComponent(term)}&maxResults=12`,
+        ),
+      ),
     )
       .then(responses => {
         if (!isMounted) return
