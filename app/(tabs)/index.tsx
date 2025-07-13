@@ -1,10 +1,9 @@
 import '../../global.css'
-import { ScrollView, Text, View } from 'react-native'
 import Books from '../../src/components/Books'
-import { useBooks } from '../../src/hooks/useBooks'
-import { StyleSheet } from 'react-native'
 import CarourselBook from '../../src/components/CarourselBook'
 import Welcome from '../../src/components/Welcome'
+import { ScrollView, Text, View } from 'react-native'
+import { useBooks } from '../../src/hooks/useBooks'
 
 export default function HomeScreen() {
   const { books } = useBooks()
@@ -20,12 +19,9 @@ export default function HomeScreen() {
 
         {/* Libros */}
         <View className="my-4">
-          <Text className="mb-1 pl-4 text-2xl font-bold text-white">
-            Hackea tu mente...
-          </Text>
+          <Text className="mb-1 pl-4 text-2xl font-bold text-white">Hackea tu mente...</Text>
           <Text className="mb-2 pl-4 text-base text-zinc-300">
-            Atrévete a descubrir nuevas ideas y expandir tus horizontes con cada
-            libro.
+            Atrévete a descubrir nuevas ideas y expandir tus horizontes con cada libro.
           </Text>
         </View>
         <Books books={books} />
@@ -33,5 +29,3 @@ export default function HomeScreen() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({})
