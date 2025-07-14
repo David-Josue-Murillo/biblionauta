@@ -1,0 +1,32 @@
+export const changePasswordTexts = {
+  header: 'Cambiar Contraseña',
+  cancel: 'Cancelar',
+  save: 'Guardar',
+  info: 'Cambiar tu contraseña cerrará tu sesión en todos los dispositivos. Necesitarás iniciar sesión nuevamente.',
+  currentPassword: 'Contraseña actual',
+  newPassword: 'Nueva contraseña',
+  confirmPassword: 'Confirmar nueva contraseña',
+  placeholderCurrent: 'Tu contraseña actual',
+  placeholderNew: 'Nueva contraseña',
+  placeholderConfirm: 'Repite la nueva contraseña',
+  requirementsTitle: 'Requisitos de Contraseña',
+  requirementsIntro: 'Tu contraseña debe cumplir:',
+  requirements: [
+    'Al menos 8 caracteres',
+    'Al menos una letra minúscula',
+    'Al menos una letra mayúscula',
+    'Al menos un número',
+    'Al menos un carácter especial (@$!%*?&)',
+  ],
+  errors: {
+    currentPasswordRequired: 'La contraseña actual es requerida',
+    passwordsDontMatch: 'Las contraseñas no coinciden',
+  },
+  passwordStrength: {
+    veryWeak: 'Muy débil',
+    weak: 'Débil',
+    medium: 'Media',
+    strong: 'Fuerte',
+    veryStrong: 'Muy fuerte',
+  },
+} 
