@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { View, ActivityIndicator, Text } from 'react-native'
+import { ActivityIndicator, Text, View } from 'react-native'
 import { useAuth } from '../../hooks/useAuth'
 import { router } from 'expo-router'
 
