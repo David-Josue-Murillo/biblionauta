@@ -1,69 +1,34 @@
-import { useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, Alert } from 'react-native'
-import { useForm } from 'react-hook-form'
-import { useAuth } from '../../hooks/useAuth'
-import { colors } from '../../constants/theme'
-import BotonSubmit from './BotonSubmit'
-import { useFormValidation } from '../../hooks/useFormValidation'
+import { ScrollView, View, Text } from 'react-native'
 import AuthLayout from './AuthLayout'
 import { FormEmailField, FormPasswordField } from './FormField'
 import SubmitButton from './SubmitButton'
-import { ScrollView } from 'react-native'
+import BotonSubmit from './BotonSubmit'
+import { ActionLink } from '../ui/ActionLink'
+import { useLoginForm } from '../../hooks/useLoginForm'
+import { colors } from '../../constants/theme'
 
 const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
-  const { signIn, isLoading, error, clearError } = useAuth()
-  const [showPassword, setShowPassword] = useState(false)
-
-  // Hook de validación
-  const {
-    validateForm,
-    errors: validationErrors,
-    clearErrors: clearValidationErrors,
-  } = useFormValidation('login')
-
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+    onSubmit,
+    isSubmitting,
+    isLoading,
+    validationErrors,
+    clearValidationErrors,
+    showPassword,
+    setShowPassword,
+    onSwitchToRegister: handleSwitchToRegister,
+    onSwitchToReset: handleSwitchToReset,
+  } = useLoginForm({
+    onSwitchToRegister,
+    onSwitchToReset,
   })
-
-  // Mostrar alerta cuando hay un error del contexto
-  useEffect(() => {
-    if (error) {
-      // Mostrar error como alerta nativa para errores de Firebase
-      Alert.alert('Error', error, [{ text: 'OK' }])
-      clearError()
-    }
-  }, [error, clearError])
-
-  const onSubmit = async data => {
-    // Validar formulario antes de enviar
-    const validation = validateForm(data)
-
-    if (!validation.isValid) {
-      // Los errores se muestran debajo de cada campo
-      return
-    }
-
-    try {
-      await signIn(data.email, data.password)
-    } catch (error) {
-      // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
-      console.log('Error capturado en pantalla:', error.message)
-    }
-  }
 
   return (
     <ScrollView>
       <AuthLayout headerText="Tu biblioteca personal en el bolsillo">
-        {/* Formulario */}
         <View className="w-full space-y-16">
-          {/* Email y Password*/}
           <FormEmailField
             control={control}
             validationErrors={validationErrors}
@@ -76,17 +41,8 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
             showPassword={showPassword}
           />
 
-          {/* Forgot Password */}
-          <TouchableOpacity onPress={onSwitchToReset} className="self-end">
-            <Text
-              className="text-sm font-medium"
-              style={{ color: colors.primary }}
-            >
-              ¿Olvidaste tu contraseña?
-            </Text>
-          </TouchableOpacity>
+          <ActionLink onPress={handleSwitchToReset}>¿Olvidaste tu contraseña?</ActionLink>
 
-          {/* Login Button */}
           <SubmitButton
             onPress={handleSubmit(onSubmit)}
             disabled={isSubmitting || isLoading}
@@ -94,12 +50,11 @@ const LoginScreen = ({ onSwitchToRegister, onSwitchToReset }) => {
             defaultText="Iniciar Sesión"
           />
 
-          {/* Switch to Register */}
           <View className="mt-8 flex-row justify-center">
             <Text className="text-sm" style={{ color: colors.textSecondary }}>
               ¿No tienes cuenta?{' '}
             </Text>
-            <BotonSubmit action={onSwitchToRegister} text={'Crear cuenta'} />
+            <BotonSubmit action={handleSwitchToRegister} text={'Crear cuenta'} />
           </View>
         </View>
       </AuthLayout>
