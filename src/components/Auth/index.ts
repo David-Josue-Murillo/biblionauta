@@ -1,0 +1,5 @@
+export { default as RegisterScreen } from './RegisterScreen'
+export { RegisterForm } from './RegisterForm'
+export { SwitchAuthLink } from './SwitchAuthLink'
+export { default as HeaderSign } from './HeaderSign'
+export { default as BotonSubmit } from './BotonSubmit' 
