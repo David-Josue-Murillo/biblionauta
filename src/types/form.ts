@@ -1,4 +1,4 @@
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 import { KeyboardTypeOptions } from 'react-native'
 
 export interface InputFieldProps {
@@ -15,9 +15,9 @@ export interface InputFieldProps {
   [key: string]: any
 }
 
-export interface FormFieldControllerProps {
-  control: Control<FieldValues, any>
-  name: string
+export interface FormFieldControllerProps<T extends FieldValues = FieldValues> {
+  control: Control<T, any>
+  name: Path<T>
   label: string
   placeholder?: string
   error?: string
