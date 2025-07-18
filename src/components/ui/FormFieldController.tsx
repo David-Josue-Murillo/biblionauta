@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form'
 import { InputField } from './InputField'
 import { FormFieldControllerProps } from '../../types/form'
 
-export function FormFieldController({
+export function FormFieldController<T extends Record<string, any>>({
   control,
   name,
   label,
@@ -14,7 +14,7 @@ export function FormFieldController({
   autoCapitalize = 'none',
   autoCorrect = false,
   ...props
-}: FormFieldControllerProps) {
+}: FormFieldControllerProps<T>) {
   return (
     <Controller
       control={control}
