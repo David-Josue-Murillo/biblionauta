@@ -1,72 +1,13 @@
-import { useState, useEffect } from 'react'
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from 'react-native'
-import { useForm, Controller } from 'react-hook-form'
-import { useAuth } from '../../hooks/useAuth'
-import { colors } from '../../constants/theme'
-
-import BotonSubmit from './BotonSubmit'
-import { useFormValidation } from '../../hooks/useFormValidation'
 import HeaderSign from './HeaderSign'
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native'
+import { colors } from '../../constants/theme'
+import { RegisterForm } from './RegisterForm'
+import { PrimaryButton } from '../ui/PrimaryButton'
+import { SwitchAuthLink } from './SwitchAuthLink'
+import { useRegisterForm } from '../../hooks/auth/useRegisterForm'
 
 const RegisterScreen = ({ onSwitchToLogin }) => {
-  const { createAccount, isLoading, error, clearError } = useAuth()
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-
-  // Hook de validación
-  const {
-    validateForm,
-    errors: validationErrors,
-    clearErrors: clearValidationErrors,
-  } = useFormValidation('register')
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
-  })
-
-  // Mostrar alerta cuando hay un error del contexto
-  useEffect(() => {
-    if (error) {
-      // Mostrar error como alerta nativa para errores de Firebase
-      Alert.alert('Error', error, [{ text: 'OK' }])
-      clearError()
-    }
-  }, [error, clearError])
-
-  const onSubmit = async data => {
-    // Validar formulario antes de enviar
-    const validation = validateForm(data)
-
-    if (!validation.isValid) {
-      // Los errores se muestran debajo de cada campo
-      return
-    }
-
-    try {
-      await createAccount(data.email, data.password, data.name)
-    } catch (error) {
-      // El error ya se maneja en el contexto, no necesitamos hacer nada aquí
-      console.log('Error capturado en pantalla:', error.message)
-    }
-  }
+  const { handleSubmit, onSubmit, isSubmitting, isLoading } = useRegisterForm()
 
   return (
     <KeyboardAvoidingView
@@ -80,223 +21,22 @@ const RegisterScreen = ({ onSwitchToLogin }) => {
           <HeaderSign text={'Únete a Biblionauta'} />
 
           {/* Formulario */}
-          <View className="w-full space-y-4">
-            {/* Name */}
-            <View className="my-2">
-              <Text
-                className="mb-2 text-base font-semibold"
-                style={{ color: colors.text }}
-              >
-                Nombre
-              </Text>
-              <Controller
-                control={control}
-                name="name"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    className="rounded-xl px-4 py-4 text-base"
-                    placeholder="Tu nombre"
-                    placeholderTextColor={colors.textSecondary}
-                    value={value}
-                    onChangeText={text => {
-                      onChange(text)
-                      // Limpiar error de validación cuando el usuario empiece a escribir
-                      if (validationErrors.name) {
-                        clearValidationErrors()
-                      }
-                    }}
-                    onBlur={onBlur}
-                    autoCapitalize="words"
-                    style={{
-                      backgroundColor: colors.card,
-                      borderWidth: 1,
-                      borderColor: validationErrors.name
-                        ? colors.error
-                        : colors.border,
-                      color: colors.text,
-                    }}
-                  />
-                )}
-              />
-              {validationErrors.name && (
-                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
-                  {validationErrors.name}
-                </Text>
-              )}
-            </View>
+          <RegisterForm />
 
-            {/* Email */}
-            <View className="my-2">
-              <Text
-                className="mb-2 text-base font-semibold"
-                style={{ color: colors.text }}
-              >
-                Email
-              </Text>
-              <Controller
-                control={control}
-                name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    className="rounded-xl px-4 py-4 text-base"
-                    placeholder="usuario@email.com"
-                    placeholderTextColor={colors.textSecondary}
-                    value={value}
-                    onChangeText={text => {
-                      onChange(text)
-                      // Limpiar error de validación cuando el usuario empiece a escribir
-                      if (validationErrors.email) {
-                        clearValidationErrors()
-                      }
-                    }}
-                    onBlur={onBlur}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    style={{
-                      backgroundColor: colors.card,
-                      borderWidth: 1,
-                      borderColor: validationErrors.email
-                        ? colors.error
-                        : colors.border,
-                      color: colors.text,
-                    }}
-                  />
-                )}
-              />
-              {validationErrors.email && (
-                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
-                  {validationErrors.email}
-                </Text>
-              )}
-            </View>
+          {/* Register Button */}
+          <PrimaryButton
+            title="Crear Cuenta"
+            loading={isSubmitting || isLoading}
+            loadingText="Creando cuenta..."
+            onPress={handleSubmit(onSubmit)}
+          />
 
-            {/* Password */}
-            <View className="my-2">
-              <Text
-                className="mb-2 text-base font-semibold"
-                style={{ color: colors.text }}
-              >
-                Contraseña
-              </Text>
-              <Controller
-                control={control}
-                name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    className="rounded-xl px-4 py-4 text-base"
-                    placeholder="••••••••"
-                    placeholderTextColor={colors.textSecondary}
-                    value={value}
-                    onChangeText={text => {
-                      onChange(text)
-                      // Limpiar error de validación cuando el usuario empiece a escribir
-                      if (validationErrors.password) {
-                        clearValidationErrors()
-                      }
-                    }}
-                    onBlur={onBlur}
-                    secureTextEntry={!showPassword}
-                    style={{
-                      backgroundColor: colors.card,
-                      borderWidth: 1,
-                      borderColor: validationErrors.password
-                        ? colors.error
-                        : colors.border,
-                      color: colors.text,
-                    }}
-                  />
-                )}
-              />
-              {validationErrors.password && (
-                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
-                  {validationErrors.password}
-                </Text>
-              )}
-            </View>
-
-            {/* Confirm Password */}
-            <View className="my-2">
-              <Text
-                className="mb-2 text-base font-semibold"
-                style={{ color: colors.text }}
-              >
-                Confirmar Contraseña
-              </Text>
-              <Controller
-                control={control}
-                name="confirmPassword"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    className="rounded-xl px-4 py-4 text-base"
-                    placeholder="••••••••"
-                    placeholderTextColor={colors.textSecondary}
-                    value={value}
-                    onChangeText={text => {
-                      onChange(text)
-                      // Limpiar error de validación cuando el usuario empiece a escribir
-                      if (validationErrors.confirmPassword) {
-                        clearValidationErrors()
-                      }
-                    }}
-                    onBlur={onBlur}
-                    secureTextEntry={!showConfirmPassword}
-                    style={{
-                      backgroundColor: colors.card,
-                      borderWidth: 1,
-                      borderColor: validationErrors.confirmPassword
-                        ? colors.error
-                        : colors.border,
-                      color: colors.text,
-                    }}
-                  />
-                )}
-              />
-              {validationErrors.confirmPassword && (
-                <Text className="mt-2 text-sm" style={{ color: colors.error }}>
-                  {validationErrors.confirmPassword}
-                </Text>
-              )}
-            </View>
-
-            {/* Register Button */}
-            <TouchableOpacity
-              onPress={handleSubmit(onSubmit)}
-              disabled={isSubmitting || isLoading}
-              className="mt-6 rounded-xl px-6 py-4"
-              style={{
-                backgroundColor:
-                  isSubmitting || isLoading ? colors.disabled : colors.primary,
-                shadowColor: colors.primary,
-                shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.3,
-                shadowRadius: 8,
-                elevation: 8,
-              }}
-            >
-              <Text
-                className="text-center text-lg font-bold"
-                style={{
-                  color:
-                    isSubmitting || isLoading
-                      ? colors.textSecondary
-                      : '#000000',
-                }}
-              >
-                {isSubmitting || isLoading
-                  ? 'Creando cuenta...'
-                  : 'Crear Cuenta'}
-              </Text>
-            </TouchableOpacity>
-
-            {/* Switch to Login */}
-            <View className="my-8 flex-row justify-center">
-              <Text className="text-sm" style={{ color: colors.textSecondary }}>
-                ¿Ya tienes cuenta?{' '}
-              </Text>
-              <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />
-            </View>
-          </View>
+          {/* Switch to Login */}
+          <SwitchAuthLink
+            question="¿Ya tienes cuenta?"
+            actionText="Iniciar sesión"
+            onPress={onSwitchToLogin}
+          />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
