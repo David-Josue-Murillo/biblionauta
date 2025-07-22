@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TextInputProps } from 'react-native'
+import { Text, TextInput, TextInputProps, View } from 'react-native'
 import { COLORS } from '../../constants/colors'
 
 interface FormFieldProps extends TextInputProps {
