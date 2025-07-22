@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { COLORS } from '../../constants/colors'
 
 interface StatsCardProps {
@@ -24,7 +24,7 @@ export function StatsCard({
     >
       <View
         className="mb- h-12 w-12 items-center justify-center rounded-full"
-        style={{ backgroundColor: color + '20' }}
+        style={{ backgroundColor: `${color}20` }}
       >
         <Text className="text-2xl">{icon}</Text>
       </View>
