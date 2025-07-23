@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Pressable } from 'react-native'
+import { Pressable, ScrollView, Text, View } from 'react-native'
 import { COLORS } from '../../constants/colors'
 import { Achievement } from '../../mocks/bookshelfData'
 
