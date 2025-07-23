@@ -1,8 +1,12 @@
-import { View, Text, Image, Pressable } from 'react-native'
+import { Image, Pressable, Text, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
-import { COLORS } from '../../constants/colors'
 import { Book } from '../../mocks/bookshelfData'
+import { BookStatusBadge } from '../bookshelf/BookStatusBadge'
+import { BookFavoriteIndicator } from '../bookshelf/BookFavoriteIndicator'
+import { BookRating } from '../bookshelf/BookRating'
+import { BookProgressBar } from '../bookshelf/BookProgressBar'
+import { getProgressPercentage, getStatusColor, getStatusText } from '../../utils/bookshelf/bookCardHelpers'
 
 interface BookCardProps {
   book: Book
@@ -10,46 +14,8 @@ interface BookCardProps {
   showStatus?: boolean
 }
 
-export function BookCard({
-  book,
-  showProgress = true,
-  showStatus = true,
-}: BookCardProps) {
-  const getProgressPercentage = () => {
-    if (!book.currentPage || !book.totalPages) return 0
-    return Math.round((book.currentPage / book.totalPages) * 100)
-  }
-
-  const getStatusColor = () => {
-    switch (book.status) {
-      case 'IN_PROGRESS':
-        return COLORS.accent.primary
-      case 'COMPLETED':
-        return '#48bb78'
-      case 'PAUSED':
-        return '#ed8936'
-      case 'WANT_TO_READ':
-        return COLORS.accent.secondary
-      default:
-        return COLORS.text.muted
-    }
-  }
-
-  const getStatusText = () => {
-    switch (book.status) {
-      case 'IN_PROGRESS':
-        return 'Leyendo'
-      case 'COMPLETED':
-        return 'Completado'
-      case 'PAUSED':
-        return 'Pausado'
-      case 'WANT_TO_READ':
-        return 'Por leer'
-      default:
-        return 'No iniciado'
-    }
-  }
-
+export function BookCard({ book, showProgress = true, showStatus = true }: BookCardProps) {
+  // Solo composición y orquestación de UI
   return (
     <Link href={`/book/${book.id}`} asChild>
       <Pressable
@@ -83,15 +49,8 @@ export function BookCard({
             style={{ zIndex: 2 }}
           />
 
-          {/* Indicador de favorito */}
-          {book.isFavorite && (
-            <View
-              className="absolute right-2 top-2 h-6 w-6 items-center justify-center rounded-full"
-              style={{ backgroundColor: 'rgba(255, 105, 180, 0.9)', zIndex: 3 }}
-            >
-              <Text className="text-xs text-white">❤️</Text>
-            </View>
-          )}
+          {/* Indicador de favorito extraído a componente */}
+          <BookFavoriteIndicator isFavorite={book.isFavorite} />
 
           {/* Información del libro */}
           <View className="bg-zinc-800 p-3">
@@ -110,26 +69,12 @@ export function BookCard({
             {/* Estado del libro */}
             {showStatus && (
               <View className="mb-2 flex-row items-center justify-between">
-                <View
-                  className="rounded-full px-2 py-1"
-                  style={{ backgroundColor: `${getStatusColor()}20` }}
-                >
-                  <Text
-                    className="text-xs font-medium"
-                    style={{ color: getStatusColor() }}
-                  >
-                    {getStatusText()}
-                  </Text>
-                </View>
-
-                {book.personalRating && (
-                  <View className="flex-row items-center">
-                    <Text className="mr-1 text-xs text-yellow-400">★</Text>
-                    <Text className="text-xs text-white">
-                      {book.personalRating}
-                    </Text>
-                  </View>
-                )}
+                <BookStatusBadge
+                  color={getStatusColor(book.status)}
+                  text={getStatusText(book.status)}
+                  status={book.status}
+                />
+                <BookRating rating={book.personalRating} />
               </View>
             )}
 
@@ -137,25 +82,12 @@ export function BookCard({
             {showProgress &&
               book.currentPage &&
               book.status === 'IN_PROGRESS' && (
-                <View className="mb-2">
-                  <View className="mb-1 flex-row items-center justify-between">
-                    <Text className="text-xs text-zinc-400">
-                      Página {book.currentPage} de {book.totalPages}
-                    </Text>
-                    <Text className="text-xs text-zinc-400">
-                      {getProgressPercentage()}%
-                    </Text>
-                  </View>
-                  <View className="h-1 overflow-hidden rounded-full bg-zinc-700">
-                    <View
-                      className="h-full rounded-full"
-                      style={{
-                        backgroundColor: COLORS.accent.primary,
-                        width: `${getProgressPercentage()}%`,
-                      }}
-                    />
-                  </View>
-                </View>
+                <BookProgressBar
+                  currentPage={book.currentPage}
+                  totalPages={book.totalPages}
+                  progress={getProgressPercentage(book)}
+                  color={getStatusColor('IN_PROGRESS')}
+                />
               )}
 
             {/* Información adicional */}
