@@ -1,37 +1,9 @@
-import { View, Text, Image, Pressable } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-
-interface RecentBookCardProps {
-  book: {
-    id: string
-    title: string
-    author: string
-    coverURL: string
-    rating: number
-    readAt: Date
-  }
-  onPress?: () => void
-}
+import { Image, Pressable, Text, View } from 'react-native'
+import { BookRatingStars } from '../ui/BookRatingStars'
+import { formatRecentBookDate } from '../../utils/profile/recentBookHelpers'
+import { RecentBookCardProps } from '../../types/profile/recentBookCard'
 
 export function RecentBookCard({ book, onPress }: RecentBookCardProps) {
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('es-ES', {
-      month: 'short',
-      day: 'numeric',
-    })
-  }
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Ionicons
-        key={i}
-        name={i < rating ? 'star' : 'star-outline'}
-        size={10}
-        color={i < rating ? '#FFD700' : '#666'}
-      />
-    ))
-  }
-
   return (
     <Pressable onPress={onPress} className="mr-4 w-32">
       <View className="relative">
@@ -45,7 +17,6 @@ export function RecentBookCard({ book, onPress }: RecentBookCardProps) {
           </Text>
         </View>
       </View>
-
       <Text className="mb-1 text-sm font-semibold text-white" numberOfLines={2}>
         {book.title}
       </Text>
@@ -53,9 +24,9 @@ export function RecentBookCard({ book, onPress }: RecentBookCardProps) {
         {book.author}
       </Text>
       <View className="mb-1 flex-row items-center">
-        {renderStars(book.rating)}
+        <BookRatingStars rating={book.rating} />
       </View>
-      <Text className="text-xs text-zinc-500">{formatDate(book.readAt)}</Text>
+      <Text className="text-xs text-zinc-500">{formatRecentBookDate(book.readAt)}</Text>
     </Pressable>
   )
 }
