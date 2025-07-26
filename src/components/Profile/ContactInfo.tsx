@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '../../constants/colors'
 
@@ -17,7 +17,7 @@ export function ContactInfo({ email, phoneNumber, website }: ContactInfoProps) {
       <View className="mb-3 flex-row items-center">
         <View
           className="mr-3 h-10 w-10 items-center justify-center rounded-full"
-          style={{ backgroundColor: COLORS.accent.primary + '20' }}
+          style={{ backgroundColor: `${COLORS.accent.primary}20` }}
         >
           <Ionicons name="mail" size={20} color={COLORS.accent.primary} />
         </View>
