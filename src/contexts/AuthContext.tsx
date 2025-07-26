@@ -9,7 +9,7 @@ export interface AuthContextProps {
   createAccount: (
     email: string,
     password: string,
-    displayName: string
+    displayName: string,
   ) => Promise<AuthUser>
   signOut: () => Promise<void>
   resetPassword: (email: string) => Promise<boolean>
@@ -18,5 +18,5 @@ export interface AuthContextProps {
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
-  undefined
+  undefined,
 )
