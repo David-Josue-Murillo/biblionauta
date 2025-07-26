@@ -1,5 +1,4 @@
 import {
-  ActivityIndicator,
   Image,
   Pressable,
   ScrollView,
@@ -119,8 +118,7 @@ export function CategorySelector({
     [setSelectedCategory]
   )
 
-  if (selectedFilter !== 'Categoría' || uniqueCategories.length === 0)
-    return null
+  if (selectedFilter !== 'Categoría' || uniqueCategories.length === 0) return null
 
   return (
     <View className="mb-3">
@@ -139,17 +137,14 @@ export function CategorySelector({
           accessibilityLabel="Todas las categorías"
         >
           <Text
-            className={`text-sm font-bold ${
-              !selectedCategory ? 'text-gray-900' : 'text-white'
-            }`}
+            className={`text-sm font-bold ${!selectedCategory ? 'text-gray-900' : 'text-white'}`}
           >
             Todas
           </Text>
         </Pressable>
         {uniqueCategories.map(cat => {
           const isSelected =
-            selectedCategory &&
-            cat.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
+            selectedCategory && cat.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
           return (
             <Pressable
               key={cat}
@@ -160,11 +155,7 @@ export function CategorySelector({
               accessibilityRole="button"
               accessibilityLabel={`Categoría ${cat}`}
             >
-              <Text
-                className={`text-sm font-bold ${
-                  isSelected ? 'text-gray-900' : 'text-white'
-                }`}
-              >
+              <Text className={`text-sm font-bold ${isSelected ? 'text-gray-900' : 'text-white'}`}>
                 {cat}
               </Text>
             </Pressable>
@@ -188,17 +179,12 @@ export function BookCard({ book }: BookCardProps) {
         resizeMode="cover"
       />
       <View className="flex-1 justify-center p-3">
-        <Text
-          className="mb-0.5 text-lg font-bold text-yellow-400"
-          numberOfLines={2}
-        >
+        <Text className="mb-0.5 text-lg font-bold text-yellow-400" numberOfLines={2}>
           {book.title}
         </Text>
         {book.authors && (
           <Text className="mb-0.5 text-sm text-white" numberOfLines={1}>
-            {Array.isArray(book.authors)
-              ? book.authors.join(', ')
-              : book.authors}
+            {Array.isArray(book.authors) ? book.authors.join(', ') : book.authors}
           </Text>
         )}
         <View className="mb-1 flex-row items-center">
@@ -212,15 +198,11 @@ export function BookCard({ book }: BookCardProps) {
             />
           ))}
           {book.ratingsCount > 0 && (
-            <Text className="ml-1 text-xs text-yellow-400">
-              ({book.ratingsCount})
-            </Text>
+            <Text className="ml-1 text-xs text-yellow-400">({book.ratingsCount})</Text>
           )}
         </View>
         {book.publishedDate && (
-          <Text className="mb-0.5 text-xs text-gray-400">
-            {book.publishedDate}
-          </Text>
+          <Text className="mb-0.5 text-xs text-gray-400">{book.publishedDate}</Text>
         )}
         {book.description && (
           <Text className="text-xs text-gray-300" numberOfLines={3}>
@@ -232,35 +214,4 @@ export function BookCard({ book }: BookCardProps) {
   )
 }
 
-interface SearchResultsProps {
-  loading: boolean
-  error: string | null
-  filteredBooks: GoogleBook[]
-}
-
-export function SearchResults({
-  loading,
-  error,
-  filteredBooks,
-}: SearchResultsProps) {
-  return (
-    <ScrollView
-      className="items-start justify-start px-4 pb-8"
-      keyboardShouldPersistTaps="handled"
-    >
-      {loading ? (
-        <ActivityIndicator color="#FFD600" size="large" className="mt-10" />
-      ) : error ? (
-        <Text className="mt-8 text-center text-white">
-          Error al cargar los libros.
-        </Text>
-      ) : filteredBooks.length > 0 ? (
-        filteredBooks.map(book => <BookCard key={book.id} book={book} />)
-      ) : (
-        <Text className="mt-8 text-center text-white">
-          No se encontraron resultados.
-        </Text>
-      )}
-    </ScrollView>
-  )
-}
+// ...existing code...
