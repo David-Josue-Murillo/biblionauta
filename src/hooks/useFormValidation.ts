@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { validators } from '../utils/form/validators'
 
 // Tipos de formularios soportados
 export type FormType = 'login' | 'register' | 'reset-password'
@@ -87,84 +88,10 @@ const defaultValidationRules: Record<FormType, ValidationRules> = {
   },
 }
 
-// Mensajes de error personalizados
-const errorMessages = {
-  required: (field: string) => `El campo ${field} es obligatorio`,
-  invalidEmail: 'El formato del email no es válido',
-  passwordMinLength: (minLength: number) =>
-    `La contraseña debe tener al menos ${minLength} caracteres`,
-  passwordUppercase: 'La contraseña debe contener al menos una letra mayúscula',
-  passwordMismatch: 'Las contraseñas no coinciden',
-  invalidName: 'El nombre no puede estar vacío',
-}
-
-// Funciones de validación específicas
-const validators = {
-  // Validar email
-  email: (value: string, rules: ValidationRules['email']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('email')
-    }
-
-    if (value.trim() && rules?.pattern && !rules.pattern.test(value)) {
-      return errorMessages.invalidEmail
-    }
-
-    return null
-  },
-
-  // Validar contraseña
-  password: (
-    value: string,
-    rules: ValidationRules['password']
-  ): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('contraseña')
-    }
-
-    if (value.trim()) {
-      if (rules?.minLength && value.length < rules.minLength) {
-        return errorMessages.passwordMinLength(rules.minLength)
-      }
-
-      if (rules?.requireUppercase && !/[A-Z]/.test(value)) {
-        return errorMessages.passwordUppercase
-      }
-    }
-
-    return null
-  },
-
-  // Validar nombre
-  name: (value: string, rules: ValidationRules['name']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.invalidName
-    }
-
-    return null
-  },
-
-  // Validar confirmación de contraseña
-  confirmPassword: (
-    value: string,
-    password: string,
-    rules: ValidationRules['confirmPassword']
-  ): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('confirmación de contraseña')
-    }
-
-    if (value.trim() && rules?.matchField && value !== password) {
-      return errorMessages.passwordMismatch
-    }
-
-    return null
-  },
-}
 
 export const useFormValidation = <T extends FormData>(
   formType: FormType,
-  customRules?: ValidationRules
+  customRules?: ValidationRules,
 ) => {
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [isValidating, setIsValidating] = useState(false)
@@ -194,7 +121,7 @@ export const useFormValidation = <T extends FormData>(
         if ('password' in data && validationRules.password) {
           const passwordError = validators.password(
             data.password,
-            validationRules.password
+            validationRules.password,
           )
           if (passwordError) {
             newErrors.password = passwordError
@@ -214,7 +141,7 @@ export const useFormValidation = <T extends FormData>(
           const confirmPasswordError = validators.confirmPassword(
             data.confirmPassword,
             (data as RegisterFormData).password,
-            validationRules.confirmPassword
+            validationRules.confirmPassword,
           )
           if (confirmPasswordError) {
             newErrors.confirmPassword = confirmPasswordError
@@ -230,7 +157,7 @@ export const useFormValidation = <T extends FormData>(
         setIsValidating(false)
       }
     },
-    [validationRules]
+    [validationRules],
   )
 
   // Validar un campo específico
@@ -252,7 +179,7 @@ export const useFormValidation = <T extends FormData>(
             return validators.confirmPassword(
               value,
               (allData as RegisterFormData).password,
-              validationRules.confirmPassword
+              validationRules.confirmPassword,
             )
           }
           return null
@@ -261,7 +188,7 @@ export const useFormValidation = <T extends FormData>(
           return null
       }
     },
-    [validationRules]
+    [validationRules],
   )
 
   // Limpiar errores
