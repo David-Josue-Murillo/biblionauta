@@ -6,8 +6,8 @@ import {
   CategorySelector,
   FilterOptions,
   SearchBar,
-  SearchResults,
 } from '../../src/components/Search/SearchComponents'
+import { SearchResults } from '../../src/components/Search/SearchResults'
 
 const filterOptions = ['Todos', 'Título', 'Autor', 'Género', 'Categoría']
 
