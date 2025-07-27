@@ -1,44 +1,30 @@
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut as firebaseSignOut,
   onAuthStateChanged as firebaseOnAuthStateChanged,
-  sendPasswordResetEmail,
-  updateProfile,
+  signOut as firebaseSignOut,
   sendEmailVerification,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  updateProfile,
   User,
 } from 'firebase/auth'
-import { auth } from '../config/firebase'
+import { auth } from '../config/firebase' 
+import { handleAuthError } from '../utils/auth/handleAuthError'
 
 // Tipos auxiliares
 export interface AuthUser extends User {}
-
-const errorMessages: Record<string, string> = {
-  'auth/user-not-found': 'No existe una cuenta con este email',
-  'auth/wrong-password': 'Contraseña incorrecta',
-  'auth/email-already-in-use': 'Ya existe una cuenta con este email',
-  'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres',
-  'auth/invalid-email': 'Email inválido',
-  'auth/too-many-requests': 'Demasiados intentos. Intenta más tarde',
-  'auth/user-disabled': 'Esta cuenta ha sido deshabilitada',
-  'auth/network-request-failed': 'Error de conexión. Verifica tu internet',
-}
-
-function handleAuthError(error: any): Error {
-  return new Error(errorMessages[error.code] || 'Error desconocido')
-}
 
 // Crear cuenta con email y contraseña
 export async function createAccount(
   email: string,
   password: string,
-  displayName: string
+  displayName: string,
 ): Promise<AuthUser> {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     )
     const user = userCredential.user
     await updateProfile(user, { displayName })
@@ -53,13 +39,13 @@ export async function createAccount(
 // Iniciar sesión con email y contraseña
 export async function signIn(
   email: string,
-  password: string
+  password: string,
 ): Promise<AuthUser> {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     )
     return userCredential.user as AuthUser
   } catch (error: any) {
