@@ -5,8 +5,7 @@ import { AuthAlert } from './AuthAlert'
 import { HeaderSign } from './HeaderSign'
 import { FormEmailField } from './FormField'
 import { ResetButton } from '../ui/ResetButton'
-import { BotonSubmit } from '../ui/BotonSubmit'
-import { Text } from 'react-native'
+import { PrimaryButton } from '../ui/PrimaryButton'
 
 // Main screen only composes UI and delegates logic to hooks
 export function ResetPasswordScreen({ onSwitchToLogin }) {
@@ -56,7 +55,12 @@ export function ResetPasswordScreen({ onSwitchToLogin }) {
               <Text className="text-sm" style={{ color: colors.textSecondary }}>
                 ¿Recordaste tu contraseña?{' '}
               </Text>
-              <BotonSubmit action={onSwitchToLogin} text={'Iniciar sesión'} />
+              <PrimaryButton
+                title="Iniciar sesión"
+                onPress={onSwitchToLogin}
+                variant="secondary"
+                style={{ minWidth: 120, paddingVertical: 8 }}
+              />
             </View>
           </View>
         </View>
