@@ -1,32 +1,30 @@
-import { View, Text, TextInput, TextInputProps } from "react-native";
-import { COLORS } from "../../constants/colors";
+import { Text, TextInput, TextInputProps, View } from 'react-native'
+import { COLORS } from '../../constants/colors'
 
 interface FormFieldProps extends TextInputProps {
-  label: string;
-  error?: string;
-  containerStyle?: any;
+  label: string
+  error?: string
+  containerStyle?: any
 }
 
-export function FormField({ 
-  label, 
-  error, 
-  containerStyle, 
-  ...textInputProps 
+export function FormField({
+  label,
+  error,
+  containerStyle,
+  ...textInputProps
 }: FormFieldProps) {
   return (
-    <View className="px-4 py-3 border-b border-zinc-700" style={containerStyle}>
-      <Text className="text-zinc-400 text-sm mb-1">{label}</Text>
+    <View className="border-b border-zinc-700 px-4 py-3" style={containerStyle}>
+      <Text className="mb-1 text-sm text-zinc-400">{label}</Text>
       <TextInput
-        className="text-white text-base"
+        className="text-base text-white"
         placeholderTextColor={COLORS.text.muted}
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
         }}
         {...textInputProps}
       />
-      {error && (
-        <Text className="text-red-400 text-xs mt-1">{error}</Text>
-      )}
+      {error && <Text className="mt-1 text-xs text-red-400">{error}</Text>}
     </View>
-  );
-} 
+  )
+}

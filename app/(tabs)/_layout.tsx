@@ -1,53 +1,64 @@
-import { Tabs } from "expo-router";
-import { HomeIcon, TopBooksIcon , SearchIcon, BookmarkIcon, UserIcon } from "../../src/components/Icons";
-import { colors } from "../../src/constants/theme";
+import { Tabs } from 'expo-router'
+import {
+  BookmarkIcon,
+  HomeIcon,
+  SearchIcon,
+  TopBooksIcon,
+  UserIcon,
+} from '../../src/components/Icons'
+import { colors } from '../../src/constants/theme'
+
+// Definir los iconos fuera del componente para evitar recreaciones
+const TabIcons = {
+  home: ({ color }: { color: string }) => <HomeIcon color={color} />,
+  trending: ({ color }: { color: string }) => <TopBooksIcon color={color} />,
+  search: ({ color }: { color: string }) => <SearchIcon color={color} />,
+  bookshelf: ({ color }: { color: string }) => <BookmarkIcon color={color} />,
+  profile: ({ color }: { color: string }) => <UserIcon color={color} />,
+}
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {backgroundColor: colors.background},
-        tabBarActiveTintColor: colors.primary
+        tabBarStyle: { backgroundColor: colors.background },
+        tabBarActiveTintColor: colors.primary,
       }}
     >
-      <Tabs.Screen  
+      <Tabs.Screen
         name="index"
         options={{
-          title: "Inicio", 
-          tabBarIcon: ({color}) => <HomeIcon color={color} />
+          title: 'Inicio',
+          tabBarIcon: TabIcons.home,
         }}
       />
-
-      <Tabs.Screen 
+      <Tabs.Screen
         name="trending"
         options={{
-          title: "Top libros", 
-          tabBarIcon: ({color}) => <TopBooksIcon color={color} />
+          title: 'Top libros',
+          tabBarIcon: TabIcons.trending,
         }}
       />
-
-      <Tabs.Screen 
+      <Tabs.Screen
         name="search"
         options={{
-          title: "Buscar", 
-          tabBarIcon: ({color}) => <SearchIcon color={color} />
+          title: 'Buscar',
+          tabBarIcon: TabIcons.search,
         }}
       />
-
-      <Tabs.Screen 
+      <Tabs.Screen
         name="bookshelf"
         options={{
-          title: "Mi Biblioteca", 
-          tabBarIcon: ({color}) => <BookmarkIcon color={color} />
+          title: 'Mi Biblioteca',
+          tabBarIcon: TabIcons.bookshelf,
         }}
       />
-
-      <Tabs.Screen 
+      <Tabs.Screen
         name="profile"
         options={{
-          title: "Cuenta", 
-          tabBarIcon: ({color}) => <UserIcon color={color} />
+          title: 'Cuenta',
+          tabBarIcon: TabIcons.profile,
         }}
       />
     </Tabs>

@@ -1,6 +1,6 @@
-export { EditProfileButton } from './EditProfileButton';
-export { StatsCard } from './StatsCard';
-export { ReadingProgress } from './ReadingProgress';
-export { RecentBookCard } from './RecentBookCard';
-export { AchievementCard } from './AchievementCard';
-export { ContactInfo } from './ContactInfo'; 
+export { EditProfileButton } from './EditProfileButton'
+export { StatsCard } from './StatsCard'
+export { ReadingProgress } from './ReadingProgress'
+export { RecentBookCard } from './RecentBookCard'
+export { AchievementCard } from './AchievementCard'
+export { ContactInfo } from './ContactInfo'

@@ -1,201 +1,80 @@
-import { View, ScrollView, Text, Pressable, Switch } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { router } from "expo-router";
-import { COLORS } from "../../src/constants/colors";
-
-interface PrivacySetting {
-  id: string;
-  title: string;
-  description: string;
-  value: boolean;
-  category: 'profile' | 'activity' | 'notifications';
-}
+import { ScrollView, Text, View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import { router } from 'expo-router'
+import { COLORS } from '../../src/constants/colors'
+import { privacyTexts } from '../../src/constants/privacyTexts'
+import { usePrivacySettings } from '../../src/hooks/usePrivacySettings'
+import { groupSettingsByCategory } from '../../src/utils/privacyUtils'
+import { HeaderBar, SectionCard, SwitchRow, InfoCard } from '../../src/components/ui'
 
 export default function PrivacySettingsScreen() {
-  const [privacySettings, setPrivacySettings] = useState<PrivacySetting[]>([
-    {
-      id: 'profile-visible',
-      title: 'Perfil público',
-      description: 'Permitir que otros usuarios vean tu perfil',
-      value: true,
-      category: 'profile'
-    },
-    {
-      id: 'reading-activity',
-      title: 'Actividad de lectura',
-      description: 'Mostrar qué libros estás leyendo',
-      value: true,
-      category: 'activity'
-    },
-    {
-      id: 'reviews-public',
-      title: 'Reseñas públicas',
-      description: 'Hacer públicas tus reseñas de libros',
-      value: true,
-      category: 'activity'
-    },
-    {
-      id: 'email-notifications',
-      title: 'Notificaciones por email',
-      description: 'Recibir notificaciones por correo electrónico',
-      value: true,
-      category: 'notifications'
-    },
-    {
-      id: 'push-notifications',
-      title: 'Notificaciones push',
-      description: 'Recibir notificaciones en el dispositivo',
-      value: true,
-      category: 'notifications'
-    }
-  ]);
-
-  const handleToggle = (id: string) => {
-    setPrivacySettings(prev => 
-      prev.map(setting => 
-        setting.id === id 
-          ? { ...setting, value: !setting.value }
-          : setting
-      )
-    );
-  };
-
+  const { state, actions } = usePrivacySettings()
+  const { settings, isLoading, hasChanges } = state
+  const { toggleSetting, saveSettings } = actions
 
   const handleCancel = () => {
-    router.back();
-  };
+    router.back()
+  }
 
-  const groupedSettings = privacySettings.reduce((acc, setting) => {
-    if (!acc[setting.category]) {
-      acc[setting.category] = [];
+  const handleSave = async () => {
+    const success = await saveSettings()
+    if (success) {
+      router.back()
     }
-    acc[setting.category].push(setting);
-    return acc;
-  }, {} as Record<string, PrivacySetting[]>);
+  }
 
-  const categoryTitles = {
-    profile: 'Perfil',
-    activity: 'Actividad',
-    notifications: 'Notificaciones'
-  };
-
-  const categoryIcons = {
-    profile: '👤',
-    activity: '📚',
-    notifications: '🔔'
-  };
+  const groupedSettings = groupSettingsByCategory(settings)
 
   return (
-    <View
-      className="flex-1"
-      style={{ backgroundColor: COLORS.background.primary }}
-    >
+    <View className="flex-1" style={{ backgroundColor: COLORS.background.primary }}>
       <StatusBar style="light" />
 
-      {/* Header */}
-      <View
-        className="flex-row items-center justify-between px-4 py-4 border-b"
-        style={{ borderColor: COLORS.border.muted }}
-      >
-        <Pressable
-          onPress={handleCancel}
-          className="p-2 rounded-lg"
-          style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? COLORS.background.tertiary : "transparent",
-            },
-          ]}
-        >
-          <Text className="text-white text-lg">Cancelar</Text>
-        </Pressable>
-
-        <Text className="text-xl font-bold text-white">Privacidad</Text>
-
-        <Pressable
-          className="p-2 rounded-lg"
-          style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? COLORS.background.tertiary : "transparent",
-            },
-          ]}
-        >
-          <Text 
-            className="text-lg font-semibold"
-            style={{ color: COLORS.accent.primary }}
-          >
-            Guardar
-          </Text>
-        </Pressable>
-      </View>
+      <HeaderBar
+        title={privacyTexts.header}
+        leftButton={{
+          text: privacyTexts.cancel,
+          onPress: handleCancel,
+        }}
+        rightButton={{
+          text: privacyTexts.save,
+          onPress: handleSave,
+          disabled: !hasChanges || isLoading,
+          variant: 'primary',
+        }}
+      />
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="mx-4 mt-6">
-          {Object.entries(groupedSettings).map(([category, settings]) => (
-            <View key={category} className="mb-6">
-              <View className="flex-row items-center mb-3">
-                <Text className="text-2xl mr-2">{categoryIcons[category as keyof typeof categoryIcons]}</Text>
-                <Text className="text-lg font-bold text-white">
-                  {categoryTitles[category as keyof typeof categoryTitles]}
-                </Text>
-              </View>
-
-              <View
-                className="rounded-xl overflow-hidden"
-                style={{
-                  backgroundColor: COLORS.background.secondary,
-                  borderWidth: 1,
-                  borderColor: COLORS.border.muted,
-                }}
-              >
-                {settings.map((setting, index) => (
-                  <View
-                    key={setting.id}
-                    className={`px-4 py-4 flex-row items-center justify-between ${
-                      index < settings.length - 1 ? 'border-b border-zinc-700' : ''
-                    }`}
-                  >
-                    <View className="flex-1 mr-4">
-                      <Text className="text-white text-base font-medium mb-1">
-                        {setting.title}
-                      </Text>
-                      <Text className="text-zinc-400 text-sm">
-                        {setting.description}
-                      </Text>
-                    </View>
-                    
-                    <Switch
-                      value={setting.value}
-                      onValueChange={() => handleToggle(setting.id)}
-                      trackColor={{
-                        false: COLORS.background.tertiary,
-                        true: COLORS.accent.primary
-                      }}
-                      thumbColor={setting.value ? COLORS.accent.secondary : COLORS.text.muted}
-                    />
-                  </View>
-                ))}
-              </View>
-            </View>
+          {Object.entries(groupedSettings).map(([category, categorySettings]) => (
+            <SectionCard
+              key={category}
+              icon={privacyTexts.icons[category as keyof typeof privacyTexts.icons]}
+              title={privacyTexts.categories[category as keyof typeof privacyTexts.categories]}
+            >
+              {categorySettings.map((setting, index) => (
+                <SwitchRow
+                  key={setting.id}
+                  title={setting.title}
+                  description={setting.description}
+                  value={setting.value}
+                  onValueChange={() => toggleSetting(setting.id)}
+                  isLast={index === categorySettings.length - 1}
+                />
+              ))}
+            </SectionCard>
           ))}
         </View>
 
         {/* Información adicional */}
         <View className="mx-4 mb-8">
-          <View
-            className="rounded-xl p-4"
-            style={{
-              backgroundColor: COLORS.background.secondary,
-              borderWidth: 1,
-              borderColor: COLORS.border.muted,
-            }}
-          >
-            <Text className="text-zinc-400 text-sm leading-5">
-              💡 <Text className="text-white font-medium">Consejo:</Text> Puedes cambiar estas configuraciones en cualquier momento. Los cambios se aplican inmediatamente.
+          <InfoCard variant="filled">
+            <Text className="text-sm leading-5 text-zinc-400">
+              💡 <Text className="font-medium text-white">{privacyTexts.tip.title}</Text>{' '}
+              {privacyTexts.tip.content}
             </Text>
-          </View>
+          </InfoCard>
         </View>
       </ScrollView>
     </View>
-  );
-} 
+  )
+}

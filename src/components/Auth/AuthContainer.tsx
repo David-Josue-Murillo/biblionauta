@@ -17,9 +17,7 @@ const AuthContainer = () => {
         )
       case 'register':
         return (
-          <RegisterScreen
-            onSwitchToLogin={() => setCurrentScreen('login')}
-          />
+          <RegisterScreen onSwitchToLogin={() => setCurrentScreen('login')} />
         )
       case 'reset':
         return (

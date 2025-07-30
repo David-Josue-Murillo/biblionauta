@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { validators } from '../utils/form/validators'
 
 // Tipos de formularios soportados
 export type FormType = 'login' | 'register' | 'reset-password'
@@ -53,110 +54,44 @@ const defaultValidationRules: Record<FormType, ValidationRules> = {
   login: {
     email: {
       required: true,
-      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
     password: {
       required: true,
       minLength: 6,
-      requireUppercase: true
-    }
+      requireUppercase: true,
+    },
   },
   register: {
     name: {
-      required: true
+      required: true,
     },
     email: {
       required: true,
-      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
     password: {
       required: true,
       minLength: 6,
-      requireUppercase: true
+      requireUppercase: true,
     },
     confirmPassword: {
       required: true,
-      matchField: 'password'
-    }
+      matchField: 'password',
+    },
   },
   'reset-password': {
     email: {
       required: true,
-      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    }
-  }
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    },
+  },
 }
 
-// Mensajes de error personalizados
-const errorMessages = {
-  required: (field: string) => `El campo ${field} es obligatorio`,
-  invalidEmail: 'El formato del email no es válido',
-  passwordMinLength: (minLength: number) => `La contraseña debe tener al menos ${minLength} caracteres`,
-  passwordUppercase: 'La contraseña debe contener al menos una letra mayúscula',
-  passwordMismatch: 'Las contraseñas no coinciden',
-  invalidName: 'El nombre no puede estar vacío'
-}
-
-// Funciones de validación específicas
-const validators = {
-  // Validar email
-  email: (value: string, rules: ValidationRules['email']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('email')
-    }
-    
-    if (value.trim() && rules?.pattern && !rules.pattern.test(value)) {
-      return errorMessages.invalidEmail
-    }
-    
-    return null
-  },
-
-  // Validar contraseña
-  password: (value: string, rules: ValidationRules['password']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('contraseña')
-    }
-    
-    if (value.trim()) {
-      if (rules?.minLength && value.length < rules.minLength) {
-        return errorMessages.passwordMinLength(rules.minLength)
-      }
-      
-      if (rules?.requireUppercase && !/[A-Z]/.test(value)) {
-        return errorMessages.passwordUppercase
-      }
-    }
-    
-    return null
-  },
-
-  // Validar nombre
-  name: (value: string, rules: ValidationRules['name']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.invalidName
-    }
-    
-    return null
-  },
-
-  // Validar confirmación de contraseña
-  confirmPassword: (value: string, password: string, rules: ValidationRules['confirmPassword']): string | null => {
-    if (rules?.required && !value.trim()) {
-      return errorMessages.required('confirmación de contraseña')
-    }
-    
-    if (value.trim() && rules?.matchField && value !== password) {
-      return errorMessages.passwordMismatch
-    }
-    
-    return null
-  }
-}
 
 export const useFormValidation = <T extends FormData>(
   formType: FormType,
-  customRules?: ValidationRules
+  customRules?: ValidationRules,
 ) => {
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [isValidating, setIsValidating] = useState(false)
@@ -164,84 +99,97 @@ export const useFormValidation = <T extends FormData>(
   // Combinar reglas por defecto con reglas personalizadas
   const validationRules = {
     ...defaultValidationRules[formType],
-    ...customRules
+    ...customRules,
   }
 
   // Función principal de validación
-  const validateForm = useCallback((data: T): { isValid: boolean; errors: ValidationErrors } => {
-    setIsValidating(true)
-    const newErrors: ValidationErrors = {}
+  const validateForm = useCallback(
+    (data: T): { isValid: boolean; errors: ValidationErrors } => {
+      setIsValidating(true)
+      const newErrors: ValidationErrors = {}
 
-    try {
-      // Validar email si existe en el formulario
-      if ('email' in data && validationRules.email) {
-        const emailError = validators.email(data.email, validationRules.email)
-        if (emailError) {
-          newErrors.email = emailError
+      try {
+        // Validar email si existe en el formulario
+        if ('email' in data && validationRules.email) {
+          const emailError = validators.email(data.email, validationRules.email)
+          if (emailError) {
+            newErrors.email = emailError
+          }
         }
-      }
 
-      // Validar contraseña si existe en el formulario
-      if ('password' in data && validationRules.password) {
-        const passwordError = validators.password(data.password, validationRules.password)
-        if (passwordError) {
-          newErrors.password = passwordError
+        // Validar contraseña si existe en el formulario
+        if ('password' in data && validationRules.password) {
+          const passwordError = validators.password(
+            data.password,
+            validationRules.password,
+          )
+          if (passwordError) {
+            newErrors.password = passwordError
+          }
         }
-      }
 
-      // Validar nombre si existe en el formulario
-      if ('name' in data && validationRules.name) {
-        const nameError = validators.name(data.name, validationRules.name)
-        if (nameError) {
-          newErrors.name = nameError
+        // Validar nombre si existe en el formulario
+        if ('name' in data && validationRules.name) {
+          const nameError = validators.name(data.name, validationRules.name)
+          if (nameError) {
+            newErrors.name = nameError
+          }
         }
-      }
 
-      // Validar confirmación de contraseña si existe en el formulario
-      if ('confirmPassword' in data && validationRules.confirmPassword) {
-        const confirmPasswordError = validators.confirmPassword(
-          data.confirmPassword,
-          (data as RegisterFormData).password,
-          validationRules.confirmPassword
-        )
-        if (confirmPasswordError) {
-          newErrors.confirmPassword = confirmPasswordError
+        // Validar confirmación de contraseña si existe en el formulario
+        if ('confirmPassword' in data && validationRules.confirmPassword) {
+          const confirmPasswordError = validators.confirmPassword(
+            data.confirmPassword,
+            (data as RegisterFormData).password,
+            validationRules.confirmPassword,
+          )
+          if (confirmPasswordError) {
+            newErrors.confirmPassword = confirmPasswordError
+          }
         }
-      }
 
-      setErrors(newErrors)
-      return {
-        isValid: Object.keys(newErrors).length === 0,
-        errors: newErrors
+        setErrors(newErrors)
+        return {
+          isValid: Object.keys(newErrors).length === 0,
+          errors: newErrors,
+        }
+      } finally {
+        setIsValidating(false)
       }
-    } finally {
-      setIsValidating(false)
-    }
-  }, [validationRules])
+    },
+    [validationRules],
+  )
 
   // Validar un campo específico
-  const validateField = useCallback((field: keyof T, value: string, allData?: T): string | null => {
-    switch (field) {
-      case 'email':
-        return validators.email(value, validationRules.email)
-      
-      case 'password':
-        return validators.password(value, validationRules.password)
-      
-      case 'name':
-        return validators.name(value, validationRules.name)
-      
-      case 'confirmPassword':
-        // Para confirmPassword necesitamos acceso a la contraseña actual
-        if (allData && 'password' in allData) {
-          return validators.confirmPassword(value, (allData as RegisterFormData).password, validationRules.confirmPassword)
-        }
-        return null
-      
-      default:
-        return null
-    }
-  }, [validationRules])
+  const validateField = useCallback(
+    (field: keyof T, value: string, allData?: T): string | null => {
+      switch (field) {
+        case 'email':
+          return validators.email(value, validationRules.email)
+
+        case 'password':
+          return validators.password(value, validationRules.password)
+
+        case 'name':
+          return validators.name(value, validationRules.name)
+
+        case 'confirmPassword':
+          // Para confirmPassword necesitamos acceso a la contraseña actual
+          if (allData && 'password' in allData) {
+            return validators.confirmPassword(
+              value,
+              (allData as RegisterFormData).password,
+              validationRules.confirmPassword,
+            )
+          }
+          return null
+
+        default:
+          return null
+      }
+    },
+    [validationRules],
+  )
 
   // Limpiar errores
   const clearErrors = useCallback(() => {
@@ -271,15 +219,15 @@ export const useFormValidation = <T extends FormData>(
     errors,
     isValidating,
     hasErrors,
-    
+
     // Funciones
     validateForm,
     validateField,
     clearErrors,
     clearFieldError,
     getFirstError,
-    
+
     // Utilidades
-    validationRules
+    validationRules,
   }
-} 
+}
